@@ -1,0 +1,26 @@
+{
+  "name": "messenger-webhook",
+  "version": "1.0.0",
+  "description": "FBHackathon2020MesBot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adamm285/FBHackathon2020MesBot.git"
+  },
+  "keywords": [
+    "hackathon"
+  ],
+  "author": "Adam Murphy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adamm285/FBHackathon2020MesBot/issues"
+  },
+  "homepage": "https://github.com/Adamm285/FBHackathon2020MesBot#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
