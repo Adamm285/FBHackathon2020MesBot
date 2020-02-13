@@ -1,6 +1,6 @@
 # FBHackathon2020MesBot
 
-<h2>Facebook Messenger Bot Custom UI</h2>
+<h2>Facebook Messenger Bot Custom UX</h2>
 
 <h3>Hi my name is Adam! Allow me to introduce myself,</h3>
 
