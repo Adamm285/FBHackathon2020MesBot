@@ -2,7 +2,7 @@
 
 <h2>Facebook Messenger Bot Custom UX</h2>
 
-<h3>Hi my name is Adam! Allow me to introduce myself,</h3>
+<h3>Hi, my name is Adam, allow me to introduce myself!</h3>
 
 I do a small amount of advertising on the platform on a few different fb pages. I have always felt it best to keep the whole transaction on FB, even more so in the messenger app. I think it's just a trusted place where clients know they are being protected and more freely give information. I know I prefer when it auto-fills my information without much typing. I have worked diligently with a great fb marketing expert for around 6 months and we have built "instant experiences" and "messenger ads". They are some of my best preforming ads. 
 
