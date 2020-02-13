@@ -56,7 +56,6 @@ app.post('/webhook', (req, res) => {
         // Returns a '404 Not Found' if event is not from a page subscription
         res.sendStatus(404);
 
-        console.log("helloworld")
     }
 
 });
