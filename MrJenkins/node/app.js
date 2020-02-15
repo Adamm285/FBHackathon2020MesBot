@@ -64,7 +64,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
  */
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === VALIDATION_TOKEN) {
+      req.query['hub.verify_token'] === process.env.VALIDATION_TOKEN) {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
@@ -415,7 +415,7 @@ function receivedAccountLink(event) {
  * in default.json before they can access local resources likes images/videos.
  */
 function requiresServerURL(next, [recipientId, ...args]) {
-  if (SERVER_URL === "to_be_set_manually") {
+  if (SERVER_URL === process.env.SERVER_URL) {
     var messageData = {
       recipient: {
         id: recipientId
