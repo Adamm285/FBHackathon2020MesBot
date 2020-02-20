@@ -134,7 +134,7 @@ module.exports = class Profile {
 
     let localizedGreeting = {
       locale: param,
-      text: i18n.__("profile.greetings", {
+      text: i18n.__("profile.greeting", {
         user_first_name: "{{user_first_name}}"
       })
     };

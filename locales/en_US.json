@@ -1,41 +1,46 @@
 {
   "profile": {
-    "greetings": "HELLO!!! to Mr. Jenkins {{user_first_name}}! Click get started to enjoy our sample automated messaging experience. If you want to build a similar one visit https://fb.me/get-sample-oc"
+    "greeting": "Welcome to Mr. Jenkin's Deli {{user_first_name}}! Click get started to ordering your sub!"
   },
   "menu": {
     "support": "Customer Support",
     "order": "Order updates",
     "help": "Talk to an agent",
-    "suggestion": "Outfit suggestions",
+    "suggestion": "Order a sub",
     "shop": "Shop now",
     "start_over": "Start over"
   },
   "get_started": {
-    "welcome": "Hi {{userFirstName}}! Welcome to Mr Jenkins where you'll find styles for every occasion.",
+    "welcome": "Hi {{userFirstName}}! Welcome to Mr Jenkins where you can order your favorite sub's right from Facebook Messenger!.",
     "guidance": "At any time, use the menu below to navigate through the features",
     "help": "What we can do to help you today?"
   },
   "leadgen": {
     "promo": "Hi {{userFirstName}}, finding great outfits is now easier and more convenient.",
-    "title": "50% Coupon",
+    "title": "40% Coupon",
     "subtitle": "Here is your coupon",
     "apply": "Apply discount",
     "coupon": "Added your coupon to this thread, you can now check out the discounted summer collection"
   },
   "curation": {
-    "prompt": "Are you looking for an outfit for yourself or someone else?",
-    "occasion": "Great! Let's get started. First, is there an occasion in mind?",
-    "price": "How much are you looking to spend?",
-    "me": "For me!",
-    "someone": "Someone else",
-    "work": "Work",
-    "dinner": "Dinner",
-    "party": "Party",
-    "sales": "Talk to sales",
-    "shop": "Shop this look",
-    "title": "Summer collection 2019",
-    "subtitle": "Featured outfit",
-    "show": "Another look"
+    "prompt": "Great! Let's get started. First, Would you like White or Wheat beard?",
+    "occasion": "What kind of cheese would you like?",
+    "guidance": "Which vegetables would you like?",
+    "me": "White",
+    "someone": "Wheat",
+    "work": "American",
+    "dinner": "Swiss",
+    "party": "Yellow American",
+    "sales": "Talk to Deli",
+    "veg": "tomatoes",
+    "veg1": "pickles",
+    "veg2": "lettuce",
+    "veg3": "tomatoes",
+    "veg4": "banana peppers",
+    "shop": "Place Order",
+    "title": "<name of sub>",
+    "subtitle": "<price of sub>",
+    "show": "Another Sub"
   },
   "order": {
     "prompt": "We'll be happy to help you. Select from the following",
