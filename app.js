@@ -266,5 +266,7 @@ var listener = app.listen(config.port, function() {
   if (config.pageId) {
     console.log("Test your app by messaging:");
     console.log("https://m.me/" + config.pageId);
+    console.log("http://localhost:" + config.port + "/");
+
   }
 });
