@@ -54,6 +54,7 @@ module.exports = class Curation {
             [
               Response.genWebUrlButton(
                 i18n.__("curation.shop"),
+                
                 `${config.shopUrl}/products/${outfit}`
               ),
               Response.genPostbackButton(
@@ -72,30 +73,30 @@ module.exports = class Curation {
       case "CURATION":
         response = Response.genQuickReply(i18n.__("curation.prompt"), [
           {
-            title: i18n.__("curation.me"),
-            payload: "CURATION_FOR_ME"
+            title: i18n.__("curation.bread1"),
+            payload: "CURATION_WHITE_BREAD"
           },
           {
-            title: i18n.__("curation.someone"),
-            payload: "CURATION_SOMEONE_ELSE"
+            title: i18n.__("curation.bread2"),
+            payload: "CURATION_WHEAT_BREAD"
           }
         ]);
         break;
 
-      case "CURATION_FOR_ME":
-      case "CURATION_SOMEONE_ELSE":
-        response = Response.genQuickReply(i18n.__("curation.occasion"), [
+      case "CURATION_WHITE_BREAD":
+      case "CURATION_WHEAT_BREAD":
+        response = Response.genQuickReply(i18n.__("curation.cheese"), [
           {
-            title: i18n.__("curation.work"),
-            payload: "CURATION_OCASION_WORK"
+            title: i18n.__("curation.acheese"),
+            payload: "CURATION_AMERICAN_CHEESE"
           },
           {
-            title: i18n.__("curation.dinner"),
-            payload: "CURATION_OCASION_DINNER"
+            title: i18n.__("curation.scheese"),
+            payload: "CURATION_SWISS_CHEESE"
           },
           {
-            title: i18n.__("curation.party"),
-            payload: "CURATION_OCASION_PARTY"
+            title: i18n.__("curation.yamerican"),
+            payload: "CURATION_YELLOW_AMERICAN_CHEESE"
           },
           {
             title: i18n.__("curation.sales"),
@@ -104,27 +105,27 @@ module.exports = class Curation {
         ]);
         break;
 
-      case "CURATION_OCASION_WORK":
-        // Store the user budget preference here
-        response = Response.genQuickReply(i18n.__("curation.price"), [
+      case "CURATION_AMERICAN_CHEESE":
+        // Store the user veggie preference here
+        response = Response.genQuickReply(i18n.__("curation.veggies"), [
           {
-            title: "~ $20",
-            payload: "CURATION_BUDGET_20_WORK"
+            title: "lettuce",
+            payload: "CURATION_LETTUCE"
           },
           {
-            title: "~ $30",
-            payload: "CURATION_BUDGET_30_WORK"
+            title: "tomatoes",
+            payload: "CURATION_TOMATOES"
           },
           {
-            title: "+ $50",
-            payload: "CURATION_BUDGET_50_WORK"
+            title: "pickles",
+            payload: "CURATION_PICKLES"
           }
         ]);
         break;
 
-      case "CURATION_OCASION_DINNER":
+      case "CURATION_SWISS_CHEESE":
         // Store the user budget preference here
-        response = Response.genQuickReply(i18n.__("curation.price"), [
+        response = Response.genQuickReply(i18n.__("curation.veggies"), [
           {
             title: "~ $20",
             payload: "CURATION_BUDGET_20_DINNER"
@@ -140,9 +141,9 @@ module.exports = class Curation {
         ]);
         break;
 
-      case "CURATION_OCASION_PARTY":
+      case "CURATION_YELLOW_AMERICAN_CHEESE":
         // Store the user budget preference here
-        response = Response.genQuickReply(i18n.__("curation.price"), [
+        response = Response.genQuickReply(i18n.__("curation.veggies"), [
           {
             title: "~ $20",
             payload: "CURATION_BUDGET_20_PARTY"
