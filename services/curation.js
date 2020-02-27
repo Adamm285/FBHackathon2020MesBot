@@ -24,7 +24,7 @@ module.exports = class Curation {
   handlePayload(payload) {
     let response;
     let outfit;
-
+    // 
     switch (payload) {
       case "SUMMER_COUPON":
         response = [
@@ -41,10 +41,9 @@ module.exports = class Curation {
           )
         ];
         break;
-
+        // 
       case "COUPON_50":
         outfit = `${this.user.gender}-${this.randomOutfit()}`;
-
         response = [
           Response.genText(i18n.__("leadgen.coupon")),
           Response.genGenericTemplate(
@@ -54,7 +53,7 @@ module.exports = class Curation {
             [
               Response.genWebUrlButton(
                 i18n.__("curation.shop"),
-                
+
                 `${config.shopUrl}/products/${outfit}`
               ),
               Response.genPostbackButton(
@@ -69,24 +68,27 @@ module.exports = class Curation {
           )
         ];
         break;
-
+        // 
       case "CURATION":
-        response = Response.genQuickReply(i18n.__("curation.prompt"), [
+        response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+            title: i18n.__("curation.bread0"),
+            payload: "CURATION_WHITE"
+          },
           {
             title: i18n.__("curation.bread1"),
-            payload: "CURATION_WHITE_BREAD"
+            payload: "CURATION_WHEAT"
           },
           {
             title: i18n.__("curation.bread2"),
-            payload: "CURATION_WHEAT_BREAD"
+            payload: "CURATION_WRAP"
           }
         ]);
         break;
 
-      case "CURATION_WHITE_BREAD":
-      case "CURATION_WHEAT_BREAD":
-        response = Response.genQuickReply(i18n.__("curation.cheese"), [
-          {
+      case "CURATION_WHITE":
+      case "CURATION_WHEAT":
+      case "CURATION_WRAP":
+        response = Response.genQuickReply(i18n.__("curation.cheese"), [{
             title: i18n.__("curation.acheese"),
             payload: "CURATION_AMERICAN_CHEESE"
           },
@@ -95,8 +97,8 @@ module.exports = class Curation {
             payload: "CURATION_SWISS_CHEESE"
           },
           {
-            title: i18n.__("curation.yamerican"),
-            payload: "CURATION_YELLOW_AMERICAN_CHEESE"
+            title: i18n.__("curation.ycheese"),
+            payload: "CURATION_YELLOW_CHEESE"
           },
           {
             title: i18n.__("curation.sales"),
@@ -107,67 +109,193 @@ module.exports = class Curation {
 
       case "CURATION_AMERICAN_CHEESE":
         // Store the user veggie preference here
-        response = Response.genQuickReply(i18n.__("curation.veggies"), [
-          {
-            title: "lettuce",
-            payload: "CURATION_LETTUCE"
+        response = Response.genQuickReply(i18n.__("curation.sauce"), [{
+            title: i18n.__("curation.mayo"),
+            payload: "CURATION_AMERICAN_MAYO"
           },
           {
-            title: "tomatoes",
-            payload: "CURATION_TOMATOES"
+            title: i18n.__("curation.mustard"),
+            payload: "CURATION_AMERICAN_MUSTARD"
           },
           {
-            title: "pickles",
-            payload: "CURATION_PICKLES"
+            title: i18n.__("curation.both"),
+            payload: "CURATION_AMERICAN_BOTH"
           }
         ]);
         break;
 
       case "CURATION_SWISS_CHEESE":
         // Store the user budget preference here
-        response = Response.genQuickReply(i18n.__("curation.veggies"), [
-          {
-            title: "~ $20",
-            payload: "CURATION_BUDGET_20_DINNER"
+        response = Response.genQuickReply(i18n.__("curation.sauce"), [{
+            title: i18n.__("curation.mayo"),
+            payload: "CURATION_SWISS_MAYO"
           },
           {
-            title: "~ $30",
-            payload: "CURATION_BUDGET_30_DINNER"
+            title: i18n.__("curation.mustard"),
+            payload: "CURATION_SWISS_MUSTARD"
           },
           {
-            title: "+ $50",
-            payload: "CURATION_BUDGET_50_DINNER"
+            title: i18n.__("curation.both"),
+            payload: "CURATION_SWISS_BOTH"
           }
         ]);
         break;
 
-      case "CURATION_YELLOW_AMERICAN_CHEESE":
+      case "CURATION_YELLOW_CHEESE":
         // Store the user budget preference here
-        response = Response.genQuickReply(i18n.__("curation.veggies"), [
-          {
-            title: "~ $20",
-            payload: "CURATION_BUDGET_20_PARTY"
+        response = Response.genQuickReply(i18n.__("curation.sauce"), [{
+            title: i18n.__("curation.mayo"),
+            payload: "CURATION_YELLOW_MAYO"
           },
           {
-            title: "~ $30",
-            payload: "CURATION_BUDGET_30_PARTY"
+            title: i18n.__("curation.mustard"),
+            payload: "CURATION_YELLOW_MUSTARD"
           },
           {
-            title: "+ $50",
-            payload: "CURATION_BUDGET_50_PARTY"
+            title: i18n.__("curation.both"),
+            payload: "CURATION_YELLOW_BOTH"
           }
         ]);
         break;
 
-      case "CURATION_BUDGET_20_WORK":
-      case "CURATION_BUDGET_30_WORK":
-      case "CURATION_BUDGET_50_WORK":
-      case "CURATION_BUDGET_20_DINNER":
-      case "CURATION_BUDGET_30_DINNER":
-      case "CURATION_BUDGET_50_DINNER":
-      case "CURATION_BUDGET_20_PARTY":
-      case "CURATION_BUDGET_30_PARTY":
-      case "CURATION_BUDGET_50_PARTY":
+      case "CURATION_YELLOW_MAYO":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_YELLOW_MAYO_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_YELLOW_MAYO_HALF"
+          }
+        ]);
+        break;
+
+      case "CURATION_YELLOW_MUSTARD":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_YELLOW_MUSTARD_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_YELLOW_MUSTARD_HALF"
+          }
+        ]);
+        break;
+
+      case "CURATION_YELLOW_BOTH":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_YELLOW_BOTH_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_YELLOW_BOTH_HALF"
+          }
+        ]);
+        break;
+
+      case "CURATION_AMERICAN_MAYO":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_AMERICAN_MAYO_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_AMERICAN_MAYO_HALF"
+          }
+        ]);
+        break;
+
+      case "CURATION_AMERICAN_MUSTARD":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_AMERICAN_MUSTARD_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_AMERICAN_MUSTARD_HALF"
+          }
+        ]);
+        break;
+
+      case "CURATION_AMERICAN_BOTH":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_AMERICAN_BOTH_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_AMERICAN_BOTH_HALF"
+          }
+        ]);
+        break;
+
+      case "CURATION_SWISS_MAYO":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_SWISS_MAYO_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_SWISS_MAYO_HALF"
+          }
+        ]);
+        break;
+
+      case "CURATION_SWISS_MUSTARD":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_SWISS_MUSTARD_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_SWISS_MUSTARD_HALF"
+          }
+        ]);
+        break;
+
+      case "CURATION_SWISS_BOTH":
+        // Store the user budget preference here
+        response = Response.genQuickReply(i18n.__("curation.size"), [{
+            title: i18n.__("curation.whole"),
+            payload: "CURATION_SWISS_BOTH_WHOLE"
+          },
+          {
+            title: i18n.__("curation.half"),
+            payload: "CURATION_SWISS_BOTH_HALF"
+          }
+        ]);
+        break;
+        // 
+      case "CURATION_AMERICAN_MAYO_WHOLE":
+      case "CURATION_AMERICAN_MAYO_HALF":
+      case "CURATION_AMERICAN_MUSTARD_WHOLE":
+      case "CURATION_AMERICAN_MUSTARD_HALF":
+      case "CURATION_AMERICAN_BOTH_WHOLE":
+      case "CURATION_AMERICAN_BOTH_HALF":
+        // 
+      case "CURATION_YELLOW_MAYO_WHOLE":
+      case "CURATION_YELLOW_MAYO_HALF":
+      case "CURATION_YELLOW_MUSTARD_WHOLE":
+      case "CURATION_YELLOW_MUSTARD_HALF":
+      case "CURATION_YELLOW_BOTH_WHOLE":
+      case "CURATION_YELLOW_BOTH_HALF":
+        // 
+      case "CURATION_SWISS_MAYO_WHOLE":
+      case "CURATION_SWISS_MAYO_HALF":
+      case "CURATION_SWISS_MUSTARD_WHOLE":
+      case "CURATION_SWISS_MUSTARD_HALF":
+      case "CURATION_SWISS_BOTH_WHOLE":
+      case "CURATION_SWISS_BOTH_HALF":
+        //MAKE THE CARDS OF SUBS
         response = this.genCurationResponse(payload);
         break;
 

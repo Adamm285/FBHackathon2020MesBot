@@ -68,6 +68,7 @@ module.exports = {
         picture: `${this.appUrl}/personas/billing.jpg`
       },
       {
+        // Hi Riandy! thanks for all your hard work!!
         name: "Riandy",
         picture: `${this.appUrl}/personas/order.jpg`
       },
