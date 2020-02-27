@@ -24,8 +24,46 @@ module.exports = class Curation {
   handlePayload(payload) {
     let response;
     let outfit;
+    let message;
     // 
     switch (payload) {
+      case "CURATION":
+    message = {
+      "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements": [{
+            "title":"I took Peter's 'Which Hat Are You?' Quiz",
+            "image_url": "https://bot.peters-hats.com/img/hats/fez.jpg",
+            "subtitle": "My result: Fez",
+            "default_action":{
+              "type":"web_url",
+              "url": "https://bot.peters-hats.com/view_quiz_results.php?user=24601"
+            },
+            "buttons":[{
+              "type":"web_url",
+              "url":"https://bot.peters-hats.com/hatquiz.php?referer=24601",
+              "title":"Take the Quiz"
+            }]
+          }]
+        }
+      }
+    };
+    
+    MessengerExtensions.beginShareFlow(function(share_response) {
+      // User dismissed without error, but did they share the message?
+      if(share_response.is_sent){
+        // The user actually did share. 
+        // Perhaps close the window w/ requestCloseBrowser().
+      }
+    }, 
+    function(errorCode, errorMessage) {      
+    // An error occurred in the process
+    
+    },
+    message,
+    "broadcast");
       case "SUMMER_COUPON":
         response = [
           Response.genText(
@@ -69,7 +107,7 @@ module.exports = class Curation {
         ];
         break;
         // 
-      case "CURATION":
+      // case "CURATION":
         response = Response.genQuickReply(i18n.__("curation.prompt"), [{
             title: i18n.__("curation.bread0"),
             payload: "CURATION_WHITE"
@@ -295,10 +333,10 @@ module.exports = class Curation {
       case "CURATION_SWISS_MUSTARD_HALF":
       case "CURATION_SWISS_BOTH_WHOLE":
       case "CURATION_SWISS_BOTH_HALF":
-        //MAKE THE CARDS OF SUBS
-        response = this.genCurationResponse(payload);
-        break;
-
+       
+         //MAKE THE CARDS OF SUBS
+         response = this.genCurationResponse(payload);
+         break;
       case "CURATION_OTHER_STYLE":
         // Build the recommendation logic here
         outfit = `${this.user.gender}-${this.randomOutfit()}`;
