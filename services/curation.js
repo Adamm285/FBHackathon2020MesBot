@@ -10,6 +10,7 @@
 
 "use strict";
 
+
 // Imports dependencies
 const Response = require("./response"),
   config = require("./config"),

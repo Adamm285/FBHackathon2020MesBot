@@ -1,40 +1,26 @@
 {
-  "name": "fbhackathon2020mesbot",
+  "name": "messenger-webhook",
   "version": "1.0.0",
-  "description": "Order a sub thru the bot!",
-  "main": "app.js",
+  "description": "FBHackathon2020MesBot",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "lint": "./node_modules/.bin/eslint ."
-  },
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "camelcase": "^5.3.1",
-    "dotenv": "^8.1.0",
-    "ejs": "^2.6.2",
-    "express": "^4.17.1",
-    "i18n": "^0.8.3",
-    "node-wit": "^5.0.0",
-    "path": "^0.12.7",
-    "request": "^2.88.0"
-  },
-  "engines": {
-    "node": "^8.10.0 || ^10.13.0 || >=11.10.1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "url": "https://github.com/Adamm285/FBHackathon2020MesBot"
+    "type": "git",
+    "url": "git+https://github.com/Adamm285/FBHackathon2020MesBot.git"
   },
-  "author": "Facebook",
-  "license": "ISC",
   "keywords": [
-    "messenger",
-    "webhook",
-    "hackathon F8"
+    "hackathon"
   ],
-  "devDependencies": {
-    "eslint": "^6.2.2",
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2"
+  "author": "Adam Murphy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adamm285/FBHackathon2020MesBot/issues"
+  },
+  "homepage": "https://github.com/Adamm285/FBHackathon2020MesBot#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
   }
 }
