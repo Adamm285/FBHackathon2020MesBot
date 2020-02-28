@@ -106,7 +106,7 @@ module.exports = class Curation {
         
         // },
         // message,
-        // "current_thread");
+        // "broadcast");
         // break;
         response = Response.genQuickReply(i18n.__("curation.prompt"), [{
             title: i18n.__("curation.bread0"),
