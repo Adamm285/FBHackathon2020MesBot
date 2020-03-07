@@ -5,19 +5,24 @@ const
     express = require('express'),
     bodyParser = require('body-parser'),
     path = require("path"),
-   
+
     app = express().use(bodyParser.json()); // creates express http server
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening!'));
 // Creates the endpoint for our webhook 
 app.use(express.static(path.join(path.resolve(), "public")));
- 
+
 app.set("view engine", "ejs");
 
-app.get("/", function(_req, res) {
-    res.render("index");
-  });
+app.get("/", function (_req, res) {
+    res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+// Respond with index file when a GET request is made to the homepage
+app.get("/options", function (_req, res) {
+    res.sendFile(path.join(__dirname, "./public/options.html"));
+});
 
 app.post('/webhook', (req, res) => {
 
