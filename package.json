@@ -4,7 +4,7 @@
   "description": "FBHackathon2020MesBot",
   "main": "index.js",
   "scripts": {
-    "start:prod": "node app.js",
+    "start": "node app.js",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
