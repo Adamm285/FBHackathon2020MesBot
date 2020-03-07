@@ -40,9 +40,13 @@ app.use(express.static(path.join(path.resolve(), "public")));
 // Set template engine in Express
 app.set("view engine", "ejs");
 
-// Respond with index file when a GET request is made to the homepage
 app.get("/", function(_req, res) {
-  res.render("options");
+  res.sendFile(path.join(__dirname,"./public/index.html"));
+});
+
+// Respond with index file when a GET request is made to the homepage
+app.get("/options", function(_req, res) {
+  res.sendFile(path.join(__dirname,"./public/options.html"));
 });
 
 // Adds support for GET requests to our webhook
