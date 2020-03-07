@@ -12,7 +12,7 @@ const
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening!'));
 // Creates the endpoint for our webhook 
 app.use(express.static(path.join(path.resolve(), "public")));
-app.engine("ejs")
+ 
 app.set("view engine", "ejs");
 
 app.get("/", function(_req, res) {
