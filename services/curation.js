@@ -71,28 +71,23 @@ module.exports = class Curation {
         break;
         // 
       case "CURATION":
-        // let message = {
-        //   "attachment":{
-        //     "type":"template",
-        //     "payload":{
-        //       "template_type":"generic",
-        //       "elements": [{
-        //         "title":"I took Peter's 'Which Hat Are You?' Quiz",
-        //         "image_url": "https://bot.peters-hats.com/img/hats/fez.jpg",
-        //         "subtitle": "My result: Fez",
-        //         "default_action":{
-        //           "type":"web_url",
-        //           "url": "https://bot.peters-hats.com/view_quiz_results.php?user=24601"
-        //         },
-        //         "buttons":[{
-        //           "type":"web_url",
-        //           "url":"https://bot.peters-hats.com/hatquiz.php?referer=24601",
-        //           "title":"Take the Quiz"
-        //         }]
-        //       }]
-        //     }
-        //   }
-        // };
+        response = Response.genGenericTemplate(i18n.__("curation.prompt"), [{
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+                    buttons: [{
+                        type: "web_url",
+                        url: APP_URL + "/options",
+                        title: "Set preferences",
+                        webview_height_ratio: "compact",
+                        messenger_extensions: true
+                    }]
+                }
+            }
+        }]);
+        
         
         // MessengerExtensions.beginShareFlow(function(share_response) {
         //   // User dismissed without error, but did they share the message?
