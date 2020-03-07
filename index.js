@@ -9,6 +9,8 @@ const
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 // Creates the endpoint for our webhook 
+app.use(express.static(path.join(path.resolve(), "public")));
+
 app.set("view engine", "ejs");
 
 app.get("/", function(_req, res) {

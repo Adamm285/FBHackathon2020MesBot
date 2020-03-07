@@ -93,7 +93,7 @@ app.post("/webhook", (req, res) => {
               break;
             case "comment":
               return receiveMessage.handlePrivateReply(
-                "commentgity _id",
+                "comment_id",
                 change.comment_id
               );
               break;
