@@ -42,7 +42,7 @@ app.set("view engine", "ejs");
 
 // Respond with index file when a GET request is made to the homepage
 app.get("/", function(_req, res) {
-  res.render("index");
+  res.render("options");
 });
 
 // Adds support for GET requests to our webhook
