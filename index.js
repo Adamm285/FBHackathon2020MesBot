@@ -1,9 +1,18 @@
 'use strict';
 
 // Imports dependencies and set up http server
-const
-    express = require('express'),
-    bodyParser = require('body-parser'),
+const express = require("express"),
+  { urlencoded, json } = require("body-parser"),
+  crypto = require("crypto"),
+  path = require("path"),
+  Receive = require("./services/receive"),
+  GraphAPi = require("./services/graph-api"),
+  User = require("./services/user"),
+  config = require("./services/config"),
+  i18n = require("./i18n.config"),
+  app = express();
+
+
     app = express().use(bodyParser.json()); // creates express http server
 
 // Sets server port and logs message on success
