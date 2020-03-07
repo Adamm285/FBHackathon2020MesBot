@@ -71,22 +71,19 @@ module.exports = class Curation {
         break;
         // 
       case "CURATION":
-        response = Response.genGenericTemplate(i18n.__("curation.prompt"), [{
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-                    buttons: [{
-                        type: "web_url",
-                        url: APP_URL + "/options",
-                        title: "Set preferences",
-                        webview_height_ratio: "compact",
-                        messenger_extensions: true
-                    }]
-                }
-            }
-        }]);
+        response = [
+          Response.genText(
+            i18n.__("curation.prompt", {
+              userFirstName: this.user.firstName
+            })
+          ),
+          Response.genGenericTemplate(
+            `${config.appUrl}/coupon.png`,
+            i18n.__("curation.sauce"),
+            i18n.__("curation.veggies"),
+            [Response.genPostbackButton(i18n.__("curation.cheese"), "CURATION_WHITE")]
+          )
+        ];
         
         
         // MessengerExtensions.beginShareFlow(function(share_response) {
