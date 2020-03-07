@@ -72,11 +72,6 @@ module.exports = class Curation {
         // 
       case "CURATION":
         response = [
-          Response.genText(
-            i18n.__("curation.prompt", {
-              userFirstName: this.user.firstName
-            })
-          ),
           Response.genGenericTemplate(
             `${config.appUrl}/coupon.png`,
             i18n.__("curation.sauce"),
