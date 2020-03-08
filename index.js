@@ -24,7 +24,9 @@ app.use(express.static(path.join(path.resolve(), "public")));
 app.set("view engine", "ejs");
 
 app.get("/", function (_req, res) {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
+    res.sendFile('./public/index.html', {
+        root: __dirname
+    });
 });
 
 // Respond with index file when a GET request is made to the homepage
