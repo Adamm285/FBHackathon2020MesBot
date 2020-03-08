@@ -82,7 +82,11 @@ module.exports = class Curation {
       {
         title: i18n.__("curation.bread2"),
         payload: "CURATION_WRAP"
-      }
+      },
+      Response.genWebUrlButton(
+        i18n.__("curation.shop"),
+        `${config.shopUrl}/products/${outfit}`
+      )
     ]);
     break;
 
