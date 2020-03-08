@@ -297,13 +297,8 @@ module.exports = class Curation {
     case "CURATION_SWISS_BOTH_WHOLE":
     case "CURATION_SWISS_BOTH_HALF":
     // prompt for webview
-    response = Response.genWebUrlButton(
-      buttons = 
-      i18n.__("curation.shop"),
-      `${config.appUrl}/options`
-    )
     //MAKE THE CARDS OF SUBS
-    // response = this.genCurationResponse(payload);
+    response = this.genCurationResponse(payload);
     break;
     case "CURATION_OTHER_STYLE":
     // Build the recommendation logic here
@@ -339,7 +334,7 @@ genCurationResponse(payload) {
   let buttons = [
     Response.genWebUrlButton(
       i18n.__("curation.shop"),
-      `${config.shopUrl}/products/${outfit}`
+      `${config.appUrl}/options`
     ),
     Response.genPostbackButton(
       i18n.__("curation.show"),
