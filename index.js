@@ -8,11 +8,11 @@ const
 
     app = express().use(bodyParser.json()); // creates express http server
 // Parse application/x-www-form-urlencoded
-app.use(
-    urlencoded({
-      extended: true
-    })
-  );
+// app.use(
+//     urlencoded({
+//       extended: true
+//     })
+//   );
   
   // Parse application/json. Verify that callback came from Facebook
   app.use(json({ verify: verifyRequestSignature }));
