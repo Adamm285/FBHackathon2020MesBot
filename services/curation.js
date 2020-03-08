@@ -87,8 +87,7 @@ module.exports = class Curation {
       Response.genWebUrlButton(
         i18n.__("curation.shop"),
         `${config.shopUrl}/products/${outfit}`
-      ),
-      buttons
+      )
     ]);
     break;
 
