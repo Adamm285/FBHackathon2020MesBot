@@ -305,7 +305,7 @@ module.exports = class Curation {
       
   
     //MAKE THE CARDS OF SUBS
-    response = this.genCurationResponse(    
+    response = Response.genCurationResponse(    
       buttons = 
       Response.genWebUrlButton(
         i18n.__("curation.shop"),
