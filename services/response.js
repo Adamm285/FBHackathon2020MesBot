@@ -7,7 +7,7 @@
  * Messenger For Original Coast Clothing
  * https://developers.facebook.com/docs/messenger-platform/getting-started/sample-apps/original-coast-clothing
  */
-
+// Oh wow, here have been the answers I have been looking for the whole time, oppps;
 "use strict";
 
 const i18n = require("../i18n.config");
