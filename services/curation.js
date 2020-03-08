@@ -43,16 +43,22 @@ module.exports = class Curation {
         ];
         break;
         // 
-      case "CURATION":
-        // outfit = `${this.user.gender}-${this.randomOutfit()}`;
-              response =
-              Response.genWebUrlButton({
-                title: i18n.__("curation.shop"),
-                button: `${config.shopUrl}/products/${outfit}`
-              });
+      case "COUPON_50":
+        outfit = `${this.user.gender}-${this.randomOutfit()}`;
+        response = [
+          Response.genText(i18n.__("leadgen.coupon")),
+            [
+              Response.genWebUrlButton(
+                i18n.__("curation.shop"),
+
+                `${config.shopUrl}/products/${outfit}`
+              )
+            ]
+          
+        ];
         break;
         // 
-      // case "CURATION":
+      case "CURATION":
     response = Response.genQuickReply(i18n.__("curation.prompt"), [{
         title: i18n.__("curation.bread0"),
         payload: "CURATION_WHITE"
