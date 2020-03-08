@@ -348,8 +348,8 @@ genCurationResponse(payload) {
   }
 
   let response = Response.genGenericTemplate(
-    // `${config.appUrl}/styles/${outfit}.jpg`,
-    `./public/Subs/chickentender.jpg`,
+    `${config.appUrl}/styles/${outfit}.jpg`,
+    // `./public/Subs/chickentender.jpg`,
     i18n.__("curation.title"),
     i18n.__("curation.subtitle"),
     buttons
