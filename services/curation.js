@@ -297,8 +297,20 @@ module.exports = class Curation {
     case "CURATION_SWISS_BOTH_WHOLE":
     case "CURATION_SWISS_BOTH_HALF":
     // prompt for webview
+    response = Response.genButtonTemplate(
+      buttons =
+        Response.genWebUrlButton(
+          i18n.__("curation.shop"),
+          `${config.appUrl}/options`
+        ),
+      // `${config.appUrl}/styles/${outfit}.jpg`,
+      // // `./public/Subs/chickentender.jpg`,
+      // i18n.__("curation.title"),
+      // i18n.__("curation.subtitle"),
+      buttons
+    );
     //MAKE THE CARDS OF SUBS
-    response = this.genCurationResponse(payload);
+    // response = this.genCurationResponse(payload);
     break;
     case "CURATION_OTHER_STYLE":
     // Build the recommendation logic here
@@ -327,19 +339,19 @@ module.exports = class Curation {
 }
 
 genCurationResponse(payload) {
-  let occasion = payload.split("_")[3].toLowerCase();
-  let budget = payload.split("_")[2].toLowerCase();
-  let outfit = `${this.user.gender}-${occasion}`;
+  // let occasion = payload.split("_")[3].toLowerCase();
+  // let budget = payload.split("_")[2].toLowerCase();
+  // let outfit = `${this.user.gender}-${occasion}`;
 
   let buttons = [
     Response.genWebUrlButton(
       i18n.__("curation.shop"),
       `${config.appUrl}/options`
     ),
-    Response.genPostbackButton(
-      i18n.__("curation.show"),
-      "CURATION_OTHER_STYLE"
-    )
+    // Response.genPostbackButton(
+    //   i18n.__("curation.show"),
+    //   "CURATION_OTHER_STYLE"
+    // )
   ];
 
   if (budget === "50") {
@@ -349,10 +361,10 @@ genCurationResponse(payload) {
   }
 
   let response = Response.genButtonTemplate(
-    `${config.appUrl}/styles/${outfit}.jpg`,
-    // `./public/Subs/chickentender.jpg`,
-    i18n.__("curation.title"),
-    i18n.__("curation.subtitle"),
+    // `${config.appUrl}/styles/${outfit}.jpg`,
+    // // `./public/Subs/chickentender.jpg`,
+    // i18n.__("curation.title"),
+    // i18n.__("curation.subtitle"),
     buttons
   );
 
