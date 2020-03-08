@@ -1,18 +1,24 @@
 'use strict';
 
 // Imports dependencies and set up http server
-const
-    express = require('express'),
-    bodyParser = require('body-parser'),
-    path = require("path"),
+const express = require("express"),
+  { urlencoded, json } = require("body-parser"),
+  crypto = require("crypto"),
+  path = require("path"),
+  Receive = require("./services/receive"),
+  GraphAPi = require("./services/graph-api"),
+  User = require("./services/user"),
+  config = require("./services/config"),
+  i18n = require("./i18n.config"),
+  app = express();
 
-    app = express().use(bodyParser.json()); // creates express http server
+var users = {}; // creates express http server
 // Parse application/x-www-form-urlencoded
-// app.use(
-//     urlencoded({
-//       extended: true
-//     })
-//   );
+app.use(
+    urlencoded({
+      extended: true
+    })
+  );
   
   // Parse application/json. Verify that callback came from Facebook
   app.use(json({ verify: verifyRequestSignature }));
