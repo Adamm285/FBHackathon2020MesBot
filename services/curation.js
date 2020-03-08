@@ -296,23 +296,10 @@ module.exports = class Curation {
     case "CURATION_SWISS_MUSTARD_HALF":
     case "CURATION_SWISS_BOTH_WHOLE":
     case "CURATION_SWISS_BOTH_HALF":
-    // prompt for webview
-
-      // `${config.appUrl}/styles/${outfit}.jpg`,
-      // // `./public/Subs/chickentender.jpg`,
-      // i18n.__("curation.title"),
-      // i18n.__("curation.subtitle"),
-      
-  
     //MAKE THE CARDS OF SUBS
-    response = Response.genCurationResponse(    
-      buttons = 
-      Response.genWebUrlButton(
-        i18n.__("curation.shop"),
-        `${config.appUrl}/options`
-      ))
+    response = this.genCurationResponse(payload);
     break;
-    case "CURATION_OTHER_STYLE":
+    // case "CURATION_OTHER_STYLE":
     // Build the recommendation logic here
     // outfit = "chickentender";${outfit}
 
@@ -338,37 +325,38 @@ module.exports = class Curation {
   return response;
 }
 
-genCurationResponse( {
-  // let occasion = payload.split("_")[3].toLowerCase();
-  // let budget = payload.split("_")[2].toLowerCase();
-  // let outfit = `${this.user.gender}-${occasion}`;
+genCurationResponse(payload) {
+  let occasion = payload.split("_")[3].toLowerCase();
+  let budget = payload.split("_")[2].toLowerCase();
+  let outfit = `${this.user.gender}-${occasion}`;
 
-  buttons = 
+  let buttons = [
     Response.genWebUrlButton(
       i18n.__("curation.shop"),
-      `${config.appUrl}/options`
+      `${config.shopUrl}/products/${outfit}`
+    ),
+    Response.genPostbackButton(
+      i18n.__("curation.show"),
+      "CURATION_OTHER_STYLE"
     )
-    // Response.genPostbackButton(
-    //   i18n.__("curation.show"),
-    //   "CURATION_OTHER_STYLE"
-    // )
+  ];
 
-  // if (budget === "50") {
-  //   buttons.push(
-  //     Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
-  //   );
-  // }
+  if (budget === "50") {
+    buttons.push(
+      Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
+    );
+  }
 
-  // response = Response.genGenericTemplate(
-  //   // `${config.appUrl}/styles/${outfit}.jpg`,
-  //   // // `./public/Subs/chickentender.jpg`,
-  //   // i18n.__("curation.title"),
-  //   // i18n.__("curation.subtitle"),
-  //   buttons
-  // );
+  let response = Response.genGenericTemplate(
+    `${config.appUrl}/styles/${outfit}.jpg`,
+    // `./public/Subs/chickentender.jpg`,
+    i18n.__("curation.title"),
+    i18n.__("curation.subtitle"),
+    buttons
+  );
 
-  // return response;
-})
+  return response;
+}
 
 // randomOutfit() {
 //   let occasion = ["work", "party", "dinner"];
@@ -376,3 +364,4 @@ genCurationResponse( {
 
 //   return occasion[randomIndex];
 // }
+};
