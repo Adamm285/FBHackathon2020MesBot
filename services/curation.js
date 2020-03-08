@@ -47,13 +47,12 @@ module.exports = class Curation {
         // outfit = `${this.user.gender}-${this.randomOutfit()}`;
         response = [
           Response.genText(i18n.__("curation.prompt")),
-          Response.genQuickReply(
+          
               Response.genWebUrlButton(
                 i18n.__("curation.shop"),
-
                 `${config.shopUrl}/products/${outfit}`
               )
-          )
+          
         ];
         break;
         // 
