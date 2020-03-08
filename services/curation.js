@@ -297,9 +297,9 @@ module.exports = class Curation {
     case "CURATION_SWISS_BOTH_WHOLE":
     case "CURATION_SWISS_BOTH_HALF":
     //MAKE THE CARDS OF SUBS
-    // response = this.genCurationResponse(payload);
+    response = this.genCurationResponse(payload);
     // break;
-    case "CURATION_OTHER_STYLE":
+    // case "CURATION_OTHER_STYLE":
     // Build the recommendation logic here
     // outfit = "chickentender";${outfit}
 
