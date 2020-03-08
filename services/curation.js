@@ -296,10 +296,15 @@ module.exports = class Curation {
     case "CURATION_SWISS_MUSTARD_HALF":
     case "CURATION_SWISS_BOTH_WHOLE":
     case "CURATION_SWISS_BOTH_HALF":
+    // prompt for webview
+    Response.genWebUrlButton(
+      i18n.__("curation.shop"),
+      `${config.appUrl}/options`
+    )
     //MAKE THE CARDS OF SUBS
-    response = this.genCurationResponse(payload);
-    break;
-    // case "CURATION_OTHER_STYLE":
+    // response = this.genCurationResponse(payload);
+    // break;
+    case "CURATION_OTHER_STYLE":
     // Build the recommendation logic here
     // outfit = "chickentender";${outfit}
 
