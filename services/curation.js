@@ -298,6 +298,7 @@ module.exports = class Curation {
     case "CURATION_SWISS_BOTH_HALF":
     // prompt for webview
     response = Response.genWebUrlButton(
+      buttons = 
       i18n.__("curation.shop"),
       `${config.appUrl}/options`
     )
