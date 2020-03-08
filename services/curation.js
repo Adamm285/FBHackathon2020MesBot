@@ -297,7 +297,7 @@ module.exports = class Curation {
     case "CURATION_SWISS_BOTH_WHOLE":
     case "CURATION_SWISS_BOTH_HALF":
     // prompt for webview
-    response = Response.genButtonTemplate(
+    
       buttons =
         Response.genWebUrlButton(
           i18n.__("curation.shop"),
@@ -308,7 +308,7 @@ module.exports = class Curation {
       // i18n.__("curation.title"),
       // i18n.__("curation.subtitle"),
       buttons
-    );
+  
     //MAKE THE CARDS OF SUBS
     // response = this.genCurationResponse(payload);
     break;
