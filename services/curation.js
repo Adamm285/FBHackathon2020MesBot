@@ -44,7 +44,7 @@ module.exports = class Curation {
         break;
         // 
       case "CURATION":
-        outfit = `${this.user.gender}-${this.randomOutfit()}`;
+        // outfit = `${this.user.gender}-${this.randomOutfit()}`;
         response = [
           Response.genText(i18n.__("curation.prompt")),
           Response.genGenericTemplate(
