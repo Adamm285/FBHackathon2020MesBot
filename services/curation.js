@@ -303,7 +303,7 @@ module.exports = class Curation {
     )
     //MAKE THE CARDS OF SUBS
     // response = this.genCurationResponse(payload);
-    // break;
+    break;
     case "CURATION_OTHER_STYLE":
     // Build the recommendation logic here
     // outfit = "chickentender";${outfit}
