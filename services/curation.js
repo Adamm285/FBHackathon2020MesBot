@@ -46,12 +46,12 @@ module.exports = class Curation {
       case "CURATION":
         // outfit = `${this.user.gender}-${this.randomOutfit()}`;
         response = [
-          Response.genText(i18n.__("curation.prompt")),
-          
+          Response.genText(i18n.__("curation.prompt"),
+              response =
               Response.genWebUrlButton(
                 i18n.__("curation.shop"),
                 `${config.shopUrl}/products/${outfit}`
-              )
+              ))
           
         ];
         break;
