@@ -297,11 +297,7 @@ module.exports = class Curation {
     case "CURATION_SWISS_BOTH_WHOLE":
     case "CURATION_SWISS_BOTH_HALF":
     // prompt for webview
-      response =
-        Response.genButtonTemplate(
-          i18n.__("curation.shop"),
-          `${config.appUrl}/options`
-        )
+
       // `${config.appUrl}/styles/${outfit}.jpg`,
       // // `./public/Subs/chickentender.jpg`,
       // i18n.__("curation.title"),
@@ -309,7 +305,12 @@ module.exports = class Curation {
       
   
     //MAKE THE CARDS OF SUBS
-    // response = this.genCurationResponse(payload);
+    response = this.genCurationResponse(    
+      buttons = 
+      Response.genWebUrlButton(
+        i18n.__("curation.shop"),
+        `${config.appUrl}/options`
+      ))
     break;
     case "CURATION_OTHER_STYLE":
     // Build the recommendation logic here
@@ -337,38 +338,37 @@ module.exports = class Curation {
   return response;
 }
 
-genCurationResponse(payload) {
+genCurationResponse( {
   // let occasion = payload.split("_")[3].toLowerCase();
   // let budget = payload.split("_")[2].toLowerCase();
   // let outfit = `${this.user.gender}-${occasion}`;
 
-  let buttons = [
+  buttons = 
     Response.genWebUrlButton(
       i18n.__("curation.shop"),
       `${config.appUrl}/options`
-    ),
+    )
     // Response.genPostbackButton(
     //   i18n.__("curation.show"),
     //   "CURATION_OTHER_STYLE"
     // )
-  ];
 
-  if (budget === "50") {
-    buttons.push(
-      Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
-    );
-  }
+  // if (budget === "50") {
+  //   buttons.push(
+  //     Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
+  //   );
+  // }
 
-  let response = Response.genButtonTemplate(
-    // `${config.appUrl}/styles/${outfit}.jpg`,
-    // // `./public/Subs/chickentender.jpg`,
-    // i18n.__("curation.title"),
-    // i18n.__("curation.subtitle"),
-    buttons
-  );
+  // response = Response.genGenericTemplate(
+  //   // `${config.appUrl}/styles/${outfit}.jpg`,
+  //   // // `./public/Subs/chickentender.jpg`,
+  //   // i18n.__("curation.title"),
+  //   // i18n.__("curation.subtitle"),
+  //   buttons
+  // );
 
-  return response;
-}
+  // return response;
+})
 
 // randomOutfit() {
 //   let occasion = ["work", "party", "dinner"];
@@ -376,4 +376,3 @@ genCurationResponse(payload) {
 
 //   return occasion[randomIndex];
 // }
-};
