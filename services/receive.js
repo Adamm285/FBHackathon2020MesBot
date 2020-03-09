@@ -34,12 +34,12 @@ module.exports = class Receive {
     try {
       if (event.message) {
         let message = event.message;
-
+        
         if (message.quick_reply) {
           responses = this.handleQuickReply();
         } else if (message.attachments) {
           responses = this.handleAttachmentMessage();
-        } else if (message.text) {
+        }else if (message.text) {
           responses = this.handleTextMessage();
         }
       } else if (event.postback) {
@@ -180,6 +180,7 @@ module.exports = class Receive {
     if (
       payload === "GET_STARTED" ||
       payload === "DEVDOCS" ||
+      payload === "BUILD" ||
       payload === "GITHUB"
     ) {
       response = Response.genNuxMessage(this.user);
@@ -283,3 +284,24 @@ module.exports = class Receive {
     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
   }
 };
+// Define the template and webview
+function setRoomPreferences(sender_psid) {
+  let response = {
+      attachment: {
+          type: "template",
+          payload: {
+              template_type: "button",
+              text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+              buttons: [{
+                  type: "web_url",
+                  url: APP_URL + "/options",
+                  title: "Set preferences",
+                  webview_height_ratio: "compact",
+                  messenger_extensions: true
+              }]
+          }
+      }
+  };
+
+  return response;
+}

@@ -87,20 +87,26 @@ module.exports = class Curation {
           )
         ];
         break;
-        case "BUILD":
-        response = Response.genQuickReply(i18n.__("curation.prompt"), [{
-            title: i18n.__("curation.bread0"),
-            payload: "CURATION_WHITE"
-          },
+      case "BUILD":
+        response = [
+          Response.setRoomPreferences(sender_psid),
           {
-            title: i18n.__("curation.bread1"),
-            payload: "CURATION_WHEAT"
+            "text": `You sent the message: "${received_message.text}".`
           },
-          {
-            title: i18n.__("curation.bread2"),
-            payload: "CURATION_WRAP"
-          }
-        ]);
+          Response.genQuickReply(i18n.__("curation.prompt"), [{
+              title: i18n.__("curation.bread0"),
+              payload: "CURATION_WHITE"
+            },
+            {
+              title: i18n.__("curation.bread1"),
+              payload: "CURATION_WHEAT"
+            },
+            {
+              title: i18n.__("curation.bread2"),
+              payload: "CURATION_WRAP"
+            }
+          ])
+        ];
         break;
 
       case "CURATION_WHITE":
