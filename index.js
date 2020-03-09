@@ -46,7 +46,7 @@ app.get('/optionspostback', (req, res) => {
       };
 
     res.status(200).send('Please close this window to return to the conversation thread.');
-    callSendAPI(body.psid, response, payload);
+    callSendAPI(body.psid, response);
 });
 app.get("/profile", (req, res) => {
     let token = req.query["verify_token"];
