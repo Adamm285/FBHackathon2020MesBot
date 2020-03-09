@@ -24,8 +24,14 @@ module.exports = class Response {
             title: title,
             subtitle: subtitle,
             image_url: image_url,
-            buttons: buttons
-          }]
+          }],
+          buttons: [
+            {
+              title: "View More",
+              type: "postback",
+              payload: "payload"            
+            }
+          ]  
         }
       }
     };
