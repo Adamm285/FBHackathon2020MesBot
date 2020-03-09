@@ -47,7 +47,7 @@ module.exports = class Curation {
         // outfit = `${this.user.gender}-${this.randomOutfit()}`;
         response = [
           Response.genText(i18n.__("leadgen.coupon")),
-          Response.genGenericTemplate(
+          Response.genLineTemplate(
             `${config.appUrl}/styles/${outfit}.jpg`,
             i18n.__("curation.title"),
             i18n.__("curation.subtitle"),
