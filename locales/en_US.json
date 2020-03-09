@@ -45,8 +45,8 @@
     "veg2": "Lettuce",
     "veg3": "Tomatoes",
     "veg4": "Banana peppers",
-    "shop": "Choose Sub",
-    "title": "Great! Let's build your sub.",
+    "shop": "Sub Menu",
+    "title": "Great! Let's start by choosing which sub to build.",
     "subtitle": "Online Special $5.99",
     "show": "Another Sub"
   },
