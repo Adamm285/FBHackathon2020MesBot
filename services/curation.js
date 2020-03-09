@@ -45,7 +45,7 @@ module.exports = class Curation {
         // 
       case "CURATION":
         // outfit = `${this.user.gender}-${this.randomOutfit()}`;
-        response = Response.genWebUrlButton(
+        response = Response.genPostbackButton(
           i18n.__("curation.title"),
           `${config.shopUrl}/products/${outfit}`
           // Response.genText(i18n.__("leadgen.coupon")),
