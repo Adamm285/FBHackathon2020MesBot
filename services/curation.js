@@ -50,7 +50,7 @@ module.exports = class Curation {
           Response.genLineTemplate(
             i18n.__("curation.title"),
             i18n.__("curation.subtitle"),
-            [
+            buttons = [
               i18n.__("curation.shop"),
               `${config.shopUrl}/products/${outfit}`
               ,
