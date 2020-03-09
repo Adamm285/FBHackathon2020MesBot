@@ -45,17 +45,18 @@ module.exports = class Curation {
         // 
       case "CURATION":
         // outfit = `${this.user.gender}-${this.randomOutfit()}`;
-        response = [
-          Response.genText(i18n.__("leadgen.coupon")),
-          Response.genWebUrlButton([
-            i18n.__("curation.title"),
+        response = Response.genWebUrlButton(
+          i18n.__("curation.title"),
+          `${config.shopUrl}/products/${outfit}`
+          // Response.genText(i18n.__("leadgen.coupon")),
+          
             
             // i18n.__("curation.subtitle"),
             
             // `${config.appUrl}/styles/${outfit}.jpg`,
-            `${config.shopUrl}/products/${outfit}`
-          ])
-        ];
+            
+          // ])
+        );
         break;
         // 
     //   case "CURATION":
