@@ -13,6 +13,24 @@
 const i18n = require("../i18n.config");
 
 module.exports = class Response {
+  static genLineTemplate(title, subtitle, image_url, buttons) {
+    let response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          top_element_style: "compact",
+          elements: [{
+            title: title,
+            subtitle: subtitle,
+            image_url: image_url,
+            buttons: buttons
+          }]
+        }
+      }
+    };
+    return response;
+  };
   static genQuickReply(text, quickReplies) {
     let response = {
       text: text,
@@ -36,14 +54,12 @@ module.exports = class Response {
         type: "template",
         payload: {
           template_type: "generic",
-          elements: [
-            {
-              title: title,
-              subtitle: subtitle,
-              image_url: image_url,
-              buttons: buttons
-            }
-          ]
+          elements: [{
+            title: title,
+            subtitle: subtitle,
+            image_url: image_url,
+            buttons: buttons
+          }]
         }
       }
     };
@@ -57,13 +73,11 @@ module.exports = class Response {
         type: "template",
         payload: {
           template_type: "generic",
-          elements: [
-            {
-              title: title,
-              subtitle: subtitle,
-              image_url: image_url
-            }
-          ]
+          elements: [{
+            title: title,
+            subtitle: subtitle,
+            image_url: image_url
+          }]
         }
       }
     };
@@ -133,8 +147,7 @@ module.exports = class Response {
 
     let guide = this.genText(i18n.__("get_started.guidance"));
 
-    let curation = this.genQuickReply(i18n.__("get_started.help"), [
-      {
+    let curation = this.genQuickReply(i18n.__("get_started.help"), [{
         title: i18n.__("menu.suggestion"),
         payload: "CURATION"
       },
