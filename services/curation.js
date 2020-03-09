@@ -43,36 +43,36 @@ module.exports = class Curation {
         ];
         break;
         // 
-      // case "CURATION":
-      //   // outfit = `${this.user.gender}-${this.randomOutfit()}`;
-      //   response = [
-      //     Response.genText(i18n.__("leadgen.coupon")),
-      //     Response.genButtonTemplate([
-      //       i18n.__("curation.title"),
-            
-      //       // i18n.__("curation.subtitle"),
-            
-      //       // `${config.appUrl}/styles/${outfit}.jpg`,
-      //       `${config.shopUrl}/products/${outfit}`
-      //     ])
-      //   ];
-      //   break;
-        // 
       case "CURATION":
-    response = Response.genButtonTemplate(i18n.__("curation.prompt"), [{
-        title: i18n.__("curation.bread0"),
-        payload: `${config.shopUrl}/products/${outfit}`
-      }
-      // {
-      //   title: i18n.__("curation.bread1"),
-      //   payload: "CURATION_WHEAT"
-      // },
-      // {
-      //   title: i18n.__("curation.bread2"),
-      //   payload: "CURATION_WRAP"
-      // }
-    ]);
-    break;
+        // outfit = `${this.user.gender}-${this.randomOutfit()}`;
+        response = [
+          Response.genText(i18n.__("leadgen.coupon")),
+          Response.genWebUrlButton([
+            i18n.__("curation.title"),
+            
+            // i18n.__("curation.subtitle"),
+            
+            // `${config.appUrl}/styles/${outfit}.jpg`,
+            `${config.shopUrl}/products/${outfit}`
+          ])
+        ];
+        break;
+        // 
+    //   case "CURATION":
+    // response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+    //     title: i18n.__("curation.bread0"),
+    //     payload: "CURATION_WHITE"
+    //   },
+    //   {
+    //     title: i18n.__("curation.bread1"),
+    //     payload: "CURATION_WHEAT"
+    //   },
+    //   {
+    //     title: i18n.__("curation.bread2"),
+    //     payload: "CURATION_WRAP"
+    //   }
+    // ]);
+    // break;
 
     case "CURATION_WHITE":
     case "CURATION_WHEAT":
