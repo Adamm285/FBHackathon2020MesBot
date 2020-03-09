@@ -51,21 +51,7 @@ module.exports = class Curation {
             i18n.__("curation.title"),
             i18n.__("curation.subtitle"),
             `${config.appUrl}/styles/${outfit}.jpg`,
-            [
-              Response.genWebUrlButton(
-                i18n.__("curation.shop"),
-
-                `${config.shopUrl}/products/${outfit}`
-              ),
-              Response.genPostbackButton(
-                i18n.__("curation.show"),
-                "CURATION_OTHER_STYLE"
-              ),
-              Response.genPostbackButton(
-                i18n.__("curation.sales"),
-                "CARE_SALES"
-              )
-            ]
+            `${config.shopUrl}/products/${outfit}`
           )
         ];
         break;
