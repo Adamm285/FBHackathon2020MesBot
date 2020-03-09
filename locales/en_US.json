@@ -23,7 +23,7 @@
     "coupon": "Added your coupon to this thread, you can now check out the discounted summer collection"
   },
   "curation": {
-    "prompt": "Great! Let's build your sub. First, Would you like a Wrap or White or Wheat bread?",
+    "prompt": "Would you like a Wrap or White or Wheat bread?",
     "cheese": "What kind of cheese would you like?",
     "sauce": "Would you like Mayo or Mustard?",
     "size": "What size would you like?",
@@ -45,9 +45,9 @@
     "veg2": "Lettuce",
     "veg3": "Tomatoes",
     "veg4": "Banana peppers",
-    "shop": "Place Order",
-    "title": "<name of sub>",
-    "subtitle": "<price of sub>",
+    "shop": "Choose Sub",
+    "title": "Great! Let's build your sub.",
+    "subtitle": "6.95",
     "show": "Another Sub"
   },
   "order": {
