@@ -18,13 +18,20 @@ module.exports = class Response {
       attachment: {
         type: "template",
         payload: {
-          template_type: "generic",
+          template_type: "list",
           top_element_style: "compact",
           elements: [{
             title: title,
             subtitle: subtitle,
             image_url: image_url,
-            buttons: buttons
+            buttons: [{
+                title: title,
+                type: "web_url",
+                url: url,
+                messenger_extensions: true,
+                webview_height_ratio: "tall",
+                fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+            }]
           }]
         }
       }
