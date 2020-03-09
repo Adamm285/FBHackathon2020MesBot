@@ -58,6 +58,7 @@ module.exports = class Curation {
               "CURATION_OTHER_STYLE"
             ]
           )
+        
         ];
         break;
         // 
