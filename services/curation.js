@@ -89,7 +89,7 @@ module.exports = class Curation {
         break;
       case "BUILD":
         response = [
-          Response.setRoomPreferences(sender_psid),
+          Response.setSubPreferences(sender_psid),
           // {
           //   "text": `You sent the message: "${received_message.text}".`
           // },
@@ -347,7 +347,29 @@ module.exports = class Curation {
 
     return response;
   }
+  // 
+  // Define the template and webview
+  setSubPreferences(sender_psid) {
+    let response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+          buttons: [{
+            type: "web_url",
+            url: APP_URL + "/options",
+            title: "Set preferences",
+            webview_height_ratio: "compact",
+            messenger_extensions: true
+          }]
+        }
+      }
+    };
 
+    return response;
+  }
+  // 
   genCurationResponse(payload) {
     let occasion = payload.split("_")[3].toLowerCase();
     let budget = payload.split("_")[2].toLowerCase();
