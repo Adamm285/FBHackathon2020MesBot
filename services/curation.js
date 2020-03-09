@@ -45,12 +45,28 @@ module.exports = class Curation {
         // 
       case "CURATION":
         // outfit = `${this.user.gender}-${this.randomOutfit()}`;
-        Response.genGenericTemplate(
-          `${config.appUrl}/coupon.png`,
-          i18n.__("leadgen.title"),
-          i18n.__("leadgen.subtitle"),
-          [Response.genPostbackButton(i18n.__("leadgen.apply"), `${config.shopUrl}/products/${outfit}`)]
-        )
+        response = [
+          Response.genText(i18n.__("leadgen.coupon")),
+          Response.genGenericTemplate(
+            `${config.appUrl}/styles/${outfit}.jpg`,
+            i18n.__("curation.title"),
+            i18n.__("curation.subtitle"),
+            [
+              Response.genWebUrlButton(
+                i18n.__("curation.shop"),
+                `${config.shopUrl}/products/${outfit}`
+              ),
+              Response.genPostbackButton(
+                i18n.__("curation.show"),
+                "CURATION_OTHER_STYLE"
+              ),
+              Response.genPostbackButton(
+                i18n.__("curation.sales"),
+                "CARE_SALES"
+              )
+            ]
+          )
+        ];
         break;
         // 
     //   case "CURATION":
