@@ -11,7 +11,7 @@
     "start_over": "Start over"
   },
   "get_started": {
-    "welcome": "Hi {{userFirstName}}! Welcome to Mr Jenkins where you can order your favorite sub's right from Facebook Messenger!.",
+    "welcome": "Hi {{userFirstName}}! Welcome to Mr Jenkins where you can order your favorite sub's right from Facebook Messenger!",
     "guidance": "At any time, use the menu below to navigate through the features",
     "help": "What we can do to help you today?"
   },

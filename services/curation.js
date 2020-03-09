@@ -87,20 +87,21 @@ module.exports = class Curation {
           )
         ];
         break;
-        // response = Response.genQuickReply(i18n.__("curation.prompt"), [{
-        //     title: i18n.__("curation.bread0"),
-        //     payload: "CURATION_WHITE"
-        //   },
-        //   {
-        //     title: i18n.__("curation.bread1"),
-        //     payload: "CURATION_WHEAT"
-        //   },
-        //   {
-        //     title: i18n.__("curation.bread2"),
-        //     payload: "CURATION_WRAP"
-        //   }
-        // ]);
-        // break;
+        case "BUILD":
+        response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+            title: i18n.__("curation.bread0"),
+            payload: "CURATION_WHITE"
+          },
+          {
+            title: i18n.__("curation.bread1"),
+            payload: "CURATION_WHEAT"
+          },
+          {
+            title: i18n.__("curation.bread2"),
+            payload: "CURATION_WRAP"
+          }
+        ]);
+        break;
 
       case "CURATION_WHITE":
       case "CURATION_WHEAT":
