@@ -42,11 +42,12 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res) => {
     let body = req.query;
     let response = {
-        "text": `Great, I will build you a ${body.meats} sub, with ${body.toppings} and a ${body.combo} and a ${body.heating}view.`
-    };
+        "text": `Great, I will build you a ${body.meats} sub, with ${body.toppings} and a ${body.combo} and a ${body.heating}view.`,
+        payload: "BUILD"
+      };
 
     res.status(200).send('Please close this window to return to the conversation thread.');
-    callSendAPI(body.psid, response);
+    callSendAPI(body.psid, response, payload);
 });
 app.get("/profile", (req, res) => {
     let token = req.query["verify_token"];
