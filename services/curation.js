@@ -90,9 +90,9 @@ module.exports = class Curation {
       case "BUILD":
         response = [
           Response.setRoomPreferences(sender_psid),
-          {
-            "text": `You sent the message: "${received_message.text}".`
-          },
+          // {
+          //   "text": `You sent the message: "${received_message.text}".`
+          // },
           Response.genQuickReply(i18n.__("curation.prompt"), [{
               title: i18n.__("curation.bread0"),
               payload: "CURATION_WHITE"
