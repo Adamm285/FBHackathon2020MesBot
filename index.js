@@ -42,7 +42,7 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res) => {
     let body = req.query;
     let response = {
-        "text": `Great, I will book you a ${body.bed} bed, with ${body.pillows} pillows and a ${body.view} view.`
+        "text": `Great, I will build you a ${body.meats} sub, with ${body.toppings} and a ${body.combo} and a ${body.heating}view.`
     };
 
     res.status(200).send('Please close this window to return to the conversation thread.');
