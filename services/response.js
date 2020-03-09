@@ -24,14 +24,7 @@ module.exports = class Response {
             title: title,
             subtitle: subtitle,
             image_url: image_url,
-            buttons: [{
-                title: title,
-                type: "web_url",
-                url: url,
-                messenger_extensions: true,
-                webview_height_ratio: "tall",
-                fallback_url: "https://peterssendreceiveapp.ngrok.io/"
-            }]
+            buttons: buttons
           }]
         }
       }
