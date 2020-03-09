@@ -43,8 +43,8 @@ module.exports = class Curation {
         ];
         break;
         // 
-      case "COUPON_50":
-        outfit = `${this.user.gender}-${this.randomOutfit()}`;
+      case "CURATION":
+        // outfit = `${this.user.gender}-${this.randomOutfit()}`;
         response = [
           Response.genText(i18n.__("leadgen.coupon")),
           Response.genGenericTemplate(
@@ -70,26 +70,7 @@ module.exports = class Curation {
         ];
         break;
         // 
-      case "CURATION":
-        response = Response.genGenericTemplate(
-          i18n.__("curation.title"),
-            i18n.__("curation.subtitle"),
-            [
-              Response.genWebUrlButton(
-                i18n.__("curation.shop"),
-
-                `${config.shopUrl}/products/${outfit}`
-              ),
-              Response.genPostbackButton(
-                i18n.__("curation.show"),
-                "CURATION_OTHER_STYLE"
-              ),
-              Response.genPostbackButton(
-                i18n.__("curation.sales"),
-                "CARE_SALES"
-              )
-            ]
-        )
+    //   case "CURATION":
     // response = Response.genQuickReply(i18n.__("curation.prompt"), [{
     //     title: i18n.__("curation.bread0"),
     //     payload: "CURATION_WHITE"
@@ -103,7 +84,7 @@ module.exports = class Curation {
     //     payload: "CURATION_WRAP"
     //   }
     // ]);
-    break;
+    // break;
 
     case "CURATION_WHITE":
     case "CURATION_WHEAT":
