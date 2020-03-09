@@ -13,30 +13,7 @@
 const i18n = require("../i18n.config");
 
 module.exports = class Response {
-  static genLineTemplate(title, subtitle, image_url, buttons) {
-    let response = {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "list",
-          top_element_style: "compact",
-          elements: [{
-            title: title,
-            subtitle: subtitle,
-            image_url: image_url,
-          }],
-          buttons: [
-            {
-              title: "View More",
-              type: "postback",
-              payload: "payload"            
-            }
-          ]  
-        }
-      }
-    };
-    return response;
-  };
+
   static genQuickReply(text, quickReplies) {
     let response = {
       text: text,
