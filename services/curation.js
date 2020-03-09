@@ -47,20 +47,17 @@ module.exports = class Curation {
         // outfit = `${this.user.gender}-${this.randomOutfit()}`;
         response = [
           Response.genText(i18n.__("leadgen.coupon")),
-          Response.genLineTemplate([
+          Response.genLineTemplate(
             i18n.__("curation.title"),
-            i18n.__("curation.subtitle")
+            i18n.__("curation.subtitle"),
             [
-              Response.genWebUrlButton(
-                i18n.__("curation.shop"),
-                `${config.shopUrl}/products/${outfit}`
-              ),
-              Response.genPostbackButton(
-                i18n.__("curation.show"),
-                "CURATION_OTHER_STYLE"
-              )
+              i18n.__("curation.shop"),
+              `${config.shopUrl}/products/${outfit}`
+              ,
+              i18n.__("curation.show"),
+              "CURATION_OTHER_STYLE"
             ]
-          ])
+          )
         ];
         break;
         // 
