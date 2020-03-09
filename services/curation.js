@@ -59,18 +59,18 @@ module.exports = class Curation {
       //   break;
         // 
       case "CURATION":
-    response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+    response = Response.genButtonTemplate(i18n.__("curation.prompt"), [{
         title: i18n.__("curation.bread0"),
-        payload: `${config.shopUrl}/products/${outfit}`,
-      },
-      {
-        title: i18n.__("curation.bread1"),
-        payload: "CURATION_WHEAT"
-      },
-      {
-        title: i18n.__("curation.bread2"),
-        payload: "CURATION_WRAP"
+        payload: `${config.shopUrl}/products/${outfit}`
       }
+      // {
+      //   title: i18n.__("curation.bread1"),
+      //   payload: "CURATION_WHEAT"
+      // },
+      // {
+      //   title: i18n.__("curation.bread2"),
+      //   payload: "CURATION_WRAP"
+      // }
     ]);
     break;
 
