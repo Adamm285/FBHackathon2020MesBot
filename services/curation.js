@@ -48,9 +48,9 @@ module.exports = class Curation {
         response = [
           Response.genText(i18n.__("leadgen.coupon")),
           Response.genLineTemplate(
-            `${config.appUrl}/styles/${outfit}.jpg`,
             i18n.__("curation.title"),
             i18n.__("curation.subtitle"),
+            `${config.appUrl}/styles/${outfit}.jpg`,
             [
               Response.genWebUrlButton(
                 i18n.__("curation.shop"),
