@@ -251,14 +251,14 @@ function callSendAPI(sender_psid, response) {
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
-    if (received_message.text === !err) {
-      switch (received_message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+    if (request_body.text === !err) {
+      switch (request_body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "room preferences":
           response = setSubPreferences(sender_psid);
           break;
         default:
           response = {
-            "text": `You sent the message: "${received_message.text}".`
+            "text": `You sent the message: "${request_body.text}".`
           };
           break;
       }
