@@ -3,6 +3,7 @@
 // 
 // Imports dependencies and set up http server
 const
+  Response = require("./response"),
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
@@ -264,7 +265,7 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           console.log("hello world");
-          let response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+          response = Response.genQuickReply(i18n.__("curation.prompt"), [{
             title: i18n.__("curation.bread0"),
             payload: "CURATION_WHITE"
           },
