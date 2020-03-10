@@ -258,7 +258,8 @@ function callSendAPI(sender_psid, response) {
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           console.log("----------------!");
-          response = Response.setSubPreferences(sender_psid);
+          response = [(Response.setSubPreferences(sender_psid),
+          {payload: "BUILD"})]
           console.log("----------------!");
           break;
         default:
