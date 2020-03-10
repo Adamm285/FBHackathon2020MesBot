@@ -232,3 +232,38 @@ app.get('/optionspostback', (req, res) => {
   callSendAPI(body.psid, response);
 });
 // 
+// Sends response messages via the Send API
+function callSendAPI(sender_psid, response) {
+  // Construct the message body
+  let request_body = {
+    "recipient": {
+      "id": sender_psid
+    },
+    "message": response
+  };
+  console.log(request_body);
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": {
+      "access_token": process.env.PAGE_ACCESS_TOKEN
+    },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (received_message.text === !err) {
+      switch (received_message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+        case "room preferences":
+          response = setSubPreferences(sender_psid);
+          break;
+        default:
+          response = {
+            "text": `You sent the message: "${received_message.text}".`
+          };
+          break;
+      }
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  });
+}
