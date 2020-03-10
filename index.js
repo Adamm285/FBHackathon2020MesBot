@@ -251,11 +251,12 @@ function callSendAPI(sender_psid, response) {
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
-    if (message.text === !err) {
-      switch (message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+    if (body.text === !err) {
+      switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
-          // response = setSubPreferences(sender_psid);
-          response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+          response = [
+          Response.setSubPreferences(sender_psid),
+          Response.genQuickReply(i18n.__("curation.prompt"), [{
             title: i18n.__("curation.bread0"),
             payload: "CURATION_WHITE"
           },
@@ -267,7 +268,7 @@ function callSendAPI(sender_psid, response) {
             title: i18n.__("curation.bread2"),
             payload: "CURATION_WRAP"
           }
-        ]);
+        ])];
           break;
         default:
           response = {
