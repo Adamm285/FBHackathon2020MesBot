@@ -225,7 +225,7 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res) => {
   let body = req.query;
   let response = {
-    "text": `Great, I will build you a ${body.meats} sub, with ${body.toppings} and a ${body.combo} and a ${body.heating}view.`
+    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
   };
 
   res.status(200).send('Please close this window to return to the conversation thread.');
@@ -253,7 +253,7 @@ function callSendAPI(sender_psid, response) {
   }, (err, res, body) => {
     if (request_body.text === !err) {
       switch (request_body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case "room preferences":
+        case "BUILD":
           response = setSubPreferences(sender_psid);
           break;
         default:
