@@ -3,7 +3,7 @@
 // 
 // Imports dependencies and set up http server
 const
-  Response = require("./response"),
+  Response = require("./services/response"),
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
