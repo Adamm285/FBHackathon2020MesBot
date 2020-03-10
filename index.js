@@ -250,7 +250,7 @@ function callSendAPI(sender_psid, response) {
     },
     "method": "POST",
     "json": request_body
-  }, (err, res, body) => {
+  }, (err, response, body) => {
     if (body.text === !err) {
       switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
