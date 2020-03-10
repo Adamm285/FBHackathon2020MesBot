@@ -260,7 +260,7 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           response = {
-            "text": `You sent the message: "${request_body.text}".`
+            "text": `You sent the message: "${body.text}".`
           };
           break;
       }
