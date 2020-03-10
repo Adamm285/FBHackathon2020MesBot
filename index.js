@@ -241,7 +241,9 @@ function callSendAPI(sender_psid, response) {
     },
     "message": response
   };
+  console.log("________________________________________!");
   console.log(request_body);
+  console.log("________________________________________!");
   // Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
