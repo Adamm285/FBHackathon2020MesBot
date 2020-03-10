@@ -249,10 +249,10 @@ function callSendAPI(sender_psid, response) {
       "access_token": process.env.PAGE_ACCESS_TOKEN
     },
     "method": "POST",
-    "json": request_body
+    "json": body
   }, (err, res, body) => {
-    if (request_body.text === !err) {
-      switch (request_body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+    if (body.text === !err) {
+      switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           response = setSubPreferences(sender_psid);
           break;
