@@ -348,7 +348,53 @@ module.exports = class Curation {
     return response;
   }
   // 
- 
+  // Define the template and webview
+  static setSubPreferences(sender_psid, response) {
+    let response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+          buttons: [{
+            type: "web_url",
+            url: appURL + "/options",
+            title: "Set preferences",
+            webview_height_ratio: "full",
+            messenger_extensions: true
+          }]
+        }
+      }
+    };
+
+    return response;
+  }
+  // Sends response messages via the Send API
+  static callSendAPI(sender_psid, response) {
+    // Construct the message body
+    let request_body = {
+      "recipient": {
+        "id": sender_psid
+      },
+      "message": response
+    };
+    console.log(request_body);
+    // Send the HTTP request to the Messenger Platform
+    request({
+      "uri": "https://graph.facebook.com/v2.6/me/messages",
+      "qs": {
+        "access_token": process.env.PAGE_ACCESS_TOKEN
+      },
+      "method": "POST",
+      "json": request_body
+    }, (err, res, body) => {
+      if (!err) {
+        console.log('message sent!')
+      } else {
+        console.error("Unable to send message:" + err);
+      }
+    });
+  }
   // 
   genCurationResponse(payload) {
     let occasion = payload.split("_")[3].toLowerCase();
