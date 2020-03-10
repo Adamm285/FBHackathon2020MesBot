@@ -92,10 +92,11 @@ module.exports = class Receive {
     } else if (message.includes(i18n.__("care.help").toLowerCase())) {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
-    }else if (message.includes(i18n.__("curation.build").toLowerCase())) {
-      let curation = new Curation(this.user, this.webhookEvent);
-      response = curation.handlePayload("BUILD");
-    }
+    } 
+    // else if (message.includes(i18n.__("curation.build").toLowerCase())) {
+    //   let curation = new Curation(this.user, this.webhookEvent);
+    //   response = curation.handlePayload("BUILD");
+    // }
     else {
       response = [
         Response.genText(

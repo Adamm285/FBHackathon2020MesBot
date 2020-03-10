@@ -89,7 +89,7 @@ module.exports = class Curation {
         break;
       case "BUILD":
         response = [
-          Response.setSubPreferences(sender_psid),
+          Response.this.setSubPreferences(sender_psid),
           // {
           //   "text": `You sent the message: "${received_message.text}".`
           // },
@@ -350,7 +350,7 @@ module.exports = class Curation {
   // 
   // Define the template and webview
   setSubPreferences(sender_psid, response) {
-    let response = {
+    response = {
       attachment: {
         type: "template",
         payload: {
