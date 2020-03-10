@@ -207,19 +207,19 @@ app.get('/webhook', (req, res) => {
 // 
 // Respond with index file when a GET request is made to the homepage
 app.get('/options', (req, res, next) => {
-  let referer = req.get('Referer');
-  if (referer) {
-    if (referer.indexOf('www.messenger.com') >= 0) {
-      res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/');
-    } else if (referer.indexOf('www.facebook.com') >= 0) {
-      res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.facebook.com/');
-    }
+  // let referer = req.get('Referer');
+  // if (referer) {
+  //   if (referer.indexOf('www.messenger.com') >= 0) {
+  //     res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/');
+  //   } else if (referer.indexOf('www.facebook.com') >= 0) {
+  //     res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.facebook.com/');
+  //   }
     res.sendFile('./public/options.html', {
       root: __dirname
     });
     // }
   }
-});
+);
 // 
 // Handle postback from webview
 app.get('/optionspostback', (req, res, response) => {
@@ -263,7 +263,7 @@ function callSendAPI(sender_psid, response) {
           break;
       }
     } else {
-      console.error("Unable to send message:" + err);
+      console.error("Unable to send message index.js:" + err);
     }
   });
 }
