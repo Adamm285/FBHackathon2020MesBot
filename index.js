@@ -233,7 +233,7 @@ app.get('/optionspostback', (req, res, response) => {
 });
 // 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response, payload) {
+function callSendAPI(sender_psid, response) {
   // Construct the message body
   let request_body = {
     "recipient": {
@@ -241,9 +241,9 @@ function callSendAPI(sender_psid, response, payload) {
     },
     "message": response
   };
-  console.log("________________________________________!");
+  console.log("_________!");
   console.log(request_body);
-  console.log("________________________________________!");
+  console.log("_________!");
   // Send the HTTP request to the Messenger Platform
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
@@ -254,7 +254,7 @@ function callSendAPI(sender_psid, response, payload) {
     "json": request_body
   }, (err, response, body) => {
     if (!err) {
-      switch (payload.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+      switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "Set preferences":
           console.log("----------------!");
           response = Response.setSubPreferences(sender_psid);
