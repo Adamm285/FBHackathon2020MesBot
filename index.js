@@ -224,7 +224,9 @@ app.get('/options', (req, res, next) => {
 // Handle postback from webview
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
-  response = {
+  response = 
+  
+  {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
   }
   ;
@@ -265,7 +267,7 @@ function callSendAPI(sender_psid, response) {
         default:
           console.log("hello world");
           response = {
-            "text": `You sent the message: "${request_body.message.text}".`
+            "text": `You sent the message: ${request_body.message.text}.`
           };
           break;
       }
