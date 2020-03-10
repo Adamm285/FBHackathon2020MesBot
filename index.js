@@ -225,8 +225,7 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res) => {
   let body = req.query;
   let response = [{
-     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`,
-     payload: "BUILD"
+     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
     },
     // Response.genQuickReply(i18n.__("curation.prompt"), [{
     //     title: i18n.__("curation.bread0"),
