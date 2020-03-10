@@ -92,7 +92,11 @@ module.exports = class Receive {
     } else if (message.includes(i18n.__("care.help").toLowerCase())) {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
-    } else {
+    }else if (message.includes(i18n.__("curation.build").toLowerCase())) {
+      let curation = new Curation(this.user, this.webhookEvent);
+      response = curation.handlePayload("BUILD");
+    }
+    else {
       response = [
         Response.genText(
           i18n.__("fallback.any", {
@@ -192,7 +196,9 @@ module.exports = class Receive {
       response = care.handlePayload(payload);
     } else if (payload.includes("ORDER")) {
       response = Order.handlePayload(payload);
-    } else if (payload.includes("CSAT")) {
+    }else if (payload.includes("BUILD")) {
+      response = curation.handlePayload(payload);
+    }else if (payload.includes("CSAT")) {
       response = Survey.handlePayload(payload);
     } else if (payload.includes("CHAT-PLUGIN")) {
       response = [
@@ -284,24 +290,4 @@ module.exports = class Receive {
     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
   }
 };
-// Define the template and webview
-function setRoomPreferences(sender_psid) {
-  let response = {
-      attachment: {
-          type: "template",
-          payload: {
-              template_type: "button",
-              text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-              buttons: [{
-                  type: "web_url",
-                  url: APP_URL + "/options",
-                  title: "Set preferences",
-                  webview_height_ratio: "compact",
-                  messenger_extensions: true
-              }]
-          }
-      }
-  };
 
-  return response;
-}

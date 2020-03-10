@@ -13,7 +13,27 @@
 const i18n = require("../i18n.config");
 
 module.exports = class Response {
+   // Define the template and webview
+   static setSubPreferences(sender_psid, response ) {
+    let response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+          buttons: [{
+            type: "web_url",
+            url: appURL + "/options",
+            title: "Set preferences",
+            webview_height_ratio: "full",
+            messenger_extensions: true
+          }]
+        }
+      }
+    };
 
+    return response;
+  }
   // Sends response messages via the Send API
   static callSendAPI(sender_psid, response) {
     // Construct the message body
@@ -28,7 +48,7 @@ module.exports = class Response {
     request({
       "uri": "https://graph.facebook.com/v2.6/me/messages",
       "qs": {
-        "access_token": PAGE_ACCESS_TOKEN
+        "access_token": process.env.PAGE_ACCESS_TOKEN
       },
       "method": "POST",
       "json": request_body
