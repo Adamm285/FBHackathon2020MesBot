@@ -254,7 +254,7 @@ function callSendAPI(sender_psid, response) {
     "json": request_body
   }, (err, response, body) => {
     if (!err) {
-      switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+      switch (message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "Set preferences":
           console.log("----------------!");
           response = Response.setSubPreferences(sender_psid);
