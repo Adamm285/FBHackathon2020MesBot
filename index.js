@@ -224,9 +224,23 @@ app.get('/options', (req, res, next) => {
 // Handle postback from webview
 app.get('/optionspostback', (req, res) => {
   let body = req.query;
-  let response = {
-    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
-  };
+  response = [{
+      "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
+    },
+    Response.genQuickReply(i18n.__("curation.prompt"), [{
+        title: i18n.__("curation.bread0"),
+        payload: "CURATION_WHITE"
+      },
+      {
+        title: i18n.__("curation.bread1"),
+        payload: "CURATION_WHEAT"
+      },
+      {
+        title: i18n.__("curation.bread2"),
+        payload: "CURATION_WRAP"
+      }
+    ])
+  ];
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
@@ -255,20 +269,8 @@ function callSendAPI(sender_psid, response) {
       switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           response = [
-          Response.setSubPreferences(sender_psid),
-          Response.genQuickReply(i18n.__("curation.prompt"), [{
-            title: i18n.__("curation.bread0"),
-            payload: "CURATION_WHITE"
-          },
-          {
-            title: i18n.__("curation.bread1"),
-            payload: "CURATION_WHEAT"
-          },
-          {
-            title: i18n.__("curation.bread2"),
-            payload: "CURATION_WRAP"
-          }
-        ])];
+            Response.setSubPreferences(sender_psid),
+          ];
           break;
         default:
           response = {
