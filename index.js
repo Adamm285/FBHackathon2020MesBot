@@ -267,6 +267,9 @@ function callSendAPI(sender_psid, response) {
           response =   
           {
           "text": `You sent the message: ${request_body.message.text}.`
+          },
+          {
+            payload: `BUILD`
           };
           break;
       }
