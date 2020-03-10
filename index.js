@@ -225,21 +225,22 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res) => {
   let body = req.query;
   response = [{
-      "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
+     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`,
+     payload: "BUILD"
     },
-    Response.genQuickReply(i18n.__("curation.prompt"), [{
-        title: i18n.__("curation.bread0"),
-        payload: "CURATION_WHITE"
-      },
-      {
-        title: i18n.__("curation.bread1"),
-        payload: "CURATION_WHEAT"
-      },
-      {
-        title: i18n.__("curation.bread2"),
-        payload: "CURATION_WRAP"
-      }
-    ])
+    // Response.genQuickReply(i18n.__("curation.prompt"), [{
+    //     title: i18n.__("curation.bread0"),
+    //     payload: "CURATION_WHITE"
+    //   },
+    //   {
+    //     title: i18n.__("curation.bread1"),
+    //     payload: "CURATION_WHEAT"
+    //   },
+    //   {
+    //     title: i18n.__("curation.bread2"),
+    //     payload: "CURATION_WRAP"
+    //   }
+    // ])
   ];
 
   res.status(200).send('Please close this window to return to the conversation thread.');
