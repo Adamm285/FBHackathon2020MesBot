@@ -88,11 +88,11 @@ module.exports = class Curation {
         ];
         break;
       case "BUILD":
-        response = [
-          Response.this.setSubPreferences(sender_psid),
-          // {
-          //   "text": `You sent the message: "${received_message.text}".`
-          // },
+        response = 
+          // Response.this.setSubPreferences(sender_psid),
+          // // {
+          // //   "text": `You sent the message: "${received_message.text}".`
+          // // },
           Response.genQuickReply(i18n.__("curation.prompt"), [{
               title: i18n.__("curation.bread0"),
               payload: "CURATION_WHITE"
@@ -105,8 +105,7 @@ module.exports = class Curation {
               title: i18n.__("curation.bread2"),
               payload: "CURATION_WRAP"
             }
-          ])
-        ];
+          ]);
         break;
 
       case "CURATION_WHITE":

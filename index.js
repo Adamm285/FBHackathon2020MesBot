@@ -249,12 +249,25 @@ function callSendAPI(sender_psid, response) {
       "access_token": process.env.PAGE_ACCESS_TOKEN
     },
     "method": "POST",
-    "json": body
+    "json": request_body
   }, (err, res, body) => {
     if (body.text === !err) {
       switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
-          response = setSubPreferences(sender_psid);
+          // response = setSubPreferences(sender_psid);
+          response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+            title: i18n.__("curation.bread0"),
+            payload: "CURATION_WHITE"
+          },
+          {
+            title: i18n.__("curation.bread1"),
+            payload: "CURATION_WHEAT"
+          },
+          {
+            title: i18n.__("curation.bread2"),
+            payload: "CURATION_WRAP"
+          }
+        ]);
           break;
         default:
           response = {
