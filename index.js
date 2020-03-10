@@ -251,8 +251,8 @@ function callSendAPI(sender_psid, response) {
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
-    if (body.text === !err) {
-      switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+    if (message.text === !err) {
+      switch (message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           // response = setSubPreferences(sender_psid);
           response = Response.genQuickReply(i18n.__("curation.prompt"), [{
