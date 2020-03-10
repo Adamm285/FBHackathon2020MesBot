@@ -233,7 +233,7 @@ app.get('/optionspostback', (req, res, response) => {
 });
 // 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response) {
+function callSendAPI(sender_psid, response, payload) {
   // Construct the message body
   let request_body = {
     "recipient": {
