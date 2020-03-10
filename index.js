@@ -225,7 +225,7 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   response =
-  Response.genQuickReply(i18n.__("curation.prompt"), [{
+  Response.genQuickReply(i18n.__("curation.prompt"), {
     title: i18n.__("curation.bread0"),
     payload: "CURATION_WHITE"
   },
@@ -239,7 +239,7 @@ app.get('/optionspostback', (req, res, response) => {
   },
   {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
-  }]);
+  });
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
