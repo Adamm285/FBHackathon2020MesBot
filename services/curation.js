@@ -349,7 +349,7 @@ module.exports = class Curation {
   }
   // 
   // Define the template and webview
-  static setSubPreferences(sender_psid, response) {
+  setSubPreferences(sender_psid, response) {
     let response = {
       attachment: {
         type: "template",
@@ -370,7 +370,7 @@ module.exports = class Curation {
     return response;
   }
   // Sends response messages via the Send API
-  static callSendAPI(sender_psid, response) {
+  callSendAPI(sender_psid, response) {
     // Construct the message body
     let request_body = {
       "recipient": {
