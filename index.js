@@ -225,12 +225,9 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   response =
-   [{
-    title: i18n.__("curation.prompt"),
-    payload: "CURATION"
-  },{
+  {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
-  }];
+  };
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
