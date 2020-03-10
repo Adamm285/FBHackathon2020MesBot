@@ -256,7 +256,9 @@ function callSendAPI(sender_psid, response) {
     if (body.text === !err) {
       switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "Set preferences":
+          console.log("----------------!");
           response = Response.setSubPreferences(sender_psid);
+          console.log("----------------!");
           break;
         default:
           response = {
