@@ -224,7 +224,7 @@ app.get('/options', (req, res, next) => {
 // Handle postback from webview
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
-  let response = {
+  response = {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
   };
 
