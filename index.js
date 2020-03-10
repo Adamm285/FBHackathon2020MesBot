@@ -214,22 +214,20 @@ app.get('/options', (req, res, next) => {
   //   } else if (referer.indexOf('www.facebook.com') >= 0) {
   //     res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.facebook.com/');
   //   }
-    res.sendFile('./public/options.html', {
-      root: __dirname
-    });
-    // }
-  }
-);
+  res.sendFile('./public/options.html', {
+    root: __dirname
+  });
+  // }
+});
 // 
 // Handle postback from webview
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
-  response = 
-  
-  {
-    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
-  }
-  ;
+  response =
+
+    {
+      "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
+    };
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
@@ -266,9 +264,21 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           console.log("hello world");
-          response = {
-            "text": `You sent the message: ${request_body.message.text}.`
-          };
+          response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+            title: i18n.__("curation.bread0"),
+            payload: "CURATION_WHITE"
+          },
+          {
+            title: i18n.__("curation.bread1"),
+            payload: "CURATION_WHEAT"
+          },
+          {
+            title: i18n.__("curation.bread2"),
+            payload: "CURATION_WRAP"
+          },  
+          {
+          "text": `You sent the message: ${request_body.message.text}.`
+          }]);
           break;
       }
     } else {
