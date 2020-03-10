@@ -29,7 +29,7 @@ module.exports = class GraphAPi {
       },
       error => {
         if (error) {
-          console.error("Unable to send message:", error);
+          console.error("Unable to send message1:", error);
         }
       }
     );
@@ -52,7 +52,7 @@ module.exports = class GraphAPi {
         if (!error) {
           console.log("Request sent:", body);
         } else {
-          console.error("Unable to send message:", error);
+          console.error("Unable to send message2:", error);
         }
       }
     );
@@ -93,7 +93,7 @@ module.exports = class GraphAPi {
         if (!error) {
           console.log("Request sent:", body);
         } else {
-          console.error("Unable to send message:", error);
+          console.error("Unable to send message3:", error);
         }
       }
     );
@@ -126,7 +126,7 @@ module.exports = class GraphAPi {
       },
       error => {
         if (error) {
-          console.error("Unable to send message:", error);
+          console.error("Unable to send message4:", error);
         }
       }
     );

@@ -253,22 +253,8 @@ function callSendAPI(sender_psid, response) {
   }, (err, response, body) => {
     if (body.text === !err) {
       switch (body.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case "BUILD":
-          response = [
-          Response.setSubPreferences(sender_psid),
-          Response.genQuickReply(i18n.__("curation.prompt"), [{
-            title: i18n.__("curation.bread0"),
-            payload: "CURATION_WHITE"
-          },
-          {
-            title: i18n.__("curation.bread1"),
-            payload: "CURATION_WHEAT"
-          },
-          {
-            title: i18n.__("curation.bread2"),
-            payload: "CURATION_WRAP"
-          }
-        ])];
+        case "Set preferences":
+          response = Response.setSubPreferences(sender_psid);
           break;
         default:
           response = {
