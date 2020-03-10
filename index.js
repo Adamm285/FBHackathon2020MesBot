@@ -4,7 +4,6 @@
 // Imports dependencies and set up http server
 const
   Response = require("./services/response"),
-  Curation = require("./services/curation"),
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
@@ -226,28 +225,19 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   response =
-  Response.Curation.genQuickReply(i18n.__("curation.prompt"), {
-    title: i18n.__("curation.bread0"),
-    payload: "CURATION_WHITE"
-  },
-  {
-    title: i18n.__("curation.bread1"),
-    payload: "CURATION_WHEAT"
-  },
-  {
-    title: i18n.__("curation.bread2"),
-    payload: "CURATION_WRAP"
-  },
-  {
+   [{
+    title: i18n.__("curation.prompt"),
+    payload: "CURATION"
+  },{
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
-  });
+  }];
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
 });
 // 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response,) {
+function callSendAPI(sender_psid, response) {
   // Construct the message body
   let request_body = {
     "recipient": {
