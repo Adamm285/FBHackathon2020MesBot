@@ -264,7 +264,7 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           console.log("hello world");
-          response = Response.genQuickReply(i18n.__("curation.prompt"), [{
+          let response = Response.genQuickReply(i18n.__("curation.prompt"), [{
             title: i18n.__("curation.bread0"),
             payload: "CURATION_WHITE"
           },
