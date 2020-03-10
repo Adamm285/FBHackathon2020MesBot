@@ -257,12 +257,12 @@ function callSendAPI(sender_psid, response) {
       switch (message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "Set preferences":
           console.log("----------------!");
-          response = Response.setSubPreferences(sender_psid);
+          message = Response.setSubPreferences(sender_psid);
           console.log("----------------!");
           break;
         default:
           response = {
-            "text": `You sent the message: "${body.text}".`
+            "text": `You sent the message: "${request_body.text}".`
           };
           break;
       }
