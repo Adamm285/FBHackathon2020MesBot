@@ -225,10 +225,21 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   response =
-
-    {
-      "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
-    };
+  Response.genQuickReply(i18n.__("curation.prompt"), [{
+    title: i18n.__("curation.bread0"),
+    payload: "CURATION_WHITE"
+  },
+  {
+    title: i18n.__("curation.bread1"),
+    payload: "CURATION_WHEAT"
+  },
+  {
+    title: i18n.__("curation.bread2"),
+    payload: "CURATION_WRAP"
+  },
+  {
+    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
+  }]);
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
@@ -265,21 +276,10 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           console.log("hello world");
-          response = Response.genQuickReply(i18n.__("curation.prompt"), [{
-            title: i18n.__("curation.bread0"),
-            payload: "CURATION_WHITE"
-          },
-          {
-            title: i18n.__("curation.bread1"),
-            payload: "CURATION_WHEAT"
-          },
-          {
-            title: i18n.__("curation.bread2"),
-            payload: "CURATION_WRAP"
-          },  
+          response =   
           {
           "text": `You sent the message: ${request_body.message.text}.`
-          }]);
+          };
           break;
       }
     } else {
