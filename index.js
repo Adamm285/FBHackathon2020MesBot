@@ -259,7 +259,7 @@ function callSendAPI(sender_psid, response) {
     if (!err) {
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case "Set preferences":
+        case "BUILD":
           console.log("----------------!");
           response = Response.setSubPreferences(sender_psid);
           console.log("----------------!");
