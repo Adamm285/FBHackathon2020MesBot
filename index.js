@@ -264,12 +264,12 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           console.log("hello world");
-          
+          Receive.handlePostback(payload),
           response = [  
           {
           "text": `You sent the message: ${request_body.message.text}.`
           },
-          Receive.handlePostback(payload),
+          
 
           // Curation.handlePayload()
         ]
