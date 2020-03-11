@@ -223,7 +223,48 @@ app.get('/optionspostback', (req, res, response, requestBody) => {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
   };
   res.status(200).send('Please close this window to return to the conversation thread.');
-  GraphAPi.callSendAPi();
-  // body.psid, response, requestBody
+  callSendAPI(body.psid, response, requestBody);
 });
 // 
+// Sends response messages via the Send API
+function callSendAPI(sender_psid, response) {
+  // Construct the message body
+  let requestBody = {
+    "recipient": {
+      "id": sender_psid
+    },
+    "message": response
+  };
+  console.log("_________!");
+  console.log(requestBody);
+  console.log("_________!");
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": {
+      "access_token": process.env.PAGE_ACCESS_TOKEN
+    },
+    "method": "POST",
+    "json": requestbody
+  }, (err, response, body) => {
+    if (!err) {
+      console.log(requestBody.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
+      switch (requestBody.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+        case "BUILD":
+          console.log("----------------!");
+          response = curation.handlePayload(payload);
+          console.log("----------------!");
+          break;
+        default:
+          console.log("hello world");
+          response =   
+          {
+          "text": `You sent the message: ${requestBody.message.text}.`
+          }
+          break;
+      }
+    } else {
+      console.error("Unable to send message index.js:" + err);
+    }
+  });
+}
