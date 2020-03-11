@@ -235,6 +235,7 @@ function callSendAPI(sender_psid, response) {
   Receive = new Receive();
   var Curation = require("./services/curation.js");
   Curation = new Curation();
+  
   let request_body = {
     "recipient": {
       "id": sender_psid
@@ -252,9 +253,9 @@ function callSendAPI(sender_psid, response) {
     },
     "method": "POST",
     "json": request_body
-  }, (err, response, body) => {
+  }, (err, response, body, postback) => {
     if (!err) {
-      console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
+      let postback = request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase();
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           console.log("----------------!");
@@ -268,7 +269,7 @@ function callSendAPI(sender_psid, response) {
           {
           "text": `You sent the message: ${request_body.message.text}.`
           },
-          Receive.handlePostback(),
+          Receive.handlePostback(postback),
 
           // Curation.handlePayload()
         ]
