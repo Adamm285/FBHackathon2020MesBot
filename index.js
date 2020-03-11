@@ -225,7 +225,7 @@ app.get('/optionspostback', (req, res, response) => {
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
-  handlePostback();
+  Receive.handlePostback();
 
 });
 // 
