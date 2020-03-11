@@ -268,7 +268,7 @@ function callSendAPI(psid, response) {
           },
           // Receive.handlePostback(),
 
-          Receive.handlePayload()]
+          Receive.handlePayload(body, psid)]
           break;
       }
     } else {
