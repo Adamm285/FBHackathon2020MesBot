@@ -16,11 +16,52 @@ const request = require("request"),
   config = require("./config");
 
 module.exports = class GraphAPi {
+  // 
+  // Sends response messages via the Send API
+  static callSendAPi(sender_psid, response) {
+    // Construct the message body
+    let requestBody = {
+      "recipient": {
+        "id": sender_psid
+      },
+      "message": response
+    };
+    console.log("_________!");
+    console.log(requestBody);
+    console.log("_________!");
+    // Send the HTTP request to the Messenger Platform
+    request({
+      "uri": "https://graph.facebook.com/v2.6/me/messages",
+      "qs": {
+        "access_token": process.env.PAGE_ACCESS_TOKEN
+      },
+      "method": "POST",
+      "json": requestbody
+    }, (err, response, body) => {
+      if (!err) {
+        console.log(requestBody.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
+        switch (requestBody.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+          case "BUILD":
+            console.log("----------------!");
+            response = curation.handlePayload(payload);
+            console.log("----------------!");
+            break;
+          default:
+            console.log("hello world");
+            response = {
+              "text": `You sent the message: ${requestBody.message.text}.`
+            }
+            break;
+        }
+      } else {
+        console.error("Unable to send message index.js:" + err);
+      }
+    });
+  }
   static callSendAPI(requestBody) {
     console.log("testing")
     // Send the HTTP request to the Messenger Platform
-    request(
-      {
+    request({
         uri: `${config.mPlatfom}/me/messages`,
         qs: {
           access_token: config.pageAccesToken
@@ -40,8 +81,7 @@ module.exports = class GraphAPi {
     // Send the HTTP request to the Messenger Profile API
 
     console.log(`Setting Messenger Profile for app ${config.appId}`);
-    request(
-      {
+    request({
         uri: `${config.mPlatfom}/me/messenger_profile`,
         qs: {
           access_token: config.pageAccesToken
@@ -77,8 +117,7 @@ module.exports = class GraphAPi {
 
     console.log(fields);
 
-    request(
-      {
+    request({
         uri: `${config.mPlatfom}/${config.appId}/subscriptions`,
         qs: {
           access_token: config.appId + "|" + config.appSecret,
@@ -116,8 +155,7 @@ module.exports = class GraphAPi {
 
     console.log(fields);
 
-    request(
-      {
+    request({
         uri: `${config.mPlatfom}/${config.pageId}/subscribed_apps`,
         qs: {
           access_token: config.pageAccesToken,
@@ -151,29 +189,29 @@ module.exports = class GraphAPi {
   }
 
   static callUserProfileAPI(senderPsid) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       let body = [];
 
       // Send the HTTP request to the Graph API
       request({
-        uri: `${config.mPlatfom}/${senderPsid}`,
-        qs: {
-          access_token: config.pageAccesToken,
-          fields: "first_name, last_name, gender, locale, timezone"
-        },
-        method: "GET"
-      })
-        .on("response", function(response) {
+          uri: `${config.mPlatfom}/${senderPsid}`,
+          qs: {
+            access_token: config.pageAccesToken,
+            fields: "first_name, last_name, gender, locale, timezone"
+          },
+          method: "GET"
+        })
+        .on("response", function (response) {
           // console.log(response.statusCode);
 
           if (response.statusCode !== 200) {
             reject(Error(response.statusCode));
           }
         })
-        .on("data", function(chunk) {
+        .on("data", function (chunk) {
           body.push(chunk);
         })
-        .on("error", function(error) {
+        .on("error", function (error) {
           console.error("Unable to fetch profile:" + error);
           reject(Error("Network Error"));
         })
@@ -187,30 +225,30 @@ module.exports = class GraphAPi {
   }
 
   static getPersonaAPI() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       let body = [];
 
       // Send the POST request to the Personas API
       console.log(`Fetching personas for app ${config.appId}`);
 
       request({
-        uri: `${config.mPlatfom}/me/personas`,
-        qs: {
-          access_token: config.pageAccesToken
-        },
-        method: "GET"
-      })
-        .on("response", function(response) {
+          uri: `${config.mPlatfom}/me/personas`,
+          qs: {
+            access_token: config.pageAccesToken
+          },
+          method: "GET"
+        })
+        .on("response", function (response) {
           // console.log(response.statusCode);
 
           if (response.statusCode !== 200) {
             reject(Error(response.statusCode));
           }
         })
-        .on("data", function(chunk) {
+        .on("data", function (chunk) {
           body.push(chunk);
         })
-        .on("error", function(error) {
+        .on("error", function (error) {
           console.error("Unable to fetch personas:" + error);
           reject(Error("Network Error"));
         })
@@ -226,7 +264,7 @@ module.exports = class GraphAPi {
   static postPersonaAPI(name, profile_picture_url) {
     let body = [];
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       // Send the POST request to the Personas API
       console.log(`Creating a Persona for app ${config.appId}`);
 
@@ -236,23 +274,23 @@ module.exports = class GraphAPi {
       };
 
       request({
-        uri: `${config.mPlatfom}/me/personas`,
-        qs: {
-          access_token: config.pageAccesToken
-        },
-        method: "POST",
-        json: requestBody
-      })
-        .on("response", function(response) {
+          uri: `${config.mPlatfom}/me/personas`,
+          qs: {
+            access_token: config.pageAccesToken
+          },
+          method: "POST",
+          json: requestBody
+        })
+        .on("response", function (response) {
           // console.log(response.statusCode);
           if (response.statusCode !== 200) {
             reject(Error(response.statusCode));
           }
         })
-        .on("data", function(chunk) {
+        .on("data", function (chunk) {
           body.push(chunk);
         })
-        .on("error", function(error) {
+        .on("error", function (error) {
           console.error("Unable to create a persona:", error);
           reject(Error("Network Error"));
         })
@@ -272,8 +310,7 @@ module.exports = class GraphAPi {
     // https://developers.facebook.com/docs/graph-api/reference/page/nlp_configs/
 
     console.log(`Enable Built-in NLP for Page ${config.pageId}`);
-    request(
-      {
+    request({
         uri: `${config.mPlatfom}/me/nlp_configs`,
         qs: {
           access_token: config.pageAccesToken,
@@ -295,13 +332,11 @@ module.exports = class GraphAPi {
     // Construct the message body
     let requestBody = {
       event: "CUSTOM_APP_EVENTS",
-      custom_events: JSON.stringify([
-        {
-          _eventName: "postback_payload",
-          _value: eventName,
-          _origin: "original_coast_clothing"
-        }
-      ]),
+      custom_events: JSON.stringify([{
+        _eventName: "postback_payload",
+        _value: eventName,
+        _origin: "original_coast_clothing"
+      }]),
       advertiser_tracking_enabled: 1,
       application_tracking_enabled: 1,
       extinfo: JSON.stringify(["mb1"]),
@@ -310,8 +345,7 @@ module.exports = class GraphAPi {
     };
 
     // Send the HTTP request to the Activities API
-    request(
-      {
+    request({
         uri: `${config.mPlatfom}/${config.appId}/activities`,
         method: "POST",
         form: requestBody
