@@ -17,7 +17,7 @@ const Curation = require("./curation"),
   Survey = require("./survey"),
   GraphAPi = require("./graph-api"),
   i18n = require("../i18n.config");
-  Index = require("../index")
+
 
 module.exports = class Receive {
   constructor(user, webhookEvent) {
@@ -144,7 +144,7 @@ module.exports = class Receive {
     return response;
   }
 
-  // Handles mesage events with quick replies
+  // Handles message events with quick replies
   handleQuickReply() {
     // Get the payload of the quick reply
     let payload = this.webhookEvent.message.quick_reply.payload;
