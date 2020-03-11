@@ -70,7 +70,7 @@ module.exports = class Curation {
         ];
         break;
         // 
-      case "CURATION":
+      // case "CURATION":
         response = [
           Response.genButtonTemplate(
             i18n.__("curation.title"),
@@ -87,7 +87,7 @@ module.exports = class Curation {
           )
         ];
         break;
-      case "BUILD":
+      case "CURATION":
         response = 
           // Response.this.setSubPreferences(sender_psid),
           // // {

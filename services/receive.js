@@ -237,7 +237,7 @@ module.exports = class Receive {
     let response = Response.genQuickReply(welcomeMessage, [
       {
         title: i18n.__("menu.suggestion"),
-        payload: "BUILD"
+        payload: "CURATION"
       },
       {
         title: i18n.__("menu.help"),
