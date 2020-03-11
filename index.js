@@ -223,6 +223,7 @@ app.get('/optionspostback', (req, res, response, requestBody) => {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
   };
   res.status(200).send('Please close this window to return to the conversation thread.');
-  GraphAPi.callSendAPi(body.psid, response, requestBody);
+  GraphAPi.callSendAPi();
+  // body.psid, response, requestBody
 });
 // 
