@@ -253,9 +253,9 @@ function callSendAPI(sender_psid, response) {
     },
     "method": "POST",
     "json": request_body
-  }, (err, response, body, payload) => {
+  }, (err, response, body) => {
     if (!err) {
-      console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
+      let payload = request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase();
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           console.log("----------------!");
@@ -269,7 +269,7 @@ function callSendAPI(sender_psid, response) {
           {
           "text": `You sent the message: ${request_body.message.text}.`
           },
-          Receive.handlePostback(request_body.message.text),
+          Receive.handlePostback(payload),
 
           // Curation.handlePayload()
         ]
