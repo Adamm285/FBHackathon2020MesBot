@@ -17,6 +17,7 @@ const request = require("request"),
 
 module.exports = class GraphAPi {
   static callSendAPI(requestBody) {
+    console.log("testing")
     // Send the HTTP request to the Messenger Platform
     request(
       {
