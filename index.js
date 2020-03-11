@@ -265,7 +265,8 @@ function callSendAPI(sender_psid, response) {
         default:
           console.log("hello world");
           
-          response = [ request_body.message.text.handlePayload() 
+          response = request_body.message.text.handlePayload();
+          [  
           {
           "text": `You sent the message: ${request_body.message.text}.`
           },
