@@ -229,13 +229,15 @@ app.get('/optionspostback', (req, res, response) => {
 });
 // 
 // Sends response messages via the Send API
-function callSendAPI(psid, response) {
+function callSendAPI(sender_psid, response) {
   // Construct the message body
   var Receive = require("./services/receive.js");
   Receive = new Receive();
+  var Curation = require("./services/curation.js");
+  Curation = new Curation();
   let request_body = {
     "recipient": {
-      "id": psid
+      "id": sender_psid
     },
     "message": response
   };
@@ -266,9 +268,10 @@ function callSendAPI(psid, response) {
           {
           "text": `You sent the message: ${request_body.message.text}.`
           },
-          // Receive.handlePostback(),
+          Receive.handlePostback(),
 
-          Receive.handlePayload(body, psid)]
+          // Curation.handlePayload()
+        ]
           break;
       }
     } else {
