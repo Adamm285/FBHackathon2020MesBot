@@ -255,7 +255,7 @@ function callSendAPI(sender_psid, response) {
     "json": request_body
   }, (err, response, body, postback) => {
     if (!err) {
-      let postback = request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase();
+      let receiveMessage = request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase();
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           console.log("----------------!");
