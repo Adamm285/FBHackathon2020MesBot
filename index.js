@@ -3,6 +3,7 @@
 // 
 // Imports dependencies and set up http server
 const
+  Curation = require("./services/curation"),
   Response = require("./services/response"),
   express = require('express'),
   request = require('request'),
@@ -264,13 +265,10 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           console.log("hello world");
-          response =   
-          {
+          response = curation.handlePayload(payload)  
+          [{
           "text": `You sent the message: ${request_body.message.text}.`
-          },
-          {
-            payload: `BUILD`
-          };
+          }]
           break;
       }
     } else {
