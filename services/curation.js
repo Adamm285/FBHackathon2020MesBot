@@ -70,23 +70,7 @@ module.exports = class Curation {
         ];
         break;
         // 
-      // case "CURATION":
-        response = [
-          Response.genButtonTemplate(
-            i18n.__("curation.title"),
-            [
-              Response.genWebUrlButton(
-                i18n.__("curation.shop"),
-                `${config.appUrl}/options`
-              ),
-              Response.genPostbackButton(
-                i18n.__("curation.sales"),
-                "CARE_SALES"
-              )
-            ]
-          )
-        ];
-        break;
+      
       case "CURATION":
         response = 
           // Response.this.setSubPreferences(sender_psid),
@@ -319,29 +303,46 @@ module.exports = class Curation {
       case "CURATION_SWISS_BOTH_WHOLE":
       case "CURATION_SWISS_BOTH_HALF":
         //MAKE THE CARDS OF SUBS
-        response = this.genCurationResponse(payload);
+        response = [
+          Response.genButtonTemplate(
+            i18n.__("curation.title"),
+            [
+              Response.genWebUrlButton(
+                i18n.__("curation.shop"),
+                `${config.appUrl}/options`
+              ),
+              Response.genPostbackButton(
+                i18n.__("curation.sales"),
+                "CARE_SALES"
+              )
+            ]
+          )
+        ];
         break;
+        // 
+        // response = this.genCurationResponse(payload);
+        // break;
         // case "CURATION_OTHER_STYLE":
         // Build the recommendation logic here
         // outfit = "chickentender";${outfit}
 
-        response = Response.genGenericTemplate(
-          `./public/Subs/chickentender.jpg`,
-          i18n.__("curation.title"),
-          i18n.__("curation.subtitle"),
-          [
-            Response.genWebUrlButton(
-              i18n.__("curation.shop"),
-              // `${config.shopUrl}/products/${outfit}` use this to buy the sub
-            ),
-            Response.genPostbackButton(
-              i18n.__("curation.show"),
-              "CURATION_OTHER_STYLE"
-              // use this to order a different sub
-            )
-          ]
-        );
-        break;
+        // response = Response.genGenericTemplate(
+        //   `./public/Subs/chickentender.jpg`,
+        //   i18n.__("curation.title"),
+        //   i18n.__("curation.subtitle"),
+        //   [
+        //     Response.genWebUrlButton(
+        //       i18n.__("curation.shop"),
+        //       // `${config.shopUrl}/products/${outfit}` use this to buy the sub
+        //     ),
+        //     Response.genPostbackButton(
+        //       i18n.__("curation.show"),
+        //       "CURATION_OTHER_STYLE"
+        //       // use this to order a different sub
+        //     )
+        //   ]
+        // );
+        // break;
     }
 
     return response;
