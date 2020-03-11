@@ -225,8 +225,7 @@ app.get('/optionspostback', (req, res, response) => {
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
-  return Receive.handlePostback();
-
+  
 });
 // 
 // Sends response messages via the Send API
@@ -255,15 +254,18 @@ function callSendAPI(sender_psid, response) {
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           console.log("----------------!");
-          response = Curation.handlePayload(payload);
+          response = Curation.handlePayload();
           console.log("----------------!");
           break;
         default:
           console.log("hello world");
-          response =   
+          
+          response = [  
           {
           "text": `You sent the message: ${request_body.message.text}.`
-          }
+          },
+          // Receive.handlePostback(),
+          Curation.handlePayload()]
           break;
       }
     } else {
