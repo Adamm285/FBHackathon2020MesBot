@@ -255,7 +255,7 @@ function callSendAPI(sender_psid, response) {
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           console.log("----------------!");
-          response = curation.handlePayload(payload);
+          response = Curation.handlePayload(payload);
           console.log("----------------!");
           break;
         default:
