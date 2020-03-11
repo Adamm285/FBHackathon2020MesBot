@@ -6,7 +6,6 @@
 const
   Curation = require("./services/curation"),
   Response = require("./services/response"),
-  Response = require("./services/response"),
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
