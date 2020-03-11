@@ -255,17 +255,17 @@ function callSendAPI(sender_psid, response) {
     "json": request_body
   }, (err, response, body) => {
     if (!err) {
-      let postback = request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase();
+      // let postback = request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase();
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           console.log("----------------!");
-          response = Curation.handlePayload();
+          response = request_body.message.text.handlePayload();
           console.log("----------------!");
           break;
         default:
           console.log("hello world");
           
-          response = [ Receive.handlePostback(response), 
+          response = [ request_body.message.text.handlePayload() 
           {
           "text": `You sent the message: ${request_body.message.text}.`
           },
