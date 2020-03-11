@@ -317,9 +317,9 @@ module.exports = class Curation {
               )
             ]
           )
-        ]
-        if ( response => {
-          response = Response.genQuickReply(i18n.__("curation.received"), [{
+        ],
+        
+        response = Response.genQuickReply(i18n.__("curation.received"), [{
             title: i18n.__("curation.directions"),
             payload: "CLOSEST_DELI"
           },
@@ -327,8 +327,9 @@ module.exports = class Curation {
             title: i18n.__("curation.sales"),
             payload: "CARE_SALES"
           }
-        ])})
+        ])
         break;
+      
         // 
         // response = this.genCurationResponse(payload);
         // break;
