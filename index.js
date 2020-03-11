@@ -265,7 +265,7 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           console.log("hello world");
-          response = curation.handlePayload(payload)  
+          response =  
           [{
           "text": `You sent the message: ${request_body.message.text}.`,
           payload: "BUILD"
