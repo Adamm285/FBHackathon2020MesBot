@@ -317,16 +317,17 @@ module.exports = class Curation {
               )
             ]
           )
-        ];
-        if (Array.isArray(responses)) {
-          let delay = 0;
-          for (let response of responses) {
-            this.sendMessage(response, delay * 2000);
-            delay++;
+        ].then( response => {
+          response = Response.genQuickReply(i18n.__("curation.received"), [{
+            title: i18n.__("curation.directions"),
+            payload: "CLOSEST_DELI"
+          },
+          {
+            title: i18n.__("curation.sales"),
+            payload: "CARE_SALES"
           }
-        } else {
-          this.sendMessage(responses);
-        }
+        ]);
+        })
         break;
         // 
         // response = this.genCurationResponse(payload);

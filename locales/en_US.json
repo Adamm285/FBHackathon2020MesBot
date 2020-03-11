@@ -28,6 +28,8 @@
     "sauce": "Would you like Mayo or Mustard?",
     "size": "What size would you like?",
     "veggies": "Which veggies would you like?",
+    "received": "Your order has been received at {{userLocale}} and will be ready in 20 mins.",
+    "directions": "Directions",
     "bread0": "White",
     "bread1": "Wheat",
     "bread2": "Wrap",
