@@ -2,7 +2,6 @@
 'use strict';
 // 
 // Imports dependencies and set up http server
-
 const
   Curation = require("./services/curation"),
   Response = require("./services/response"),
@@ -210,33 +209,42 @@ app.get('/webhook', (req, res) => {
 // 
 // Respond with index file when a GET request is made to the homepage
 app.get('/options', (req, res, next) => {
+  // let referer = req.get('Referer');
+  // if (referer) {
+  //   if (referer.indexOf('www.messenger.com') >= 0) {
+  //     res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/');
+  //   } else if (referer.indexOf('www.facebook.com') >= 0) {
+  //     res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.facebook.com/');
+  //   }
   res.sendFile('./public/options.html', {
     root: __dirname
   });
+  // }
 });
 // 
 // Handle postback from webview
-app.get('/optionspostback', (req, res, response, requestBody) => {
+app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   response =
   {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
   };
+
   res.status(200).send('Please close this window to return to the conversation thread.');
-  callSendAPI(body.psid, response, requestBody);
+  callSendAPI(body.psid, response);
 });
 // 
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
   // Construct the message body
-  let requestBody = {
+  let request_body = {
     "recipient": {
       "id": sender_psid
     },
     "message": response
   };
   console.log("_________!");
-  console.log(requestBody);
+  console.log(request_body);
   console.log("_________!");
   // Send the HTTP request to the Messenger Platform
   request({
@@ -245,11 +253,11 @@ function callSendAPI(sender_psid, response) {
       "access_token": process.env.PAGE_ACCESS_TOKEN
     },
     "method": "POST",
-    "json": requestbody
+    "json": request_body
   }, (err, response, body) => {
     if (!err) {
-      console.log(requestBody.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
-      switch (requestBody.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
+      console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
+      switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case "BUILD":
           console.log("----------------!");
           response = curation.handlePayload(payload);
@@ -259,8 +267,8 @@ function callSendAPI(sender_psid, response) {
           console.log("hello world");
           response =   
           {
-          "text": `You sent the message: ${requestBody.message.text}.`
-          }
+          "text": `You sent the message: ${request_body.message.text}.`
+          },
           break;
       }
     } else {
