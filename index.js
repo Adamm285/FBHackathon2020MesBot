@@ -4,7 +4,7 @@
 // Imports dependencies and set up http server
 const
   Curation = require("./services/curation.js"),
-  Response = require("./services/response"),
+  Response = require("./services/response.js"),
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
@@ -233,6 +233,8 @@ function callSendAPI(sender_psid, response) {
   // Construct the message body
   var Receive = require("./services/receive.js");
   Receive = new Receive();
+  var Curation = require("./services/curation.js");
+  Curation = new Curation();
   let request_body = {
     "recipient": {
       "id": sender_psid
@@ -266,7 +268,7 @@ function callSendAPI(sender_psid, response) {
           {
           "text": `You sent the message: ${request_body.message.text}.`
           },
-          // Receive.handlePostback(),
+          Receive.handlePostback(),
 
           Curation.handlePayload()]
           break;
