@@ -17,6 +17,7 @@ const Curation = require("./curation"),
   Survey = require("./survey"),
   GraphAPi = require("./graph-api"),
   i18n = require("../i18n.config");
+  Index = require("../index")
 
 module.exports = class Receive {
   constructor(user, webhookEvent) {
