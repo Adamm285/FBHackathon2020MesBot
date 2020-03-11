@@ -344,7 +344,7 @@ module.exports = class Curation {
         // );
         // break;
     }
-    response.delay = "4";
+    // response.delay = "4";
     return response;
   }
   // 

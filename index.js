@@ -233,8 +233,6 @@ function callSendAPI(sender_psid, response) {
   // Construct the message body
   var Receive = require("./services/receive.js");
   Receive = new Receive();
-  var Curation = require("./services/curation.js");
-  Curation = new Curation();
   let request_body = {
     "recipient": {
       "id": sender_psid
@@ -270,7 +268,7 @@ function callSendAPI(sender_psid, response) {
           },
           // Receive.handlePostback(),
 
-          Curation.handlePayload(body)]
+          Receive.handlePayload()]
           break;
       }
     } else {
