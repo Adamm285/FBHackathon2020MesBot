@@ -270,7 +270,7 @@ function callSendAPI(sender_psid, response) {
           },
           // Receive.handlePostback(),
 
-          Curation.handlePayload(payload)]
+          Curation.handlePayload(body)]
           break;
       }
     } else {
