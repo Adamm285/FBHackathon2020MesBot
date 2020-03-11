@@ -269,7 +269,7 @@ function callSendAPI(sender_psid, response) {
           {
           "text": `You sent the message: ${request_body.message.text}.`
           },
-          Receive.handlePostback(postback),
+          receiveMessage.handleMessage()
 
           // Curation.handlePayload()
         ]
