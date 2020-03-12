@@ -224,8 +224,11 @@ app.get('/optionspostback', (req, res, response, payload) => {
   };
 
   res.status(200).send('Please close this window to return to the conversation thread.');
+  console.log(payload);
+  console.log(response)
   callSendAPI(body.psid, response);
-  Curation.setSubPreferences(payload);
+  // Curation.setSubPreferences(payload);
+  
   
 });
 // 

@@ -303,7 +303,17 @@ module.exports = class Curation {
       case "CURATION_SWISS_BOTH_WHOLE":
       case "CURATION_SWISS_BOTH_HALF":
         // 
-        response = this.setSubPreferences(payload);
+        response = [this.setSubPreferences(payload),
+        
+        Response.genQuickReply(i18n.__("curation.received"), [{
+            title: i18n.__("curation.directions"),
+            payload: "CLOSEST_DELI"
+          },
+          {
+            title: i18n.__("curation.sales"),
+            payload: "CARE_SALES"
+          }
+        ])]
         break;
         //MAKE THE CARDS OF SUBS
         // response = [
@@ -324,16 +334,7 @@ module.exports = class Curation {
         // ]
         // 
         // case "BUILD":
-        response = 
-        Response.genQuickReply(i18n.__("curation.received"), [{
-            title: i18n.__("curation.directions"),
-            payload: "CLOSEST_DELI"
-          },
-          {
-            title: i18n.__("curation.sales"),
-            payload: "CARE_SALES"
-          }
-        ])
+        
 
         break;
         case "CLOSEST_DELI":
