@@ -225,6 +225,7 @@ app.get('/optionspostback', (req, res, response) => {
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
+  Curation.setSubPreferences(payload);
   
 });
 // 
@@ -257,7 +258,7 @@ function callSendAPI(sender_psid, response) {
     if (!err) {
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case request_body.message.text:
+        case "Set preferences":
           console.log("----------------!");
           response = request_body.message.text.handlePayload();
           console.log("----------------!");
