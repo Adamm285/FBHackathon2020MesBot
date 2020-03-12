@@ -317,8 +317,8 @@ module.exports = class Curation {
               )
             ]
           )
-        ],
-        
+        ].map(response => response )
+        response = 
         Response.genQuickReply(i18n.__("curation.received"), [{
             title: i18n.__("curation.directions"),
             payload: "CLOSEST_DELI"
