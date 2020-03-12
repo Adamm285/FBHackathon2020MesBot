@@ -3,13 +3,13 @@
 // 
 // Imports dependencies and set up http server
 const
-  Curation = require("./services/curation.js"),
-  Response = require("./services/response.js"),
+  Curation = require("./services/curation"),
+  Response = require("./services/response"),
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
   path = require("path"),
-  Receive = require("./services/receive.js"),
+  Receive = require("./services/receive"),
   GraphAPi = require("./services/graph-api"),
   User = require("./services/user"),
   config = require("./services/config"),
@@ -249,7 +249,7 @@ function callSendAPI(sender_psid, response) {
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
     "qs": {
-      "access_token": process.env.PAGE_ACCESS_TOKEN
+      "access_token": config.pageAccesToken
     },
     "method": "POST",
     "json": request_body
