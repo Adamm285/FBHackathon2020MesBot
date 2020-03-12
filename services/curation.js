@@ -303,40 +303,41 @@ module.exports = class Curation {
       case "CURATION_SWISS_BOTH_WHOLE":
       case "CURATION_SWISS_BOTH_HALF":
         //MAKE THE CARDS OF SUBS
-        response = [
-          Response.genButtonTemplate(
-            i18n.__("curation.title"),
-            [
-              Response.genWebUrlButton(
-                i18n.__("curation.shop"),
-                `${config.appUrl}/options`,
-                "BUILD"
-              ),
-              Response.genPostbackButton(
-                i18n.__("curation.sales"),
-                "CARE_SALES"
-              )
-            ]
-          )
-        ]
-        case "BUILD":
-        response = 
-        Response.genQuickReply(i18n.__("curation.received"), [{
-            title: i18n.__("curation.directions"),
-            payload: "CLOSEST_DELI"
-          },
-          {
-            title: i18n.__("curation.sales"),
-            payload: "CARE_SALES"
-          }
-        ])
+        // response = [
+        //   Response.genButtonTemplate(
+        //     i18n.__("curation.title"),
+        //     [
+        //       Response.genWebUrlButton(
+        //         i18n.__("curation.shop"),
+        //         `${config.appUrl}/options`,
+                
+        //       ),
+        //       Response.genPostbackButton(
+        //         i18n.__("curation.sales"),
+        //         "CARE_SALES"
+        //       )
+        //     ]
+        //   )
+        // ]
+        // 
+        // case "BUILD":
+        // response = 
+        // Response.genQuickReply(i18n.__("curation.received"), [{
+        //     title: i18n.__("curation.directions"),
+        //     payload: "CLOSEST_DELI"
+        //   },
+        //   {
+        //     title: i18n.__("curation.sales"),
+        //     payload: "CARE_SALES"
+        //   }
+        // ])
 
-        break;
-        case "CLOSEST_DELI":
+        // break;
+        // case "CLOSEST_DELI":
       
         // 
-        // response = this.genCurationResponse(payload);
-        // break;
+        response = this.setSubPreferences(payload);
+        break;
         // case "CURATION_OTHER_STYLE":
         // Build the recommendation logic here
         // outfit = "chickentender";${outfit}
@@ -364,26 +365,26 @@ module.exports = class Curation {
   }
   // 
   // Define the template and webview
-  // setSubPreferences(sender_psid, response) {
-  //   response = {
-  //     attachment: {
-  //       type: "template",
-  //       payload: {
-  //         template_type: "button",
-  //         text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-  //         buttons: [{
-  //           type: "web_url",
-  //           url: appURL + "/options",
-  //           title: "Set preferences",
-  //           webview_height_ratio: "full",
-  //           messenger_extensions: true
-  //         }]
-  //       }
-  //     }
-  //   };
+  setSubPreferences(sender_psid, response) {
+    response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+          buttons: [{
+            type: "web_url",
+            url: appURL + "/options",
+            title: "Set preferences",
+            webview_height_ratio: "full",
+            messenger_extensions: true
+          }]
+        }
+      }
+    };
 
-    // return response;
-  // }
+    return response;
+  }
   // // Sends response messages via the Send API
   // callSendAPI(sender_psid, response) {
   //   // Construct the message body
