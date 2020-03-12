@@ -1,112 +1,127 @@
 <html>
+
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Choose your preferences</title>
 </head>
+
 <body>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-            return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'Messenger'));
-
-    window.extAsyncInit = () => {
-        // TODO: How to parse env file from here?
-        MessengerExtensions.getSupportedFeatures(function success(result) {
-            let features = result.supported_features;
-            if (features.includes("context")) {
-                MessengerExtensions.getContext(1300071306843279,
-                    function success(thread_context) {
-                        // success
-                        document.getElementById("psid").value = thread_context.psid;
-                    },
-                    function error(err) {
-                        // error
-                        console.log(err);
-                    }
-                );
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
             }
-        }, function error(err) {
-            // error retrieving supported features
-            console.log(err);
-        });
-        document.getElementById('submitButton').addEventListener('click', () => {
-            MessengerExtensions.requestCloseBrowser(function success() {
-                console.log("Webview closing");
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+
+        window.extAsyncInit = () => {
+            // TODO: How to parse env file from here?
+            MessengerExtensions.getSupportedFeatures(function success(result) {
+                let features = result.supported_features;
+                if (features.includes("context")) {
+                    MessengerExtensions.getContext(1300071306843279,
+                        function success(thread_context) {
+                            // success
+                            document.getElementById("psid").value = thread_context.psid;
+                        },
+                        function error(err) {
+                            // error
+                            console.log(err);
+                        }
+                    );
+                }
             }, function error(err) {
+                // error retrieving supported features
                 console.log(err);
             });
-        });
-    };
+            document.getElementById('submitButton').addEventListener('click', () => {
+                MessengerExtensions.requestCloseBrowser(function success() {
+                    console.log("Webview closing");
+                }, function error(err) {
+                    console.log(err);
+                });
+            });
+        };
 
-</script>
-<form action="/optionspostback" method="get">
-    <input type="hidden" name="psid" id="psid">
-    <h3>Hot Subs</h3>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Hot Subs</label>
+    </script>
+    <form action="/optionspostback" method="get">
+        <input type="hidden" name="psid" id="psid">
+        <h3>Subs</h3>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Hot Subs</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option name="meats" value="chicken tender">Chicken Tender</option>
+                <option name="meats" value="philly">Philly Cheese</option>
+                <option name="meats" value="bleu">BH Chicken Cordon Bleu</option>
+                <option name="meats" value="mojo">Mojo Pork</option>
+                <option name="meats" value="meatball">Meatball</option>
+                <option name="meats" value="reuben">BH Reuben</option>
+                <option name="meats" value="honey turkey">BH Maple Honey Turkey</option>
+                <option name="meats" value="everroast">BH Everroast</option>
+                <option name="meats" value="vegan">BH Mediterranean Hummus Veggie Wrap</option>
+                <option name="meats" value="ultimate">Ultimate</option>
+                <option name="meats" value="deluxe">Deluxe</option>
+                <option name="meats" value="italian">Italian</option>
+                <option name="meats" value="american">American</option>
+                <option name="meats" value="cuban">Cuban</option>
+                <option name="meats" value="ham">Ham</option>
+                <option name="meats" value="turkey">Turkey</option>
+                <option name="meats" value="tuna">Tuna Salad</option>
+                <option name="meats" value="egg salad">Egg Salad</option>
+                <option name="meats" value="veggie">Veggie</option>
+                <option name="meats" value="roastbeef">Roast Beef</option>
+            </select>
         </div>
-        <select class="custom-select" id="inputGroupSelect01">
-          <option selected>Choose...</option>
-          <option name="meats" value="chicken tender">Chicken Tender</option>
-          <option name="meats" value="philly">Philly Cheese</option>
-          <option name="meats" value="bleu">BH Chicken Cordon Bleu</option>
-          <option name="meats" value="mojo">Mojo Pork</option>
-          <option name="meats" value="meatball">Meatball</option>
-          <option name="meats" value="reuben">BH Reuben</option>
-          <option name="meats" value="honey turkey">BH Maple Honey Turkey</option>
-          <option name="meats" value="everroast">BH Everroast</option>
-          <option name="meats" value="vegan">BH Mediterranean Hummus Veggie Wrap</option>
-          <option name="meats" value="ultimate">Ultimate</option>
-          <option name="meats" value="deluxe">Deluxe</option>
-          <option name="meats" value="italian">Italian</option>
-          <option name="meats" value="american">American</option>
-          <option name="meats" value="cuban">Cuban</option>
-          <option name="meats" value="ham">Ham</option>
-          <option name="meats" value="turkey">Turkey</option>
-          <option name="meats" value="tuna">Tuna Salad</option>
-          <option name="meats" value="egg salad">Egg Salad</option>
-          <option name="meats" value="veggie">Veggie</option>
-          <option name="meats" value="roastbeef">Roast Beef</option>
-        </select>
-      </div>
-    <h3>Toppings</h3>
-    <input type="checkbox" name="topping" value="tomatoes">Tomatos<br>
-    <input type="checkbox" name="topping" value="lettuce">Lettuce<br>
-    <input type="checkbox" name="topping" value="twin">Spinach<br>
-    <input type="checkbox" name="topping" value="cucumber">Cucumbers<br>
-    <input type="checkbox" name="topping" value="pickle">Pickles<br>
-    <input type="checkbox" name="topping" value="garlic pickles">BH Garlic Pickles<br>
-    <input type="checkbox" name="topping" value="onions">Onions<br>
-    <input type="checkbox" name="topping" value="green peppers">Green Peppers<br>
-    <input type="checkbox" name="topping" value="banana peppers">Banana Peppers<br>
-    <input type="checkbox" name="topping" value="jalapeno">Jalapenos<br>
-    <input type="checkbox" name="topping" value="olives">Olives<br>
-    <input type="checkbox" name="topping" value="oil vinegar">Oil & Vinegar<br>
-    <input type="checkbox" name="topping" value="salt">Salt<br>
-    <input type="checkbox" name="topping" value="pepper">Pepper<br>
-    <input type="checkbox" name="topping" value="oregano">Oregano<br>
-    <h3>Combo</h3>
-    <input type="radio" name="combo" value="no combo" checked>No Combo<br>
-    <input type="radio" name="combo" value="chips & a drink">Med. Drink & Chips<br>
-    <input type="radio" name="combo" value="soup & a drink">Med. Drink & Soup<br>
-    <h3>Heating</h3>
-    <input type="radio" name="heating" value="Not toasted or pressed" checked>None<br>
-    <input type="radio" name="heating" value="press">Pressed<br>
-    <input type="radio" name="heating" value="toasted">Toasted<br>
-    <input type="submit" value="Add to cart" id="submitButton">
-</form>
+        <div class="row">
+            <div class="col-6">
+                <h3>Toppings</h3>
+                <input type="checkbox" name="topping" value="tomatoes">Tomatos<br>
+                <input type="checkbox" name="topping" value="lettuce">Lettuce<br>
+                <input type="checkbox" name="topping" value="twin">Spinach<br>
+                <input type="checkbox" name="topping" value="cucumber">Cucumbers<br>
+                <input type="checkbox" name="topping" value="pickle">Pickles<br>
+                <input type="checkbox" name="topping" value="garlic pickles">BH Garlic Pickles<br>
+                <input type="checkbox" name="topping" value="onions">Onions<br>
+                <input type="checkbox" name="topping" value="green peppers">Green Peppers<br>
+                <input type="checkbox" name="topping" value="banana peppers">Banana Peppers<br>
+                <input type="checkbox" name="topping" value="jalapeno">Jalapenos<br>
+                <input type="checkbox" name="topping" value="olives">Olives<br>
+                <input type="checkbox" name="topping" value="oil vinegar">Oil & Vinegar<br>
+                <input type="checkbox" name="topping" value="salt">Salt<br>
+                <input type="checkbox" name="topping" value="pepper">Pepper<br>
+                <input type="checkbox" name="topping" value="oregano">Oregano<br>
+                <div class="col-6">
+                    <h3>Combo</h3>
+                    <input type="radio" name="combo" value="no combo" checked>No Combo<br>
+                    <input type="radio" name="combo" value="chips & a drink">Med. Drink & Chips<br>
+                    <input type="radio" name="combo" value="soup & a drink">Med. Drink & Soup<br>
+                    <h3>Heating</h3>
+                    <input type="radio" name="heating" value="Not toasted or pressed" checked>None<br>
+                    <input type="radio" name="heating" value="press">Pressed<br>
+                    <input type="radio" name="heating" value="toasted">Toasted<br>
+                    <input type="submit" value="Add to cart" id="submitButton">
+                </div>
+            </div>
+    </form>
 </body>
+
 </html>
