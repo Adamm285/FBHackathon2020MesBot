@@ -309,7 +309,8 @@ module.exports = class Curation {
             [
               Response.genWebUrlButton(
                 i18n.__("curation.shop"),
-                `${config.appUrl}/options`
+                `${config.appUrl}/options`,
+                "BUILD"
               ),
               Response.genPostbackButton(
                 i18n.__("curation.sales"),
@@ -317,7 +318,8 @@ module.exports = class Curation {
               )
             ]
           )
-        ].map(response => response )
+        ]
+        case "":
         response = 
         Response.genQuickReply(i18n.__("curation.received"), [{
             title: i18n.__("curation.directions"),
@@ -328,6 +330,7 @@ module.exports = class Curation {
             payload: "CARE_SALES"
           }
         ])
+
         break;
         case "CLOSEST_DELI":
       
