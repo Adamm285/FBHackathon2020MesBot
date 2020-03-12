@@ -319,7 +319,7 @@ module.exports = class Curation {
             ]
           )
         ]
-        case "":
+        case "BUILD":
         response = 
         Response.genQuickReply(i18n.__("curation.received"), [{
             title: i18n.__("curation.directions"),
