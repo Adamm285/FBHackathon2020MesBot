@@ -216,7 +216,7 @@ app.get('/options', (req, res, next) => {
 });
 // 
 // Handle postback from webview
-app.get('/optionspostback', (req, res, response) => {
+app.get('/optionspostback', (req, res, response, payload) => {
   let body = req.query;
   response =
   {
