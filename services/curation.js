@@ -374,7 +374,7 @@ module.exports = class Curation {
           text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
           buttons: [{
             type: "web_url",
-            url: appUrl + "/options",
+            url: config.appUrl + "/options",
             title: "Set preferences",
             webview_height_ratio: "full",
             messenger_extensions: true
