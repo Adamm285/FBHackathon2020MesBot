@@ -302,6 +302,9 @@ module.exports = class Curation {
       case "CURATION_SWISS_MUSTARD_HALF":
       case "CURATION_SWISS_BOTH_WHOLE":
       case "CURATION_SWISS_BOTH_HALF":
+        // 
+        response = this.setSubPreferences(payload);
+        break;
         //MAKE THE CARDS OF SUBS
         // response = [
         //   Response.genButtonTemplate(
@@ -321,23 +324,22 @@ module.exports = class Curation {
         // ]
         // 
         // case "BUILD":
-        // response = 
-        // Response.genQuickReply(i18n.__("curation.received"), [{
-        //     title: i18n.__("curation.directions"),
-        //     payload: "CLOSEST_DELI"
-        //   },
-        //   {
-        //     title: i18n.__("curation.sales"),
-        //     payload: "CARE_SALES"
-        //   }
-        // ])
+        response = 
+        Response.genQuickReply(i18n.__("curation.received"), [{
+            title: i18n.__("curation.directions"),
+            payload: "CLOSEST_DELI"
+          },
+          {
+            title: i18n.__("curation.sales"),
+            payload: "CARE_SALES"
+          }
+        ])
 
-        // break;
-        // case "CLOSEST_DELI":
+        break;
+        case "CLOSEST_DELI":
       
         // 
-        response = this.setSubPreferences(payload);
-        break;
+        
         // case "CURATION_OTHER_STYLE":
         // Build the recommendation logic here
         // outfit = "chickentender";${outfit}
@@ -382,35 +384,36 @@ module.exports = class Curation {
         }
       }
     };
-
+    console.log(response)
+    console.log("Preferences")
     return response;
   }
   // // Sends response messages via the Send API
-  callSendAPI(sender_psid, response) {
-    // Construct the message body
-    let request_body = {
-      "recipient": {
-        "id": sender_psid
-      },
-      "message": response
-    };
-    console.log(request_body);
-    // Send the HTTP request to the Messenger Platform
-    request({
-      "uri": "https://graph.facebook.com/v2.6/me/messages",
-      "qs": {
-        "access_token": config.pageAccesToken
-      },
-      "method": "POST",
-      "json": request_body
-    }, (err, res, body) => {
-      if (!err) {
-        console.log('message sent!')
-      } else {
-        console.error("Unable to send message:" + err);
-      }
-    });
-  }
+  // callSendAPI(sender_psid, response) {
+  //   // Construct the message body
+  //   let request_body = {
+  //     "recipient": {
+  //       "id": sender_psid
+  //     },
+  //     "message": response
+  //   };
+  //   console.log(request_body);
+  //   // Send the HTTP request to the Messenger Platform
+  //   request({
+  //     "uri": "https://graph.facebook.com/v2.6/me/messages",
+  //     "qs": {
+  //       "access_token": config.pageAccesToken
+  //     },
+  //     "method": "POST",
+  //     "json": request_body
+  //   }, (err, res, body) => {
+  //     if (!err) {
+  //       console.log('message sent!')
+  //     } else {
+  //       console.error("Unable to send message:" + err);
+  //     }
+  //   });
+  // }
   // 
   genCurationResponse(payload) {
     let occasion = payload.split("_")[3].toLowerCase();
