@@ -1,117 +1,137 @@
 <html>
+
 <head>
     <title>Choose your preferences</title>
 </head>
+
 <body>
 
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-            return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'Messenger'));
-
-    window.extAsyncInit = () => {
-        // TODO: How to parse env file from here?
-        MessengerExtensions.getSupportedFeatures(function success(result) {
-            let features = result.supported_features;
-            if (features.includes("context")) {
-                MessengerExtensions.getContext(1300071306843279,
-                    function success(thread_context) {
-                        // success
-                        document.getElementById("psid").value = thread_context.psid;
-                    },
-                    function error(err) {
-                        // error
-                        console.log(err);
-                    }
-                );
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
             }
-        }, function error(err) {
-            // error retrieving supported features
-            console.log(err);
-        });
-        document.getElementById('submitButton').addEventListener('click', () => {
-            MessengerExtensions.requestCloseBrowser(function success() {
-                console.log("Webview closing");
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+
+        window.extAsyncInit = () => {
+            // TODO: How to parse env file from here?
+            MessengerExtensions.getSupportedFeatures(function success(result) {
+                let features = result.supported_features;
+                if (features.includes("context")) {
+                    MessengerExtensions.getContext(1300071306843279,
+                        function success(thread_context) {
+                            // success
+                            document.getElementById("psid").value = thread_context.psid;
+                        },
+                        function error(err) {
+                            // error
+                            console.log(err);
+                        }
+                    );
+                }
             }, function error(err) {
+                // error retrieving supported features
                 console.log(err);
             });
-        });
-    };
+            document.getElementById('submitButton').addEventListener('click', () => {
+                MessengerExtensions.requestCloseBrowser(function success() {
+                    console.log("Webview closing");
+                }, function error(err) {
+                    console.log(err);
+                });
+            });
+        };
+        import React, { useState } from 'react';
+        import { Button, ButtonGroup } from 'reactstrap';
 
-</script>
-<div>
-    <h5>Radio Buttons</h5>
-    <ButtonGroup>
-      <Button color="primary" onClick={(ChickenTender) => setRSelected(Chicken Tender)} >Chicken Tender</Button>
-      <Button color="primary" onClick={(PhillyCheese) => setRSelected(2)} active={rSelected === 2}>Philly Cheese</Button>
-      <Button color="primary" onClick={(BHChickenCordonBleu) => setRSelected(3)} active={rSelected === 3}>BH Chicken Cordon Bleu</Button>
-    </ButtonGroup>
-    <p>Selected: {rSelected}</p>
+        const Example = (props) => {
+            const [cSelected, setCSelected] = useState([]);
+            const [rSelected, setRSelected] = useState(null);
 
-    <h5>Checkbox Buttons</h5>
-    <ButtonGroup>
-      <Button color="primary" onClick={() => onCheckboxBtnClick(1)} active={cSelected.includes(1)}>One</Button>
-      <Button color="primary" onClick={() => onCheckboxBtnClick(2)} active={cSelected.includes(2)}>Two</Button>
-      <Button color="primary" onClick={() => onCheckboxBtnClick(3)} active={cSelected.includes(3)}>Three</Button>
-    </ButtonGroup>
-    <p>Selected: {JSON.stringify(cSelected)}</p>
-  </div>
-<form action="/optionspostback" method="get">
-    <input type="hidden" name="psid" id="psid">
-    <h3>Hot Subs</h3>
-    <input type="radio" name="meats" value="chicken tender">Chicken Tender<br>
-    <input type="radio" name="meats" value="philly">Philly Cheese<br>
-    <input type="radio" name="meats" value="bleu">BH Chicken Cordon Bleu<br>
-    <input type="radio" name="meats" value="mojo">Mojo Pork<br>
-    <input type="radio" name="meats" value="meatball">Meatball<br>
-    <input type="radio" name="meats" value="reuben">BH Reuben<br>
-    <h3>Cold Subs & Wraps</h3>
-    <input type="radio" name="meats" value="honey turkey">BH Maple Honey Turkey<br>
-    <input type="radio" name="meats" value="everroast">BH Everroast<br>
-    <input type="radio" name="meats" value="vegan">BH Mediterranean Hummus Veggie Wrap<br>
-    <input type="radio" name="meats" value="ultimate">Ultimate<br>
-    <input type="radio" name="meats" value="deluxe">Deluxe<br>
-    <input type="radio" name="meats" value="italian">Italian<br>
-    <input type="radio" name="meats" value="american">American<br>
-    <input type="radio" name="meats" value="cuban">Cuban<br>
-    <input type="radio" name="meats" value="ham">Ham<br>
-    <input type="radio" name="meats" value="roastbeef">Roast Beef<br>
-    <input type="radio" name="meats" value="turkey">Turkey<br>
-    <input type="radio" name="meats" value="tuna">Tuna Salad<br>
-    <input type="radio" name="meats" value="egg">Egg Salad<br>
-    <input type="radio" name="meats" value="veggie">Veggie<br>
-    <h3>Toppings</h3>
-    <input type="checkbox" name="topping" value="tomatoes">Tomatos<br>
-    <input type="checkbox" name="topping" value="lettuce">Lettuce<br>
-    <input type="checkbox" name="topping" value="twin">Spinach<br>
-    <input type="checkbox" name="topping" value="cucumber">Cucumbers<br>
-    <input type="checkbox" name="topping" value="pickle">Pickles<br>
-    <input type="checkbox" name="topping" value="garlic pickles">BH Garlic Pickles<br>
-    <input type="checkbox" name="topping" value="onions">Onions<br>
-    <input type="checkbox" name="topping" value="green peppers">Green Peppers<br>
-    <input type="checkbox" name="topping" value="banana peppers">Banana Peppers<br>
-    <input type="checkbox" name="topping" value="jalapeno">Jalapenos<br>
-    <input type="checkbox" name="topping" value="olives">Olives<br>
-    <input type="checkbox" name="topping" value="oil vinegar">Oil & Vinegar<br>
-    <input type="checkbox" name="topping" value="salt">Salt<br>
-    <input type="checkbox" name="topping" value="pepper">Pepper<br>
-    <input type="checkbox" name="topping" value="oregano">Oregano<br>
-    <h3>Combo</h3>
-    <input type="radio" name="combo" value="no chips or a drink" checked>No Combo<br>
-    <input type="radio" name="combo" value="chips & a drink">Med. Drink & Chips<br>
-    <input type="radio" name="combo" value="soup & a drink">Med. Drink & Soup<br>
-    <h3>Heating</h3>
-    <input type="radio" name="heating" value="Not toasted or pressed" checked>None<br>
-    <input type="radio" name="heating" value="press">Pressed<br>
-    <input type="radio" name="heating" value="toasted">Toasted<br>
-    <input type="submit" value="Add to cart" id="submitButton">
-</form>
+            const onCheckboxBtnClick = (selected) => {
+                const index = cSelected.indexOf(selected);
+                if (index < 0) {
+                    cSelected.push(selected);
+                } else {
+                    cSelected.splice(index, 1);
+                }
+                setCSelected([...cSelected]);
+            }
+    </script>
+    <div>
+        <h5>Radio Buttons</h5>
+        <ButtonGroup>
+            <Button color="primary" onClick={(ChickenTender)=> setRSelected(Chicken Tender)} >Chicken Tender</Button>
+            <Button color="primary" onClick={(Philly Cheese)=> setRSelected(2)} active={rSelected === 2}>Philly
+                Cheese</Button>
+            <Button color="primary" onClick={(BHChickenCordonBleu)=> setRSelected(3)} active={rSelected === 3}>BH
+                Chicken Cordon Bleu</Button>
+        </ButtonGroup>
+        <p>Selected: {rSelected}</p>
+
+        <h5>Checkbox Buttons</h5>
+        <ButtonGroup>
+            <Button color="primary" onClick={()=> onCheckboxBtnClick(1)} active={cSelected.includes(1)}>One</Button>
+            <Button color="primary" onClick={()=> onCheckboxBtnClick(2)} active={cSelected.includes(2)}>Two</Button>
+            <Button color="primary" onClick={()=> onCheckboxBtnClick(3)} active={cSelected.includes(3)}>Three</Button>
+        </ButtonGroup>
+        <p>Selected: {JSON.stringify(cSelected)}</p>
+    </div>
+    <form action="/optionspostback" method="get">
+        <input type="hidden" name="psid" id="psid">
+        <h3>Hot Subs</h3>
+        <input type="radio" name="meats" value="chicken tender">Chicken Tender<br>
+        <input type="radio" name="meats" value="philly">Philly Cheese<br>
+        <input type="radio" name="meats" value="bleu">BH Chicken Cordon Bleu<br>
+        <input type="radio" name="meats" value="mojo">Mojo Pork<br>
+        <input type="radio" name="meats" value="meatball">Meatball<br>
+        <input type="radio" name="meats" value="reuben">BH Reuben<br>
+        <h3>Cold Subs & Wraps</h3>
+        <input type="radio" name="meats" value="honey turkey">BH Maple Honey Turkey<br>
+        <input type="radio" name="meats" value="everroast">BH Everroast<br>
+        <input type="radio" name="meats" value="vegan">BH Mediterranean Hummus Veggie Wrap<br>
+        <input type="radio" name="meats" value="ultimate">Ultimate<br>
+        <input type="radio" name="meats" value="deluxe">Deluxe<br>
+        <input type="radio" name="meats" value="italian">Italian<br>
+        <input type="radio" name="meats" value="american">American<br>
+        <input type="radio" name="meats" value="cuban">Cuban<br>
+        <input type="radio" name="meats" value="ham">Ham<br>
+        <input type="radio" name="meats" value="roastbeef">Roast Beef<br>
+        <input type="radio" name="meats" value="turkey">Turkey<br>
+        <input type="radio" name="meats" value="tuna">Tuna Salad<br>
+        <input type="radio" name="meats" value="egg">Egg Salad<br>
+        <input type="radio" name="meats" value="veggie">Veggie<br>
+        <h3>Toppings</h3>
+        <input type="checkbox" name="topping" value="tomatoes">Tomatos<br>
+        <input type="checkbox" name="topping" value="lettuce">Lettuce<br>
+        <input type="checkbox" name="topping" value="twin">Spinach<br>
+        <input type="checkbox" name="topping" value="cucumber">Cucumbers<br>
+        <input type="checkbox" name="topping" value="pickle">Pickles<br>
+        <input type="checkbox" name="topping" value="garlic pickles">BH Garlic Pickles<br>
+        <input type="checkbox" name="topping" value="onions">Onions<br>
+        <input type="checkbox" name="topping" value="green peppers">Green Peppers<br>
+        <input type="checkbox" name="topping" value="banana peppers">Banana Peppers<br>
+        <input type="checkbox" name="topping" value="jalapeno">Jalapenos<br>
+        <input type="checkbox" name="topping" value="olives">Olives<br>
+        <input type="checkbox" name="topping" value="oil vinegar">Oil & Vinegar<br>
+        <input type="checkbox" name="topping" value="salt">Salt<br>
+        <input type="checkbox" name="topping" value="pepper">Pepper<br>
+        <input type="checkbox" name="topping" value="oregano">Oregano<br>
+        <h3>Combo</h3>
+        <input type="radio" name="combo" value="no chips or a drink" checked>No Combo<br>
+        <input type="radio" name="combo" value="chips & a drink">Med. Drink & Chips<br>
+        <input type="radio" name="combo" value="soup & a drink">Med. Drink & Soup<br>
+        <h3>Heating</h3>
+        <input type="radio" name="heating" value="Not toasted or pressed" checked>None<br>
+        <input type="radio" name="heating" value="press">Pressed<br>
+        <input type="radio" name="heating" value="toasted">Toasted<br>
+        <input type="submit" value="Add to cart" id="submitButton">
+    </form>
 </body>
+
 </html>
