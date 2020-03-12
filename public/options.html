@@ -46,6 +46,23 @@
     };
 
 </script>
+<div>
+    <h5>Radio Buttons</h5>
+    <ButtonGroup>
+      <Button color="primary" onClick={(ChickenTender) => setRSelected(Chicken Tender)} >Chicken Tender</Button>
+      <Button color="primary" onClick={(PhillyCheese) => setRSelected(2)} active={rSelected === 2}>Philly Cheese</Button>
+      <Button color="primary" onClick={(BHChickenCordonBleu) => setRSelected(3)} active={rSelected === 3}>BH Chicken Cordon Bleu</Button>
+    </ButtonGroup>
+    <p>Selected: {rSelected}</p>
+
+    <h5>Checkbox Buttons</h5>
+    <ButtonGroup>
+      <Button color="primary" onClick={() => onCheckboxBtnClick(1)} active={cSelected.includes(1)}>One</Button>
+      <Button color="primary" onClick={() => onCheckboxBtnClick(2)} active={cSelected.includes(2)}>Two</Button>
+      <Button color="primary" onClick={() => onCheckboxBtnClick(3)} active={cSelected.includes(3)}>Three</Button>
+    </ButtonGroup>
+    <p>Selected: {JSON.stringify(cSelected)}</p>
+  </div>
 <form action="/optionspostback" method="get">
     <input type="hidden" name="psid" id="psid">
     <h3>Hot Subs</h3>
