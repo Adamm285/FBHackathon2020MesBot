@@ -231,8 +231,8 @@ app.get('/optionspostback', (req, res, response) => {
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
   // Construct the message body
-  var Receive = require("./services/receive.js");
-  Receive = new Receive();
+  var Response = require("./services/response.js");
+  Response = new Response();
   var Curation = require("./services/curation.js");
   Curation = new Curation();
   
