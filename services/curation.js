@@ -319,7 +319,7 @@ module.exports = class Curation {
           )
         ],
         
-        response = Response.genQuickReply(i18n.__("curation.received"), [{
+        Response.genQuickReply(i18n.__("curation.received"), [{
             title: i18n.__("curation.directions"),
             payload: "CLOSEST_DELI"
           },
@@ -329,6 +329,7 @@ module.exports = class Curation {
           }
         ])
         break;
+        case "CLOSEST_DELI":
       
         // 
         // response = this.genCurationResponse(payload);
@@ -360,26 +361,26 @@ module.exports = class Curation {
   }
   // 
   // Define the template and webview
-  setSubPreferences(sender_psid, response) {
-    response = {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "button",
-          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-          buttons: [{
-            type: "web_url",
-            url: appURL + "/options",
-            title: "Set preferences",
-            webview_height_ratio: "full",
-            messenger_extensions: true
-          }]
-        }
-      }
-    };
+  // setSubPreferences(sender_psid, response) {
+  //   response = {
+  //     attachment: {
+  //       type: "template",
+  //       payload: {
+  //         template_type: "button",
+  //         text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+  //         buttons: [{
+  //           type: "web_url",
+  //           url: appURL + "/options",
+  //           title: "Set preferences",
+  //           webview_height_ratio: "full",
+  //           messenger_extensions: true
+  //         }]
+  //       }
+  //     }
+  //   };
 
-    return response;
-  }
+    // return response;
+  // }
   // // Sends response messages via the Send API
   // callSendAPI(sender_psid, response) {
   //   // Construct the message body
