@@ -302,8 +302,23 @@ module.exports = class Curation {
       case "CURATION_SWISS_MUSTARD_HALF":
       case "CURATION_SWISS_BOTH_WHOLE":
       case "CURATION_SWISS_BOTH_HALF":
-        // 
-        response = [this.setSubPreferences(payload),
+        // MAKE THE CARDS OF SUBS
+        response = [
+          Response.genButtonTemplate(
+            i18n.__("curation.title"),
+            [
+              Response.genWebUrlButton(
+                i18n.__("curation.shop"),
+                `${config.appUrl}/options`,
+                
+              ),
+              Response.genPostbackButton(
+                i18n.__("curation.sales"),
+                "CARE_SALES"
+              )
+            ]
+          )
+        ]
         
         Response.genQuickReply(i18n.__("curation.received"), [{
             title: i18n.__("curation.directions"),
@@ -313,34 +328,17 @@ module.exports = class Curation {
             title: i18n.__("curation.sales"),
             payload: "CARE_SALES"
           }
-        ])]
+        ])
         break;
-        //MAKE THE CARDS OF SUBS
-        // response = [
-        //   Response.genButtonTemplate(
-        //     i18n.__("curation.title"),
-        //     [
-        //       Response.genWebUrlButton(
-        //         i18n.__("curation.shop"),
-        //         `${config.appUrl}/options`,
-                
-        //       ),
-        //       Response.genPostbackButton(
-        //         i18n.__("curation.sales"),
-        //         "CARE_SALES"
-        //       )
-        //     ]
-        //   )
-        // ]
-        // 
-        // case "BUILD":
+        
+        
         
 
-        break;
-        case "CLOSEST_DELI":
+        // break;
+        // case "CLOSEST_DELI":
       
         // 
-        
+        // response = this.setSubPreferences(payload),
         // case "CURATION_OTHER_STYLE":
         // Build the recommendation logic here
         // outfit = "chickentender";${outfit}
@@ -368,27 +366,27 @@ module.exports = class Curation {
   }
   // 
   // Define the template and webview
-  setSubPreferences(sender_psid, response) {
-    response = {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "button",
-          text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-          buttons: [{
-            type: "web_url",
-            url: config.appUrl + "/options",
-            title: "Set preferences",
-            webview_height_ratio: "full",
-            messenger_extensions: true
-          }]
-        }
-      }
-    };
-    console.log(response)
-    console.log("Preferences")
-    return response;
-  }
+  // setSubPreferences(sender_psid, response) {
+  //   response = {
+  //     attachment: {
+  //       type: "template",
+  //       payload: {
+  //         template_type: "button",
+  //         text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
+  //         buttons: [{
+  //           type: "web_url",
+  //           url: config.appUrl + "/options",
+  //           title: "Set preferences",
+  //           webview_height_ratio: "full",
+  //           messenger_extensions: true
+  //         }]
+  //       }
+  //     }
+  //   };
+  //   console.log(response)
+  //   console.log("Preferences")
+  //   return response;
+  // }
   // // Sends response messages via the Send API
   // callSendAPI(sender_psid, response) {
   //   // Construct the message body
