@@ -216,7 +216,7 @@ app.get('/options', (req, res, next) => {
 });
 // 
 // Handle postback from webview
-app.get('/optionspostback', (req, res, response, payload) => {
+app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   response =
   {
@@ -224,8 +224,6 @@ app.get('/optionspostback', (req, res, response, payload) => {
   };
 
   res.status(200).send('Please close this window to return to the conversation thread.');
-  console.log(payload);
-  console.log(response)
   callSendAPI(body.psid, response);
   // Curation.setSubPreferences(payload);
   
@@ -273,11 +271,11 @@ function callSendAPI(sender_psid, response) {
           "text": `You sent the message: ${request_body.message.text}.`
           },
           // Curation.handlePayload()
-        ]
+          ]
           break;
       }
     } else {
       console.error("Unable to send message index.js:" + err);
     }
   });
-}
+}5

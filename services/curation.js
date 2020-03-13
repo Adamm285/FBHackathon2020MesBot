@@ -318,7 +318,7 @@ module.exports = class Curation {
               )
             ]
           )
-        ]
+        ],
         
         Response.genQuickReply(i18n.__("curation.received"), [{
             title: i18n.__("curation.directions"),
@@ -414,38 +414,38 @@ module.exports = class Curation {
   //   });
   // }
   // 
-  genCurationResponse(payload) {
-    let occasion = payload.split("_")[3].toLowerCase();
-    let budget = payload.split("_")[2].toLowerCase();
-    let outfit = `${this.user.gender}-${occasion}`;
+  // genCurationResponse(payload) {
+  //   let occasion = payload.split("_")[3].toLowerCase();
+  //   let budget = payload.split("_")[2].toLowerCase();
+  //   let outfit = `${this.user.gender}-${occasion}`;
 
-    let buttons = [
-      Response.genWebUrlButton(
-        i18n.__("curation.shop"),
-        `${config.shopUrl}/products/${outfit}`
-      ),
-      Response.genPostbackButton(
-        i18n.__("curation.show"),
-        "CURATION_OTHER_STYLE"
-      )
-    ];
+  //   let buttons = [
+  //     Response.genWebUrlButton(
+  //       i18n.__("curation.shop"),
+  //       `${config.shopUrl}/products/${outfit}`
+  //     ),
+  //     Response.genPostbackButton(
+  //       i18n.__("curation.show"),
+  //       "CURATION_OTHER_STYLE"
+  //     )
+  //   ];
 
-    if (budget === "50") {
-      buttons.push(
-        Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
-      );
-    }
+  //   if (budget === "50") {
+  //     buttons.push(
+  //       Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
+  //     );
+  //   }
 
-    let response = Response.genGenericTemplate(
-      `${config.appUrl}/styles/${outfit}.jpg`,
-      // `./public/Subs/chickentender.jpg`,
-      i18n.__("curation.title"),
-      i18n.__("curation.subtitle"),
-      buttons
-    );
+  //   let response = Response.genGenericTemplate(
+  //     `${config.appUrl}/styles/${outfit}.jpg`,
+  //     // `./public/Subs/chickentender.jpg`,
+  //     i18n.__("curation.title"),
+  //     i18n.__("curation.subtitle"),
+  //     buttons
+  //   );
 
-    return response;
-  }
+  //   return response;
+  // }
 
   // randomOutfit() {
   //   let occasion = ["work", "party", "dinner"];
