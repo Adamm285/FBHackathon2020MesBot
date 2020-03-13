@@ -264,6 +264,7 @@ function callSendAPI(sender_psid, response) {
           break;
         default:
           console.log("hello world");
+          console.log(request_body.message.text);
           [  
           {
           "text": `You sent the message: ${request_body.message.text}.`
