@@ -70,9 +70,9 @@ module.exports = class Curation {
         ];
         break;
         // 
-      
+
       case "CURATION":
-        response = 
+        response =
           // Response.this.setSubPreferences(sender_psid),
           // // {
           // //   "text": `You sent the message: "${received_message.text}".`
@@ -310,7 +310,7 @@ module.exports = class Curation {
               Response.genWebUrlButton(
                 i18n.__("curation.shop"),
                 `${config.appUrl}/options`,
-                
+
               ),
               Response.genPostbackButton(
                 i18n.__("curation.sales"),
@@ -318,26 +318,32 @@ module.exports = class Curation {
               )
             ]
           )
-        ]
-        receive = [
-        Receive.handleQuickReply(i18n.__("curation.received"), [{
-          title: i18n.__("curation.directions"),
-          payload: "CLOSEST_DELI"
-        },
-        {
-          title: i18n.__("curation.sales"),
-          payload: "CARE_SALES"
-        }
-      ])]
-        
+        ].setSubPreferences(payload)
         break;
-        
-        
-        
+      case "BUILD":
+        response = [
+          Response.handleQuickReply(i18n.__("curation.received"), [{
+              title: i18n.__("curation.directions"),
+              payload: "CLOSEST_DELI"
+            },
+            {
+              title: i18n.__("curation.sales"),
+              payload: "CARE_SALES"
+            }
+          ])
+        ]
 
-        // break;
-        // case "CLOSEST_DELI":
-      
+        break;
+      case "CLOSEST_DELI":
+        response = Response.genPostbackButton(
+          i18n.__("curation.show"),
+          "CURATION_OTHER_STYLE"
+        )
+
+
+
+
+
         // 
         // response = this.setSubPreferences(payload),
         // case "CURATION_OTHER_STYLE":
@@ -367,23 +373,14 @@ module.exports = class Curation {
   }
   // 
   // Define the template and webview
-  // setSubPreferences(sender_psid, response) {
-  //   response = {
-  //     attachment: {
-  //       type: "template",
-  //       payload: {
-  //         template_type: "button",
-  //         text: "OK, let's set your room preferences so I won't need to ask for them in the future.",
-  //         buttons: [{
-  //           type: "web_url",
-  //           url: config.appUrl + "/options",
-  //           title: "Set preferences",
-  //           webview_height_ratio: "full",
-  //           messenger_extensions: true
-  //         }]
-  //       }
-  //     }
-  //   };
+  setSubPreferences(sender_psid, response) {
+    response = {
+      attachment: {
+        type: "template",
+        payload: "BUILD"
+      }
+    }
+  };
   //   console.log(response)
   //   console.log("Preferences")
   //   return response;
