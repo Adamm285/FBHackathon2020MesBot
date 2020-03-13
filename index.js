@@ -220,7 +220,8 @@ app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   response =
   {
-    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and a ${body.combo} and a ${body.heating}.`
+    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} 
+    and a ${body.combo} and a ${body.heating}.`
   };
 
   res.status(200).send('Please close this window to return to the conversation thread.');
@@ -257,7 +258,26 @@ function callSendAPI(sender_psid, response) {
     if (!err) {
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case "Set preferences":
+        case "CURATION_AMERICAN_MAYO_WHOLE":
+          case "CURATION_AMERICAN_MAYO_HALF":
+          case "CURATION_AMERICAN_MUSTARD_WHOLE":
+          case "CURATION_AMERICAN_MUSTARD_HALF":
+          case "CURATION_AMERICAN_BOTH_WHOLE":
+          case "CURATION_AMERICAN_BOTH_HALF":
+            // 
+          case "CURATION_YELLOW_MAYO_WHOLE":
+          case "CURATION_YELLOW_MAYO_HALF":
+          case "CURATION_YELLOW_MUSTARD_WHOLE":
+          case "CURATION_YELLOW_MUSTARD_HALF":
+          case "CURATION_YELLOW_BOTH_WHOLE":
+          case "CURATION_YELLOW_BOTH_HALF":
+            // 
+          case "CURATION_SWISS_MAYO_WHOLE":
+          case "CURATION_SWISS_MAYO_HALF":
+          case "CURATION_SWISS_MUSTARD_WHOLE":
+          case "CURATION_SWISS_MUSTARD_HALF":
+          case "CURATION_SWISS_BOTH_WHOLE":
+          case "CURATION_SWISS_BOTH_HALF":
           console.log("----------------!");
           response = request_body.message.text.handlePayload();
           console.log("----------------!");
