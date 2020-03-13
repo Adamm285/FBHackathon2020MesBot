@@ -318,8 +318,7 @@ module.exports = class Curation {
               )
             ]
           )
-        ].setSubPreferences(payload)
-        break;
+        ]
       case "BUILD":
         response = [
           Response.handleQuickReply(i18n.__("curation.received"), [{
