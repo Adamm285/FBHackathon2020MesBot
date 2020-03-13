@@ -319,6 +319,7 @@ module.exports = class Curation {
             ]
           )
         ]
+        break;
       case "BUILD":
         response = [
           Response.handleQuickReply(i18n.__("curation.received"), [{
