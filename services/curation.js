@@ -318,27 +318,27 @@ module.exports = class Curation {
               )
             ]
           )
-        ]
+        ];
         break;
-      case "BUILD":
-        response = [
-          Response.handleQuickReply(i18n.__("curation.received"), [{
-              title: i18n.__("curation.directions"),
-              payload: "CLOSEST_DELI"
-            },
-            {
-              title: i18n.__("curation.sales"),
-              payload: "CARE_SALES"
-            }
-          ])
-        ]
+      // case "BUILD":
+      //   response = [
+      //     Response.handleQuickReply(i18n.__("curation.received"), [{
+      //         title: i18n.__("curation.directions"),
+      //         payload: "CLOSEST_DELI"
+      //       },
+      //       {
+      //         title: i18n.__("curation.sales"),
+      //         payload: "CARE_SALES"
+      //       }
+      //     ])
+      //   ]
 
-        break;
-      case "CLOSEST_DELI":
-        response = Response.genPostbackButton(
-          i18n.__("curation.show"),
-          "CURATION_OTHER_STYLE"
-        )
+      //   break;
+      // case "CLOSEST_DELI":
+      //   response = Response.genPostbackButton(
+      //     i18n.__("curation.show"),
+      //     "CURATION_OTHER_STYLE"
+      //   )
 
 
 
