@@ -369,7 +369,7 @@ module.exports = class Curation {
         // break;
     }
     // response.delay = "4";
-    return [response, receive];
+    return [response];
   }
   // 
   // Define the template and webview
