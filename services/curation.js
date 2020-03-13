@@ -318,17 +318,18 @@ module.exports = class Curation {
               )
             ]
           )
-        ],
+        ]
+        receive = [
+        Receive.handleQuickReply(i18n.__("curation.received"), [{
+          title: i18n.__("curation.directions"),
+          payload: "CLOSEST_DELI"
+        },
+        {
+          title: i18n.__("curation.sales"),
+          payload: "CARE_SALES"
+        }
+      ])]
         
-        Response.genQuickReply(i18n.__("curation.received"), [{
-            title: i18n.__("curation.directions"),
-            payload: "CLOSEST_DELI"
-          },
-          {
-            title: i18n.__("curation.sales"),
-            payload: "CARE_SALES"
-          }
-        ])
         break;
         
         
@@ -362,7 +363,7 @@ module.exports = class Curation {
         // break;
     }
     // response.delay = "4";
-    return response;
+    return [response, receive];
   }
   // 
   // Define the template and webview
