@@ -217,9 +217,6 @@ app.get('/options', (req, res, next) => {
 // 
 // Handle postback from webview
 app.get('/optionspostback', (req, res, response) => {
-  var Receive = require("./services/receive.js");
-  Receive = new Receive();
-  
   let body = req.query;
   response =
   {
@@ -228,8 +225,6 @@ app.get('/optionspostback', (req, res, response) => {
 
   res.status(200).send('Please close this window to return to the conversation thread.');
   callSendAPI(body.psid, response);
-  // Curation.setSubPreferences(payload);
-  Receive.handleQuickReply(payload);
   
 });
 // 
@@ -240,7 +235,6 @@ function callSendAPI(sender_psid, response) {
   Response = new Response();
   var Curation = require("./services/curation.js");
   Curation = new Curation();
-  
   
   let request_body = {
     "recipient": {
@@ -275,11 +269,11 @@ function callSendAPI(sender_psid, response) {
           "text": `You sent the message: ${request_body.message.text}.`
           },
           // Curation.handlePayload()
-          ]
+        ]
           break;
       }
     } else {
       console.error("Unable to send message index.js:" + err);
     }
   });
-}5
+}

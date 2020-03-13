@@ -303,7 +303,7 @@ module.exports = class Curation {
       case "CURATION_SWISS_BOTH_WHOLE":
       case "CURATION_SWISS_BOTH_HALF":
         // MAKE THE CARDS OF SUBS
-        response = [
+        response = 
           Response.genButtonTemplate(
             i18n.__("curation.title"),
             [
@@ -317,8 +317,7 @@ module.exports = class Curation {
                 "CARE_SALES"
               )
             ]
-          )
-        ];
+          );
         break;
       // case "BUILD":
       //   response = [
@@ -369,7 +368,7 @@ module.exports = class Curation {
         // break;
     }
     // response.delay = "4";
-    return [response];
+    return response;
   }
   // 
   // Define the template and webview
