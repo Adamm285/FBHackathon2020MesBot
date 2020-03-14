@@ -230,7 +230,7 @@ app.get('/options', (req, res, next) => {
 });
 // 
 // Handle postback from webview
-app.get('/optionspostback', (req, res, response, payload) => {
+app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   let responseFinal = {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`
@@ -249,7 +249,7 @@ app.get('/optionspostback', (req, res, response, payload) => {
     res.status(200).send('Please close this window to return to the conversation thread.');
 
     console.log("bring in ...", response)
-    callSendAPI(body.psid, responseFinal, payload);
+    callSendAPI(body.psid, responseFinal);
   })
 
 
