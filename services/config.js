@@ -35,7 +35,7 @@ module.exports = {
   pageAccesToken: process.env.PAGE_ACCESS_TOKEN,
   appSecret: process.env.APP_SECRET,
   verifyToken: process.env.VERIFY_TOKEN,
-
+  mongodbUri: process.env.MONGODB_URI,
   // URL of your app domain
   appUrl: process.env.APP_URL,
 

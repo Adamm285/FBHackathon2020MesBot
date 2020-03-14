@@ -8,12 +8,14 @@ const
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
+  mongoose = require("mongoose");
   path = require("path"),
   Receive = require("./services/receive"),
   GraphAPi = require("./services/graph-api"),
   User = require("./services/user"),
   config = require("./services/config"),
   i18n = require("./i18n.config"),
+  db = config.get('mongodbUri');
   app = express().use(bodyParser.json()); // creates express http server
 var users = {};
 // Sets server port and logs message on success
@@ -22,6 +24,11 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening!'))
 app.use(express.static(path.join(path.resolve(), "public")));
 // 
 app.set("view engine", "ejs");
+// 
+mongoose
+    .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
+    .then(() => console.log('MongoDB Connected...'))
+    .catch(err => console.log(err));
 // 
 app.get("/", function (_req, res) {
   res.sendFile(path.join(__dirname, "./public/index.html"));
@@ -216,23 +223,20 @@ app.get('/options', (req, res, next) => {
 });
 // 
 // Handle postback from webview
-app.get('/optionspostback', (req, res, response) => {
+app.get('/optionspostback', (req, res, response, payload) => {
   let body = req.query;
   response =
   {
-    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} 
-    and ${body.combo} and ${body.heating}.`
+    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and ${body.combo} and ${body.heating}.`
   };
 
-  res.status(200).send('Please close this window to return to the conversation thread.');
-  callSendAPI(body.psid, response);
-  // orderNum() => {
-
-  // }
+  res.status(200).send('Please close this window to return to the conversation thread.', Sub);
+  callSendAPI(body.psid, response, payload);
+  
 });
 // 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response) {
+function callSendAPI(sender_psid, response, payload) {
   // Construct the message body
   var Response = require("./services/response.js");
   Response = new Response();
@@ -260,7 +264,7 @@ function callSendAPI(sender_psid, response) {
     if (!err) {
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case "Add to cart":
+        case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
           console.log("----------------!");
           response = request_body.message.text.handlePayload();
           console.log("----------------!");
