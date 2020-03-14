@@ -317,7 +317,7 @@ module.exports = class Curation {
                 "CARE_SALES"
               )
             ]
-          );
+          ).
         break;
       case "Add to cart":
         response = [
@@ -368,7 +368,7 @@ module.exports = class Curation {
         // break;
     }
     // response.delay = "4";
-    return response;
+    return {response, payload};
   }
   // 
   // Define the template and webview
