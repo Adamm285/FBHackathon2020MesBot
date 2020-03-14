@@ -15,7 +15,7 @@ const
   User = require("./services/user"),
   config = require("./services/config"),
   i18n = require("./i18n.config"),
-  db = config.get('./mongodbUri.config'),
+  db = require('./mongodbUri.config'),
   app = express().use(bodyParser.json()); // creates express http server
 var users = {};
 mongoose
