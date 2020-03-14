@@ -14,6 +14,7 @@ const
   GraphAPi = require("./services/graph-api"),
   User = require("./services/user"),
   config = require("./services/config"),
+  OrderId = require("./services/orderid"),
   i18n = require("./i18n.config"),
   db = config.get('mongodbUri'),
   app = express().use(bodyParser.json()); // creates express http server
