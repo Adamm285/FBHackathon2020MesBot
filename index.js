@@ -248,8 +248,8 @@ app.get('/optionspostback', (req, res, response) => {
 
     res.status(200).send('Please close this window to return to the conversation thread.');
 
-    console.log("bring in ...", response)
-    callSendAPI(body.psid, responseFinal);
+    console.log("bring in ...", responseFinal)
+    callSendAPI(body.psid, responseFinal, response);
   })
 
 
