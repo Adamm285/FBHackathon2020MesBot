@@ -319,7 +319,7 @@ module.exports = class Curation {
             ]
           );
         break;
-      case `${config.appUrl}/options`:
+      case "Add to cart":
         response = [
           Response.handleQuickReply(i18n.__("curation.received"), [{
               title: i18n.__("curation.directions"),
