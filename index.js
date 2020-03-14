@@ -17,14 +17,11 @@ const
   orderId = require("./services/orderid"),
   i18n = require("./i18n.config"),
   db = config.MONGODB_URI,
-  
+
   app = express().use(bodyParser.json()); // creates express http server
 var users = {};
 console.log(db);
-mongoose
-    .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
-    .then(() => console.log('MongoDB Connected...'))
-    .catch(err => console.log(err));
+
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening!'));
 // Creates the endpoint for our webhook 
@@ -32,7 +29,10 @@ app.use(express.static(path.join(path.resolve(), "public")));
 // 
 app.set("view engine", "ejs");
 // 
-
+mongoose
+    .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
+    .then(() => console.log('MongoDB Connected...'))
+    .catch(err => console.log(err));
 // 
 app.get("/", function (_req, res) {
   res.sendFile(path.join(__dirname, "./public/index.html"));

@@ -317,7 +317,7 @@ module.exports = class Curation {
                 "CARE_SALES"
               )
             ]
-          ).
+          )
         break;
       case "Add to cart":
         response = [
