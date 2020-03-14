@@ -8,16 +8,20 @@ const
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
-  mongoose = require("mongoose");
-  path = require("path"),
+  mongoose = require('mongoose');
+  path = require('path'),
   Receive = require("./services/receive"),
   GraphAPi = require("./services/graph-api"),
   User = require("./services/user"),
   config = require("./services/config"),
-  i18n = require("./i18n.config"),
-  db = config.get('mongodbUri');
+  // i18n = require("./i18n.config"),
+  db = config.get('mongodbUri'),
   app = express().use(bodyParser.json()); // creates express http server
 var users = {};
+mongoose
+    .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
+    .then(() => console.log('MongoDB Connected...'))
+    .catch(err => console.log(err));
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening!'));
 // Creates the endpoint for our webhook 
@@ -25,10 +29,7 @@ app.use(express.static(path.join(path.resolve(), "public")));
 // 
 app.set("view engine", "ejs");
 // 
-mongoose
-    .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
-    .then(() => console.log('MongoDB Connected...'))
-    .catch(err => console.log(err));
+
 // 
 app.get("/", function (_req, res) {
   res.sendFile(path.join(__dirname, "./public/index.html"));
