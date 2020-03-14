@@ -159,7 +159,7 @@ module.exports = class Curation {
           },
           {  
             title: i18n.__("curation.mustard"),
-            p  ayload: "CURATION_YELLOW_MUSTARD"
+            payload: "CURATION_YELLOW_MUSTARD"
           },
           { 
             title: i18n.__("curation.both"),
