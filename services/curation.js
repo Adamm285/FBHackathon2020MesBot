@@ -320,6 +320,8 @@ module.exports = class Curation {
               )
             ]
           )
+
+          console.log("Testing for response...", response)
         break;
       case "Add to cart":
         response = [
