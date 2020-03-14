@@ -16,9 +16,11 @@ const
   config = require("./services/config"),
   orderId = require("./services/orderid"),
   i18n = require("./i18n.config"),
-  // db = config.get('MONGODB_URI'),
+  db = config.MONGODB_URI,
+  
   app = express().use(bodyParser.json()); // creates express http server
 var users = {};
+console.log(db);
 mongoose
     .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
     .then(() => console.log('MongoDB Connected...'))
