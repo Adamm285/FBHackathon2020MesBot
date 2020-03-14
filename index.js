@@ -232,20 +232,26 @@ app.get('/options', (req, res, next) => {
 // Handle postback from webview
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
-  let responseFinal =
-  {
+  let responseFinal = {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`
   };
 
-  res.status(200).send('Please close this window to return to the conversation thread.', Sub.create({
-    response:"successfully",
-    payload: "awesome !!" 
 
-  }));
-  
-  console.log("bring in ...", response)
-  callSendAPI(body.psid, response);
-  
+  Sub.create({
+    response: response
+    
+
+  }).then((data) => {
+
+
+
+    res.status(200).send('Please close this window to return to the conversation thread.');
+
+    console.log("bring in ...", response)
+    callSendAPI(body.psid, responseFinal);
+  })
+
+
 });
 // 
 // Sends response messages via the Send API
@@ -255,7 +261,7 @@ function callSendAPI(sender_psid, response) {
   Response = new Response();
   var Curation = require("./services/curation.js");
   Curation = new Curation();
-  
+
   let request_body = {
     "recipient": {
       "id": sender_psid
@@ -285,12 +291,11 @@ function callSendAPI(sender_psid, response) {
         default:
           console.log("hello world");
           console.log(request_body.message.text);
-          [  
-          {
-          "text": `You sent the message: ${request_body.message.text}.`
-          },
-          // Curation.handlePayload()
-        ]
+          [{
+              "text": `You sent the message: ${request_body.message.text}.`
+            },
+            // Curation.handlePayload()
+          ]
           break;
       }
     } else {
