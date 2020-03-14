@@ -372,14 +372,14 @@ module.exports = class Curation {
   }
   // 
   // Define the template and webview
-  setSubPreferences(sender_psid, response) {
-    response = {
-      attachment: {
-        type: "template",
-        payload: "Set preferences"
-      }
-    }
-  };
+  // setSubPreferences(sender_psid, response) {
+  //   response = {
+  //     attachment: {
+  //       type: "template",
+  //       payload: "Set preferences"
+  //     }
+  //   }
+  // };
   //   console.log(response)
   //   console.log("Preferences")
   //   return response;

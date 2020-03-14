@@ -25,15 +25,17 @@ console.log(db);
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening!'));
 // Creates the endpoint for our webhook 
-app.use(express.static(path.join(path.resolve(), "public")));
-console.log(express.static(path.join(path.resolve(), "public")))
+app.use(express.static("public"));
+console.log(express.static("public"))
 // 
 app.set("view engine", "ejs");
 // 
-mongoose
-    .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
-    .then(() => console.log('MongoDB Connected...'))
-    .catch(err => console.log(err));
+// mongoose
+//     .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
+//     .then(() => console.log('MongoDB Connected...'))
+//     .catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/subdb")
+
 // 
 app.get("/", function (_req, res) {
   res.sendFile(path.join(__dirname, "./public/index.html"));
