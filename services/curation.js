@@ -135,7 +135,7 @@ module.exports = class Curation {
         break;
 
       case "CURATION_SWISS_CHEESE":
-        // Store the user budget preference here
+        // Sto re the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.sauce"), [{
             title: i18n.__("curation.mayo"),
             payload: "CURATION_SWISS_MAYO"
@@ -151,17 +151,17 @@ module.exports = class Curation {
         ]);
         break;
 
-      case "CURATION_YELLOW_CHEESE":
+      case "CUR   ATION_YELLOW_CHEESE":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.sauce"), [{
-            title: i18n.__("curation.mayo"),
-            payload: "CURATION_YELLOW_MAYO"
+            title:  i18n.__("curation.mayo"),
+            payload  : "CURATION_YELLOW_MAYO"
           },
-          {
+          {  
             title: i18n.__("curation.mustard"),
-            payload: "CURATION_YELLOW_MUSTARD"
+            p  ayload: "CURATION_YELLOW_MUSTARD"
           },
-          {
+          { 
             title: i18n.__("curation.both"),
             payload: "CURATION_YELLOW_BOTH"
           }
@@ -373,7 +373,7 @@ module.exports = class Curation {
         // break;
     }
     // response.delay = "4";
-    return {response, payload};
+    return response;
   }
   // 
   // Define the template and webview
