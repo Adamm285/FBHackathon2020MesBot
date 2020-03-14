@@ -25,6 +25,8 @@ module.exports = class Curation {
   handlePayload(payload) {
     let response;
     let outfit;
+
+    console.log("connecting payload...", payload)
     // 
     switch (payload) {
       case "SUMMER_COUPON":
