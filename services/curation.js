@@ -92,6 +92,7 @@ module.exports = class Curation {
               payload: "CURATION_WRAP"
             }
           ]);
+          console.log("Testing for response...", response)
         break;
 
       case "CURATION_WHITE":
@@ -321,7 +322,7 @@ module.exports = class Curation {
             ]
           )
 
-          console.log("Testing for response...", response)
+          
         break;
       case "Add to cart":
         response = [
