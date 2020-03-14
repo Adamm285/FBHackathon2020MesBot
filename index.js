@@ -14,7 +14,6 @@ const
   GraphAPi = require("./services/graph-api"),
   User = require("./services/user"),
   config = require("./services/config"),
-  orderId = require("./services/orderid"),
   i18n = require("./i18n.config"),
   Sub = require("./services/orderid"),
   db = config.MONGODB_URI,
@@ -238,7 +237,11 @@ app.get('/optionspostback', (req, res, response) => {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`
   };
 
-  res.status(200).send('Please close this window to return to the conversation thread.', Sub);
+  res.status(200).send('Please close this window to return to the conversation thread.', Sub.create({
+    response:"successfully",
+    payload: "awesome" 
+
+  }));
   
   console.log("bring in ...", response)
   callSendAPI(body.psid, response);
