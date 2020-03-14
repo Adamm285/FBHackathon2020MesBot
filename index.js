@@ -16,7 +16,7 @@ const
   config = require("config"),
   orderId = require("./services/orderid"),
   i18n = require("./i18n.config"),
-  db = config.get('mongodbUri'),
+  db = config.get('./mongodbUri.config'),
   app = express().use(bodyParser.json()); // creates express http server
 var users = {};
 mongoose
@@ -229,7 +229,7 @@ app.get('/optionspostback', (req, res, response, payload) => {
   let body = req.query;
   response =
   {
-    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping} and ${body.combo} and ${body.heating}.`
+    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`
   };
 
   res.status(200).send('Please close this window to return to the conversation thread.', Sub);
