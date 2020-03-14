@@ -31,6 +31,7 @@ module.exports = {
   mPlatformVersion: "v3.2",
 
   // Page and Application information
+  
   pageId: process.env.PAGE_ID,
   appId: process.env.APP_ID,
   pageAccesToken: process.env.PAGE_ACCESS_TOKEN,
