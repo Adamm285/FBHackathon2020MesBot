@@ -19,7 +19,7 @@ const
   db = config.get('mongodbUri'),
   app = express().use(bodyParser.json()); // creates express http server
 var users = {};
-db.mongoose
+mongoose
     .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
