@@ -239,8 +239,8 @@ app.get('/optionspostback', (req, res, response) => {
 
   Sub.create({
     response: responseFinal.text,
-    payload: "payload"
-    
+    payload: "payload",
+    psid: psid
 
   }).then((data) => {
 
