@@ -21,7 +21,8 @@ const ENV_VARS = [
   "APP_SECRET",
   "VERIFY_TOKEN",
   "APP_URL",
-  "SHOP_URL"
+  "SHOP_URL",
+  "MONGODB_URI"
 ];
 
 module.exports = {
