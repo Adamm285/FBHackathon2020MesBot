@@ -239,7 +239,7 @@ app.get('/optionspostback', (req, res, response) => {
 
   Sub.create({
     response: responseFinal,
-    // payload: payload
+    payload: "payload"
     
 
   }).then((data) => {
@@ -248,8 +248,8 @@ app.get('/optionspostback', (req, res, response) => {
 
     res.status(200).send('Please close this window to return to the conversation thread.');
 
-    console.log("bring in ...", response)
-    callSendAPI(body.psid, responseFinal);
+    console.log("bring in ...", data)
+    callSendAPI(body.psid, responseFinal, response);
   })
 
 

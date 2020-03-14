@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const subSchema = new Schema({
   response: { type: String, required: true },
-  // payload: { type: String },
+  payload: { type: String },
   date: { type: Date, default: Date.now }
 });
 
