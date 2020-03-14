@@ -8,13 +8,13 @@ const
   express = require('express'),
   request = require('request'),
   bodyParser = require('body-parser'),
-  mongoose = require('mongoose');
+  mongoose = require('mongoose'),
   path = require('path'),
   Receive = require("./services/receive"),
   GraphAPi = require("./services/graph-api"),
   User = require("./services/user"),
   config = require("./services/config"),
-  // i18n = require("./i18n.config"),
+  i18n = require("./i18n.config"),
   db = config.get('mongodbUri'),
   app = express().use(bodyParser.json()); // creates express http server
 var users = {};
