@@ -13,7 +13,7 @@ const
   Receive = require("./services/receive"),
   GraphAPi = require("./services/graph-api"),
   User = require("./services/user"),
-  config = require("config"),
+  config = require("./services/config"),
   // OrderId = require("./services/orderid"),
   i18n = require("./i18n.config"),
   db = config.get('mongodbUri'),
