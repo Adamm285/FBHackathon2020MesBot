@@ -11,29 +11,30 @@ module.exports = class Directions {
         let response;
         console.log("switching to directions...", payload);
         switch (payload) {
-            // case payload:
-            //     if (payload) {
-            //           let delayed = {
-            //             "text": `Great, I`
-            //           }  
-            //           setTimeout((data) => {
-            //                 console.log(delayed)
-            //                 return response 
-            //             }, 4000);
-            //           // res.status(200).send('Please close this window to return to the conversation thread.');
-            //           // console.log("bring in ...", data)
-            //           Recieve.callSendAPI(data, response);
-            //     }
-            //     break;
-            //     // 
-            // case "CLOSEST_DELI":
-            response = Response.genPostbackButton(
-                i18n.__("curation.received"),
-                "CURATION"
-            )
-        }
-        break;
-        // 
+            case payload:
+                if (payload) {
+                    //           let delayed = {
+                    //             "text": `Great, I`
+                    //           }  
+                    //           setTimeout((data) => {
+                    //                 console.log(delayed)
+                    //                 return response 
+                    //             }, 4000);
+                    //           // res.status(200).send('Please close this window to return to the conversation thread.');
+                    //           // console.log("bring in ...", data)
+                    //           Recieve.callSendAPI(data, response);
+                    //     }
+                    //     break;
+                    //     // 
+                    // case "CLOSEST_DELI":
+                    
+                        i18n.__("curation.received"),
+                        "CURATION"
+                    
+                }
+                break;
+                // 
+        };
+        return response;
     };
-    return response;
 };
