@@ -286,7 +286,7 @@ function callSendAPI(sender_psid, response) {
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
           console.log("----------------!");
-          response = Curation.handlePayload(i18n.__("curation.received"));
+          response = Curation.handlePayload("Add to cart");
           console.log("----------------!");
           break;
         default:
