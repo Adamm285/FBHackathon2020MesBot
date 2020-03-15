@@ -29,18 +29,14 @@ app.use(express.static("public"));
 console.log(express.static("public"))
 // 
 app.set("view engine", "ejs");
-// 
-// mongoose
-//     .connect(db, {useCreateIndex: true, useUnifiedTopology: true, useNewUrlParser: true})
-//     .then(() => console.log('MongoDB Connected...'))
-//     .catch(err => console.log(err));
+// Database Connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/subdb")
 
-// 
+// Homepage
 app.get("/", function (_req, res) {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
-// 
+// Build Profile - webhook
 app.get("/profile", (req, res) => {
   let token = req.query["verify_token"];
   let mode = req.query["mode"];
@@ -234,33 +230,16 @@ app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   let responseFinal = {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`
-  
   };
-  
-
+  // Data for table in db
   Sub.create({
     response: responseFinal.text,
     payload: "payload",
-    
-
   }).then((data) => {
-    let delay = {
-      "text": `Great, I`
-    }  
-    setTimeout((delay) => {
-          return delay 
-      }, 40000);
-       
-    
-
-
     res.status(200).send('Please close this window to return to the conversation thread.');
-
     console.log("bring in ...", data)
     callSendAPI(body.psid, responseFinal, response);
   })
-
-
 });
 // 
 // Sends response messages via the Send API
@@ -270,7 +249,7 @@ function callSendAPI(sender_psid, response) {
   Response = new Response();
   var Curation = require("./services/curation.js");
   Curation = new Curation();
-
+  // 
   let request_body = {
     "recipient": {
       "id": sender_psid
@@ -302,10 +281,10 @@ function callSendAPI(sender_psid, response) {
         default:
           console.log("hello world");
           console.log(request_body.message.text);
-          [{
+          [
+            {
               "text": `You sent the message: ${request_body.message.text}.`
             },
-            // Curation.handlePayload()
           ]
           break;
       }
@@ -314,3 +293,4 @@ function callSendAPI(sender_psid, response) {
     }
   });
 }
+// 

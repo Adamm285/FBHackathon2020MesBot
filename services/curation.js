@@ -21,11 +21,11 @@ module.exports = class Curation {
     this.user = user;
     this.webhookEvent = webhookEvent;
   }
-
+  // 
   handlePayload(payload) {
     let response;
     let outfit;
-
+    // 
     console.log("connecting payload...", payload)
     // 
     switch (payload) {
@@ -71,8 +71,7 @@ module.exports = class Curation {
           )
         ];
         break;
-        // 
-
+        //  
       case "CURATION":
         response =
           // Response.this.setSubPreferences(sender_psid),
@@ -92,9 +91,9 @@ module.exports = class Curation {
               payload: "CURATION_WRAP"
             }
           ]);
-          console.log("Testing for response...", response)
+        console.log("Testing for response...", response)
         break;
-
+        // 
       case "CURATION_WHITE":
       case "CURATION_WHEAT":
       case "CURATION_WRAP":
@@ -116,7 +115,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_AMERICAN_CHEESE":
         // Store the user veggie preference here
         response = Response.genQuickReply(i18n.__("curation.sauce"), [{
@@ -133,7 +132,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_SWISS_CHEESE":
         // Sto re the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.sauce"), [{
@@ -150,24 +149,24 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CUR   ATION_YELLOW_CHEESE":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.sauce"), [{
-            title:  i18n.__("curation.mayo"),
-            payload  : "CURATION_YELLOW_MAYO"
+            title: i18n.__("curation.mayo"),
+            payload: "CURATION_YELLOW_MAYO"
           },
-          {  
+          {
             title: i18n.__("curation.mustard"),
             payload: "CURATION_YELLOW_MUSTARD"
           },
-          { 
+          {
             title: i18n.__("curation.both"),
             payload: "CURATION_YELLOW_BOTH"
           }
         ]);
         break;
-
+        // 
       case "CURATION_YELLOW_MAYO":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -180,7 +179,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_YELLOW_MUSTARD":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -193,7 +192,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_YELLOW_BOTH":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -206,7 +205,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_AMERICAN_MAYO":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -219,7 +218,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_AMERICAN_MUSTARD":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -232,7 +231,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_AMERICAN_BOTH":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -245,7 +244,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_SWISS_MAYO":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -258,7 +257,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_SWISS_MUSTARD":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -271,7 +270,7 @@ module.exports = class Curation {
           }
         ]);
         break;
-
+        // 
       case "CURATION_SWISS_BOTH":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.size"), [{
@@ -306,7 +305,7 @@ module.exports = class Curation {
       case "CURATION_SWISS_BOTH_WHOLE":
       case "CURATION_SWISS_BOTH_HALF":
         // MAKE THE CARDS OF SUBS
-        response = 
+        response =
           Response.genButtonTemplate(
             i18n.__("curation.title"),
             [
@@ -320,139 +319,20 @@ module.exports = class Curation {
                 "CARE_SALES"
               )
             ]
-          )
-
-          
+          ).then((data) => {
+            let delay = {
+              "text": `Great, I`
+            }  
+            setTimeout((data) => {
+                  return data 
+              }, 4000);
+            // res.status(200).send('Please close this window to return to the conversation thread.');
+            // console.log("bring in ...", data)
+            callSendAPI(data, response);
+          })
         break;
-      // case "Add to cart":
-      //   response = 
-      //     Response.handleQuickReply(i18n.__("curation.received"), [{
-      //         title: i18n.__("curation.directions"),
-      //         payload: "CLOSEST_DELI"
-      //       },
-      //       {
-      //         title: i18n.__("curation.sales"),
-      //         payload: "CARE_SALES"
-      //       }
-      //     ])
-        
-
-      //   break;
-      // case "CLOSEST_DELI":
-      //   response = Response.genPostbackButton(
-      //     i18n.__("curation.show"),
-      //     "CURATION_OTHER_STYLE"
-      //   )
-      //   break;
-      
-
-
-
-        // 
-        // response = this.setSubPreferences(payload),
-        // case "CURATION_OTHER_STYLE":
-        // Build the recommendation logic here
-        // outfit = "chickentender";${outfit}
-
-        // response = Response.genGenericTemplate(
-        //   `./public/Subs/chickentender.jpg`,
-        //   i18n.__("curation.title"),
-        //   i18n.__("curation.subtitle"),
-        //   [
-        //     Response.genWebUrlButton(
-        //       i18n.__("curation.shop"),
-        //       // `${config.shopUrl}/products/${outfit}` use this to buy the sub
-        //     ),
-        //     Response.genPostbackButton(
-        //       i18n.__("curation.show"),
-        //       "CURATION_OTHER_STYLE"
-        //       // use this to order a different sub
-        //     )
-        //   ]
-        // );
-        
-          }
+    }
     // response.delay = "4";
     return response;
   }
-  // 
-  // Define the template and webview
-  // setSubPreferences(sender_psid, response) {
-  //   response = {
-  //     attachment: {
-  //       type: "template",
-  //       payload: "Set preferences"
-  //     }
-  //   }
-  // };
-  //   console.log(response)
-  //   console.log("Preferences")
-  //   return response;
-  // }
-  // // Sends response messages via the Send API
-  // callSendAPI(sender_psid, response) {
-  //   // Construct the message body
-  //   let request_body = {
-  //     "recipient": {
-  //       "id": sender_psid
-  //     },
-  //     "message": response
-  //   };
-  //   console.log(request_body);
-  //   // Send the HTTP request to the Messenger Platform
-  //   request({
-  //     "uri": "https://graph.facebook.com/v2.6/me/messages",
-  //     "qs": {
-  //       "access_token": config.pageAccesToken
-  //     },
-  //     "method": "POST",
-  //     "json": request_body
-  //   }, (err, res, body) => {
-  //     if (!err) {
-  //       console.log('message sent!')
-  //     } else {
-  //       console.error("Unable to send message:" + err);
-  //     }
-  //   });
-  // }
-  // 
-  // genCurationResponse(payload) {
-  //   let occasion = payload.split("_")[3].toLowerCase();
-  //   let budget = payload.split("_")[2].toLowerCase();
-  //   let outfit = `${this.user.gender}-${occasion}`;
-
-  //   let buttons = [
-  //     Response.genWebUrlButton(
-  //       i18n.__("curation.shop"),
-  //       `${config.shopUrl}/products/${outfit}`
-  //     ),
-  //     Response.genPostbackButton(
-  //       i18n.__("curation.show"),
-  //       "CURATION_OTHER_STYLE"
-  //     )
-  //   ];
-
-  //   if (budget === "50") {
-  //     buttons.push(
-  //       Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
-  //     );
-  //   }
-
-  //   let response = Response.genGenericTemplate(
-  //     `${config.appUrl}/styles/${outfit}.jpg`,
-  //     // `./public/Subs/chickentender.jpg`,
-  //     i18n.__("curation.title"),
-  //     i18n.__("curation.subtitle"),
-  //     buttons
-  //   );
-
-  //   return response;
-  // }
-
-  // randomOutfit() {
-  //   let occasion = ["work", "party", "dinner"];
-  //   let randomIndex = Math.floor(Math.random() * occasion.length);
-
-  //   return occasion[randomIndex];
-  // }
 };

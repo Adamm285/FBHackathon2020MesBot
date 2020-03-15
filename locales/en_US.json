@@ -23,15 +23,16 @@
     "coupon": "Added your coupon to this thread, you can now check out the discounted summer collection"
   },
   "directions":{
-    "received": "Your order has been received at {{userLocale}} and will be ready in 20 mins."
+    "received": "Your order has been received and will be ready in 20 mins.",
+    "directions": "Directions"
   },
   "curation": {
     "prompt": "Would you like a Wrap or White or Wheat bread?",
     "cheese": "What kind of cheese would you like?",
     "sauce": "Would you like Mayo or Mustard?",
     "size": "What size would you like?",
-    "veggies": "Which veggies would you like?",
-    "received": "Your order has been received at {{userLocale}} and will be ready in 20 mins.",
+    "veggies": "Which vegtables would you like?",
+    "received": "Your order has been received and will be ready in 20 mins.",
     "directions": "Directions",
     "bread0": "White",
     "bread1": "Wheat",
@@ -51,7 +52,7 @@
     "veg3": "Tomatoes",
     "veg4": "Banana peppers",
     "shop": "Sub Menu",
-    "title": "Great! Let's start by choosing which sub to build.",
+    "title": "Let's choose which sub to build.",
     "subtitle": "Online Special $5.99",
     "show": "Another Sub"
   },

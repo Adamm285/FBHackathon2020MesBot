@@ -8,9 +8,7 @@ const Response = require("./response"),
 module.exports = class Order {
     static handlePayload(payload) {
         let response;
-
         console.log("switching to directions...", payload);
-
         switch (payload) {
             case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
                 console.log("switched to directions...")
@@ -25,52 +23,52 @@ module.exports = class Order {
                         }
                     ]);
                 // })
-                break;
-            case "CLOSEST_DELI":
-                response = Response.genPostbackButton(
-                    i18n.__("curation.show"),
-                    "CURATION_OTHER_STYLE"
-                )
-                break;
-            case "TRACK_ORDER":
-                response = Response.genQuickReply(i18n.__("order.prompt"), [{
-                        title: i18n.__("order.account"),
-                        payload: "LINK_ORDER"
-                    },
-                    {
-                        title: i18n.__("order.search"),
-                        payload: "SEARCH_ORDER"
-                    },
-                    {
-                        title: i18n.__("menu.help"),
-                        payload: "CARE_ORDER"
-                    }
-                ]);
-                break;
-
-            case "SEARCH_ORDER":
-                response = Response.genText(i18n.__("order.number"));
-                break;
-
-            case "ORDER_NUMBER":
-                response = Response.genImageTemplate(
-                    `${config.appUrl}/order.png`,
-                    i18n.__("order.status")
-                );
-                break;
-
-            case "LINK_ORDER":
-                response = [
-                    Response.genText(i18n.__("order.dialog")),
-                    Response.genText(i18n.__("order.searching")),
-                    Response.genImageTemplate(
-                        `${config.appUrl}/order.png`,
-                        i18n.__("order.status")
-                    )
-                ];
-                break;
-        }
-
-        return response;
+                break;]
+        // 
+        case "CLOSEST_DELI":
+        response = Response.genPostbackButton(
+            i18n.__("curation.show"),
+            "CURATION_OTHER_STYLE"
+        )
+        break;
+        // 
+        case "TRACK_ORDER":
+        response = Response.genQuickReply(i18n.__("order.prompt"), [{
+                title: i18n.__("order.account"),
+                payload: "LINK_ORDER"
+            },
+            {
+                title: i18n.__("order.search"),
+                payload: "SEARCH_ORDER"
+            },
+            {
+                title: i18n.__("menu.help"),
+                payload: "CARE_ORDER"
+            }
+        ]);
+        break;
+        // 
+        case "SEARCH_ORDER":
+        response = Response.genText(i18n.__("order.number"));
+        break;
+        // 
+        case "ORDER_NUMBER":
+        response = Response.genImageTemplate(
+            `${config.appUrl}/order.png`,
+            i18n.__("order.status")
+        );
+        break;
+        // 
+        case "LINK_ORDER":
+        response = [
+            Response.genText(i18n.__("order.dialog")),
+            Response.genText(i18n.__("order.searching")),
+            Response.genImageTemplate(
+                `${config.appUrl}/order.png`,
+                i18n.__("order.status")
+            )
+        ];
+        break;
     }
-};
+    return response;
+}
