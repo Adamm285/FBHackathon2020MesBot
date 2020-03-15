@@ -319,18 +319,19 @@ module.exports = class Curation {
                 "CARE_SALES"
               )
             ]
-          ).then((repsonse) => {
-            let delayed = {
-              "text": `Great, I`
-            }  
-            setTimeout((data) => {
-                  console.log(delayed)
-                  return response 
-              }, 4000);
-            // res.status(200).send('Please close this window to return to the conversation thread.');
-            // console.log("bring in ...", data)
-            callSendAPI(data, response);
-          })
+          )
+          // .then((repsonse) => {
+          //   let delayed = {
+          //     "text": `Great, I`
+          //   }  
+          //   setTimeout((data) => {
+          //         console.log(delayed)
+          //         return response 
+          //     }, 4000);
+          //   // res.status(200).send('Please close this window to return to the conversation thread.');
+          //   // console.log("bring in ...", data)
+          //   callSendAPI(data, response);
+          // })
         break;
     }
     // response.delay = "4";
