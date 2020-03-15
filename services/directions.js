@@ -17,7 +17,7 @@ module.exports = class Directions {
                         "text": `Great, I`
                     }
                     setTimeout((data) => {
-                        
+                        response = 
                         Response.genText(delayed)
                         return response
                     }, 4000);
