@@ -2,8 +2,8 @@
 
 // Imports dependencies
 const Response = require("./response"),
-    Recieve = require("./receive")
-i18n = require("../i18n.config"),
+    Recieve = require("./receive"),
+    i18n = require("../i18n.config"),
     config = require("./config");
 // turns out you directions has been depercated
 module.exports = class Directions {
