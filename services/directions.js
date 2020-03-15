@@ -12,10 +12,10 @@ module.exports = class Order {
         console.log("switching to directions...", payload);
 
         switch (payload) {
-            case "ADD_TO_CART":
+            case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
                 console.log("switched to directions...")
                 response =
-                    Response.genText(i18n.__("directions.received"), [{
+                    Response.genQuickReply(i18n.__("directions.received"), [{
                             title: i18n.__("curation.directions"),
                             payload: "CLOSEST_DELI"
                         },
