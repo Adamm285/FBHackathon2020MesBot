@@ -14,7 +14,7 @@ module.exports = class Order {
             case response:
                 console.log("switched to directions...")
                 response =
-                    Response.genQuickReply(i18n.__("directions.received"), [{
+                    Response.genText(i18n.__("directions.received"), [{
                             title: i18n.__("curation.directions"),
                             payload: "CLOSEST_DELI"
                         },
