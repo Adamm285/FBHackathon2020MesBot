@@ -7,11 +7,12 @@ const Response = require("./response"),
 
 module.exports = class Order {
     static handlePayload(payload) {
+        response = payload
         let response;
         console.log("switching to directions...", payload);
 
-        switch (payload) {
-            case payload:
+        switch (response) {
+            case response:
                 console.log("switched to directions...")
                 response =
                     Response.genQuickReply(i18n.__("directions.received"), [{
