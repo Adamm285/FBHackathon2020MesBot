@@ -284,7 +284,7 @@ function callSendAPI(sender_psid, response) {
     if (!err) {
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
+        case "Add to cart":
           console.log("----------------!");
           response = Directions.handlePayload();
           console.log("----------------!");
