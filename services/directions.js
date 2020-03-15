@@ -12,7 +12,7 @@ module.exports = class Directions {
         switch (payload) {
             case payload:
                 console.log("switched to directions...")
-                if (repsonse) {
+                if (payload) {
                       let delayed = {
                         "text": `Great, I`
                       }  
