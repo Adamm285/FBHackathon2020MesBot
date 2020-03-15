@@ -12,7 +12,7 @@ module.exports = class Order {
     switch (payload) {
         case "Add to cart":
         response = 
-          Response.handleQuickReply(i18n.__("directions.received"), [{
+          Response.genQuickReply(i18n.__("directions.received"), [{
               title: i18n.__("curation.directions"),
               payload: "CLOSEST_DELI"
             },
