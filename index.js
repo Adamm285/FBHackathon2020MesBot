@@ -280,7 +280,7 @@ function callSendAPI(sender_psid, response) {
     },
     "method": "POST",
     "json": request_body
-  }, (err, response, body, payload) => {
+  }, (err, response, body) => {
     if (!err) {
       console.log("Body is...", body)
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
@@ -288,7 +288,7 @@ function callSendAPI(sender_psid, response) {
         case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
           console.log("----------------!");
           response = 
-          Response.genQuickReply(i18n.__("directions.received"), [{
+          Response.genHandlePayload(i18n.__("directions.received"), [{
               title: i18n.__("curation.directions"),
               payload: "CLOSEST_DELI"
             },
