@@ -8,7 +8,7 @@ const Response = require("./response"),
 module.exports = class Order {
   static handlePayload(payload) {
     let response;
-    console.log("switching to directions...");
+    console.log("switching to directions...", payload);
     response = 
           Response.genQuickReply(i18n.__("directions.received"), [{
               title: i18n.__("curation.directions"),
