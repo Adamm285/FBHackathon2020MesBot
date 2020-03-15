@@ -325,7 +325,7 @@ module.exports = class Curation {
           
         break;
       case "Add to cart":
-        response = [
+        response = 
           Response.handleQuickReply(i18n.__("curation.received"), [{
               title: i18n.__("curation.directions"),
               payload: "CLOSEST_DELI"
@@ -335,7 +335,7 @@ module.exports = class Curation {
               payload: "CARE_SALES"
             }
           ])
-        ]
+        
 
         break;
       case "CLOSEST_DELI":
