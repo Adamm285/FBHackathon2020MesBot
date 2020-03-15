@@ -24,17 +24,10 @@ module.exports = class Directions {
                     // console.log("bring in ...", data)
                     Recieve.callSendAPI(data, response);
                 }
-                //     break;
-                // // 
-                // case "CLOSEST_DELI":
-
-                    // i18n.__("curation.received"),
-                    // "CURATION"
-
+                break;
         }
-        break;
         // 
         return response;
     };
-   
+
 };
