@@ -12,17 +12,18 @@ module.exports = class Directions {
         switch (payload) {
             case payload:
                 console.log("switched to directions...")
-                response =
-                    Response.genQuickReply(i18n.__("directions.received"), [{
-                            title: i18n.__("curation.directions"),
-                            payload: "CLOSEST_DELI"
-                        },
-                        {
-                            title: i18n.__("curation.sales"),
-                            payload: "CARE_SALES"
-                        }
-                    ]);
-
+                .then((repsonse) => {
+                      let delayed = {
+                        "text": `Great, I`
+                      }  
+                      setTimeout((data) => {
+                            console.log(delayed)
+                            return response 
+                        }, 4000);
+                      // res.status(200).send('Please close this window to return to the conversation thread.');
+                      // console.log("bring in ...", data)
+                      callSendAPI(data, response);
+                    })
                 break;
                 // 
             case "CLOSEST_DELI":
