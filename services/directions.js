@@ -22,7 +22,7 @@ module.exports = class Directions {
                     }, 4000);
                     // res.status(200).send('Please close this window to return to the conversation thread.');
                     // console.log("bring in ...", data)
-                    Recieve.callSendAPI(payload);
+                    delayed.callSendAPI(payload);
                 }
                 break;
         }
