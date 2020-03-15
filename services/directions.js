@@ -10,6 +10,7 @@ module.exports = class Order {
     let response;
 
     switch (payload) {
+        console.log("switching to directions...")
         case "Add to cart":
             console.log("switching to directions...")
         response = 
