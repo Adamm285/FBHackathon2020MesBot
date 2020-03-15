@@ -11,6 +11,7 @@ module.exports = class Order {
 
     switch (payload) {
         case "Add to cart":
+            console.log("switching to directions...")
         response = 
           Response.genQuickReply(i18n.__("directions.received"), [{
               title: i18n.__("curation.directions"),
