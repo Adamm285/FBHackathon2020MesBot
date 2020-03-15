@@ -17,7 +17,8 @@ module.exports = class Directions {
                         "text": `Great, I`
                     }
                     setTimeout((data) => {
-                        console.log(delayed)
+                        response = 
+                        Response.genText(delayed)
                         return response
                     }, 4000);
                     // res.status(200).send('Please close this window to return to the conversation thread.');
