@@ -11,7 +11,7 @@ module.exports = class Order {
 
         console.log("switching to directions...", payload);
 
-        switch (response) {
+        switch (payload) {
             case "ADD_TO_CART":
                 console.log("switched to directions...")
                 response =
