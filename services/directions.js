@@ -14,7 +14,7 @@ module.exports = class Order {
         switch (response) {
             case response:
                 console.log("switched to directions...")
-                response.then(function () {
+                // response.then(function () {
                     console.log("value"); // 1
                     response =
                         Response.genText(i18n.__("directions.received"), [{
@@ -26,7 +26,7 @@ module.exports = class Order {
                                 payload: "CARE_SALES"
                             }
                         ]);
-                })
+                // })
                 break;
             case "CLOSEST_DELI":
                 response = Response.genPostbackButton(
