@@ -18,25 +18,23 @@ const Curation = require("./curation"),
   Survey = require("./survey"),
   GraphAPi = require("./graph-api"),
   i18n = require("../i18n.config");
-
-
+// 
 module.exports = class Receive {
   constructor(user, webhookEvent) {
     this.user = user;
     this.webhookEvent = webhookEvent;
   }
-
   // Check if the event is a message or postback and
   // call the appropriate handler function
   handleMessage() {
     let event = this.webhookEvent;
-
+    // 
     let responses;
-
+    // 
     try {
       if (event.message) {
         let message = event.message;
-        
+        // 
         if (message.quick_reply) {
           responses = this.handleQuickReply();
         } else if (message.attachments) {
@@ -56,7 +54,7 @@ module.exports = class Receive {
         will fix the issue shortly!`
       };
     }
-
+    // 
     if (Array.isArray(responses)) {
       let delay = 0;
       for (let response of responses) {
@@ -67,21 +65,20 @@ module.exports = class Receive {
       this.sendMessage(responses);
     }
   }
-
+  // 
   // Handles messages events with text
   handleTextMessage() {
     console.log(
       "Received text:",
       `${this.webhookEvent.message.text} for ${this.user.psid}`
     );
-
     // check greeting is here and is confident
     let greeting = this.firstEntity(this.webhookEvent.message.nlp, "greetings");
-
+    // 
     let message = this.webhookEvent.message.text.trim().toLowerCase();
-
+    // 
     let response;
-
+    // 
     if (
       (greeting && greeting.confidence > 0.8) ||
       message.includes("start over")
@@ -119,18 +116,17 @@ module.exports = class Receive {
         ])
       ];
     }
-
+    // 
     return response;
   }
-
+  // 
   // Handles mesage events with attachments
   handleAttachmentMessage() {
     let response;
-
     // Get the attachment
     let attachment = this.webhookEvent.message.attachments[0];
     console.log("Received attachment:", `${attachment} for ${this.user.psid}`);
-
+    // 
     response = Response.genQuickReply(i18n.__("fallback.attachment"), [
       {
         title: i18n.__("menu.help"),
@@ -141,10 +137,10 @@ module.exports = class Receive {
         payload: "GET_STARTED"
       }
     ]);
-
+    // 
     return response;
   }
-
+  // 
   // Handles message events with quick replies
   handleQuickReply() {
     // Get the payload of the quick reply
@@ -152,7 +148,7 @@ module.exports = class Receive {
 
     return this.handlePayload(payload);
   }
-
+  // 
   // Handles postbacks events
   handlePostback() {
     let postback = this.webhookEvent.postback;
@@ -166,23 +162,23 @@ module.exports = class Receive {
     }
     return this.handlePayload(payload.toUpperCase());
   }
-
+  // 
   // Handles referral events
   handleReferral() {
     // Get the payload of the postback
     let payload = this.webhookEvent.referral.ref.toUpperCase();
-
+    // 
     return this.handlePayload(payload);
   }
-
+  // 
   handlePayload(payload) {
     console.log("Received Payload:", `${payload} for ${this.user.psid}`);
-
+    // 
     // Log CTA event in FBA
     GraphAPi.callFBAEventsAPI(this.user.psid, payload);
-
+    // 
     let response;
-
+    // 
     // Set the response based on the payload
     if (
       payload === "GET_STARTED" ||
@@ -227,15 +223,15 @@ module.exports = class Receive {
         text: `This is a default postback message for payload: ${payload}!`
       };
     }
-
+    // 
     return response;
   }
-
+  // 
   handlePrivateReply(type,object_id) {
     let welcomeMessage = i18n.__("get_started.welcome") + " " +
       i18n.__("get_started.guidance") + ". " +
       i18n.__("get_started.help");
-
+    // 
     let response = Response.genQuickReply(welcomeMessage, [
       {
         title: i18n.__("menu.suggestion"),
@@ -246,7 +242,7 @@ module.exports = class Receive {
         payload: "CARE_HELP"
       }
     ]);
-
+    // 
     let requestBody = {
       recipient: {
         [type]: object_id
@@ -256,14 +252,14 @@ module.exports = class Receive {
 
     GraphAPi.callSendAPI(requestBody);
   }
-
+  // 
   sendMessage(response, delay = 0) {
     // Check if there is delay in the response
     if ("delay" in response) {
       delay = response["delay"];
       delete response["delay"];
     }
-
+    // 
     // Construct the message body
     let requestBody = {
       recipient: {
@@ -271,12 +267,12 @@ module.exports = class Receive {
       },
       message: response
     };
-
+    // 
     // Check if there is persona id in the response
     if ("persona_id" in response) {
       let persona_id = response["persona_id"];
       delete response["persona_id"];
-
+      // 
       requestBody = {
         recipient: {
           id: this.user.psid
@@ -285,10 +281,10 @@ module.exports = class Receive {
         persona_id: persona_id
       };
     }
-
+    // 
     setTimeout(() => GraphAPi.callSendAPI(requestBody), delay);
   }
-
+  // 
   firstEntity(nlp, name) {
     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
   }

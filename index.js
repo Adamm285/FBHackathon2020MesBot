@@ -238,12 +238,12 @@ app.get('/optionspostback', (req, res, response) => {
   }).then((data) => {
     res.status(200).send('Please close this window to return to the conversation thread.');
     console.log("bring in ...", data)
-    callSendAPI(body.psid, responseFinal, response);
+    subCreate(body.psid, responseFinal, response);
   })
 });
 // 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response) {
+function subCreate(sender_psid, response) {
   // Construct the message body
   var Response = require("./services/response.js");
   Response = new Response();
