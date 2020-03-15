@@ -7,7 +7,7 @@ const Response = require("./response"),
 
 module.exports = class Order {
     static handlePayload(payload) {
-        let response= this.genText(i18n.__("get_started.guidance"));
+        let response= Response.genText(i18n.__("get_started.guidance"));
         console.log("switching to directions...", payload);
         
         switch (response) {
