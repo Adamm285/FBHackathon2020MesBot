@@ -10,7 +10,7 @@ module.exports = class Order {
         let response;
         console.log("switching to directions...", payload);
         switch (payload) {
-            case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
+            case payload:
                 console.log("switched to directions...")
                 response =
                     Response.genQuickReply(i18n.__("directions.received"), [{
