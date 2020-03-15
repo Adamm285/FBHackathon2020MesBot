@@ -8,11 +8,11 @@ const Response = require("./response"),
 module.exports = class Order {
   static handlePayload(payload) {
     let response;
-
+    console.log("switching to directions...");
     switch (payload) {
-        console.log("switching to directions...")
+        
         case "Add to cart":
-            console.log("switching to directions...")
+            console.log("switched to directions...")
         response = 
           Response.genQuickReply(i18n.__("directions.received"), [{
               title: i18n.__("curation.directions"),
