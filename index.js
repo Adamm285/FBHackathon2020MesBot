@@ -282,12 +282,22 @@ function callSendAPI(sender_psid, response) {
     "json": request_body
   }, (err, response, body, payload) => {
     if (!err) {
-      console.log("Payload is...", body)
+      console.log("Body is...", body)
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
           console.log("----------------!");
-          response = Directions.handlePayload(payload);
+          response = 
+          Response.genQuickReply(i18n.__("directions.received"), [{
+              title: i18n.__("curation.directions"),
+              payload: "CLOSEST_DELI"
+            },
+            {
+              title: i18n.__("curation.sales"),
+              payload: "CARE_SALES"
+            }
+          ])
+          // response = Directions.handlePayload();
           console.log("----------------!");
           break;
         default:
