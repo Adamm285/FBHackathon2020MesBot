@@ -23,7 +23,7 @@ module.exports = class Order {
                         }
                     ]);
                 // })
-                break;]
+                break;
         // 
         case "CLOSEST_DELI":
         response = Response.genPostbackButton(
