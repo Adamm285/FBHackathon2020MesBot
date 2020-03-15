@@ -13,7 +13,8 @@ module.exports = class Order {
         switch (payload) {
             case payload:
                 console.log("switched to directions...")
-                genQuickReply(i18n.__("directions.received"), [{
+                response =
+                    Response.genQuickReply(i18n.__("directions.received"), [{
                             title: i18n.__("curation.directions"),
                             payload: "CLOSEST_DELI"
                         },
