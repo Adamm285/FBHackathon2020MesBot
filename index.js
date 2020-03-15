@@ -3,7 +3,7 @@
 // 
 // Imports dependencies and set up http server
 const
-  Curation = require("./services/curation"),
+Directions = require("./services/directions"),
   Response = require("./services/response"),
   express = require('express'),
   request = require('request'),
@@ -286,7 +286,7 @@ function callSendAPI(sender_psid, response) {
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
           console.log("----------------!");
-          response = Curation.handlePayload("Add to cart");
+          response = Directions.handlePayload("Add to cart");
           console.log("----------------!");
           break;
         default:
