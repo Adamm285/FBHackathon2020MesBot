@@ -34,7 +34,7 @@ module.exports = class Directions {
         }
         break;
         // 
+        return response;
     };
-    return response;
-};
+   
 };
