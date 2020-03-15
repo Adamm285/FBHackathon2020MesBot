@@ -9,6 +9,16 @@ module.exports = class Order {
   static handlePayload(payload) {
     let response;
     console.log("switching to directions...");
+    response = 
+          Response.genQuickReply(i18n.__("directions.received"), [{
+              title: i18n.__("curation.directions"),
+              payload: "CLOSEST_DELI"
+            },
+            {
+              title: i18n.__("curation.sales"),
+              payload: "CARE_SALES"
+            }
+          ]);
     switch (payload) {
         
         case "Add to cart":

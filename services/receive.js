@@ -14,6 +14,7 @@ const Curation = require("./curation"),
   Order = require("./order"),
   Response = require("./response"),
   Care = require("./care"),
+  Directions = require("./directions");
   Survey = require("./survey"),
   GraphAPi = require("./graph-api"),
   i18n = require("../i18n.config");
@@ -94,10 +95,10 @@ module.exports = class Receive {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
     } 
-    // else if (message.includes(i18n.__("curation.build").toLowerCase())) {
-    //   let curation = new Curation(this.user, this.webhookEvent);
-    //   response = curation.handlePayload("BUILD");
-    // }
+    else if (message.includes(i18n.__("directions.received").toLowerCase())) {
+      let directions = new Directions(this.user, this.webhookEvent);
+      response = directions.handlePayload(body);
+    }
     else {
       response = [
         Response.genText(
@@ -186,7 +187,7 @@ module.exports = class Receive {
     if (
       payload === "GET_STARTED" ||
       payload === "DEVDOCS" ||
-      payload === "BUILD" ||
+      payload === body ||
       payload === "GITHUB"
     ) {
       response = Response.genNuxMessage(this.user);
