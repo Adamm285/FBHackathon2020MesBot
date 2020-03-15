@@ -13,7 +13,7 @@ module.exports = class Directions {
         switch (payload) {
             case payload:
                 if (payload) {
-                    response = {
+                    delayed = {
                         "text": `Great, I`
                     }
                     setTimeout((data) => {
