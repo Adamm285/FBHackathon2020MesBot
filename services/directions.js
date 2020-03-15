@@ -3,7 +3,7 @@
 // Imports dependencies
 const Response = require("./response"),
     Recieve = require("./receive")
-    i18n = require("../i18n.config"),
+i18n = require("../i18n.config"),
     config = require("./config");
 // turns out you directions has been depercated
 module.exports = class Directions {
@@ -12,7 +12,6 @@ module.exports = class Directions {
         console.log("switching to directions...", payload);
         switch (payload) {
             // case payload:
-                console.log("switched to directions...")
             //     if (payload) {
             //           let delayed = {
             //             "text": `Great, I`
@@ -28,14 +27,13 @@ module.exports = class Directions {
             //     break;
             //     // 
             // case "CLOSEST_DELI":
-                response = Response.genPostbackButton(
-                    i18n.__("curation.show"),
-                    "CURATION_OTHER_STYLE"
-                )
+            response = Response.genPostbackButton(
+                i18n.__("curation.received"),
+                "CURATION"
+            )
         }
-                break;
-                // 
-        };
-        return response;
+        break;
+        // 
     };
+    return response;
 };
