@@ -285,7 +285,26 @@ function callSendAPI(sender_psid, response) {
       console.log("Body is...", body)
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case "CSAT":
+        case "CURATION_AMERICAN_MAYO_WHOLE":
+          case "CURATION_AMERICAN_MAYO_HALF":
+          case "CURATION_AMERICAN_MUSTARD_WHOLE":
+          case "CURATION_AMERICAN_MUSTARD_HALF":
+          case "CURATION_AMERICAN_BOTH_WHOLE":
+          case "CURATION_AMERICAN_BOTH_HALF":
+            // 
+          case "CURATION_YELLOW_MAYO_WHOLE":
+          case "CURATION_YELLOW_MAYO_HALF":
+          case "CURATION_YELLOW_MUSTARD_WHOLE":
+          case "CURATION_YELLOW_MUSTARD_HALF":
+          case "CURATION_YELLOW_BOTH_WHOLE":
+          case "CURATION_YELLOW_BOTH_HALF":
+            // 
+          case "CURATION_SWISS_MAYO_WHOLE":
+          case "CURATION_SWISS_MAYO_HALF":
+          case "CURATION_SWISS_MUSTARD_WHOLE":
+          case "CURATION_SWISS_MUSTARD_HALF":
+          case "CURATION_SWISS_BOTH_WHOLE":
+          case "CURATION_SWISS_BOTH_HALF":
           payload = body
           console.log("----------------!");
           response = Directions.handlePayload(payload);
