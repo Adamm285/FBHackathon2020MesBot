@@ -25,8 +25,8 @@ module.exports = class Directions {
                     Recieve.callSendAPI(data, response);
                 }
                 //     break;
-                // 
-                case "CLOSEST_DELI":
+                // // 
+                // case "CLOSEST_DELI":
 
                     // i18n.__("curation.received"),
                     // "CURATION"
