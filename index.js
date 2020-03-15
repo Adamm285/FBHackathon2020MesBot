@@ -287,17 +287,7 @@ function callSendAPI(sender_psid, response) {
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
         case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
           console.log("----------------!");
-          response = 
-          Response.sendMessage(i18n.__("directions.received"), [{
-              title: i18n.__("curation.directions"),
-              payload: "CLOSEST_DELI"
-            },
-            {
-              title: i18n.__("curation.sales"),
-              payload: "CARE_SALES"
-            }
-          ])
-          // response = Directions.handlePayload();
+          response = Directions.handlePayload(body);
           console.log("----------------!");
           break;
         default:
