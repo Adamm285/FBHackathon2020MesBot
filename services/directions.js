@@ -7,7 +7,6 @@ const Response = require("./response"),
 
 module.exports = class Order {
     static handlePayload(payload) {
-        response = payload
         let response;
         console.log("switching to directions...", payload);
 
