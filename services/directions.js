@@ -8,24 +8,22 @@ const Response = require("./response"),
 module.exports = class Order {
     static handlePayload(payload) {
         let response;
-        response = Response.genText(i18n.__("get_started.guidance"));
+
         console.log("switching to directions...", payload);
 
         switch (response) {
-            case response:
+            case "ADD_TO_CART":
                 console.log("switched to directions...")
-                // response.then(function () {
-                    console.log("value"); // 1
-                    response =
-                        Response.genText(i18n.__("directions.received"), [{
-                                title: i18n.__("curation.directions"),
-                                payload: "CLOSEST_DELI"
-                            },
-                            {
-                                title: i18n.__("curation.sales"),
-                                payload: "CARE_SALES"
-                            }
-                        ]);
+                response =
+                    Response.genText(i18n.__("directions.received"), [{
+                            title: i18n.__("curation.directions"),
+                            payload: "CLOSEST_DELI"
+                        },
+                        {
+                            title: i18n.__("curation.sales"),
+                            payload: "CARE_SALES"
+                        }
+                    ]);
                 // })
                 break;
             case "CLOSEST_DELI":
