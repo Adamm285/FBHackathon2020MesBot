@@ -23,7 +23,7 @@ module.exports = class Directions {
                       // res.status(200).send('Please close this window to return to the conversation thread.');
                       // console.log("bring in ...", data)
                       callSendAPI(data, response);
-                    })
+                }
                 break;
                 // 
             case "CLOSEST_DELI":
