@@ -319,12 +319,13 @@ module.exports = class Curation {
                 "CARE_SALES"
               )
             ]
-          ).then((data) => {
-            let delay = {
+          ).then((repsonse) => {
+            let delayed = {
               "text": `Great, I`
             }  
             setTimeout((data) => {
-                  return data 
+                  console.log(delayed)
+                  return response 
               }, 4000);
             // res.status(200).send('Please close this window to return to the conversation thread.');
             // console.log("bring in ...", data)

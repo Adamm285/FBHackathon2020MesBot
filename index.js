@@ -244,12 +244,12 @@ app.get('/optionspostback', (req, res, response) => {
 // 
 // Sends response messages via the Send API
 function subCreate(sender_psid, response) {
-  // Construct the message body
+  // 
   var Response = require("./services/response.js");
   Response = new Response();
   var Curation = require("./services/curation.js");
   Curation = new Curation();
-  // 
+  // Construct the message body
   let request_body = {
     "recipient": {
       "id": sender_psid
