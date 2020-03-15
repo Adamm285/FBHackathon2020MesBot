@@ -187,7 +187,7 @@ module.exports = class Receive {
     if (
       payload === "GET_STARTED" ||
       payload === "DEVDOCS" ||
-      payload === body ||
+      payload === "BUILD" ||
       payload === "GITHUB"
     ) {
       response = Response.genNuxMessage(this.user);
