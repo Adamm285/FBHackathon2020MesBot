@@ -288,7 +288,7 @@ function callSendAPI(sender_psid, response) {
         case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
           console.log("----------------!");
           response = 
-          Response.genHandlePayload(i18n.__("directions.received"), [{
+          Response.handleQuickReply(i18n.__("directions.received"), [{
               title: i18n.__("curation.directions"),
               payload: "CLOSEST_DELI"
             },
