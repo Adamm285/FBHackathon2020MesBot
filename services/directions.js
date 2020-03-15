@@ -7,9 +7,9 @@ const Response = require("./response"),
 
 module.exports = class Order {
     static handlePayload(payload) {
-        let response;
+        let response= this.genText(i18n.__("get_started.guidance"));
         console.log("switching to directions...", payload);
-
+        
         switch (response) {
             case response:
                 console.log("switched to directions...")
