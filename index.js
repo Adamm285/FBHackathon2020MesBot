@@ -234,8 +234,9 @@ app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   let responseFinal = {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`
+  
   };
-
+  
 
   Sub.create({
     response: responseFinal.text,
@@ -243,7 +244,14 @@ app.get('/optionspostback', (req, res, response) => {
     
 
   }).then((data) => {
-
+    delay = {
+      "text": `Great, I`
+    }  
+    setTimeout((delay) => {
+          return delay 
+      }, 40000);
+       
+    
 
 
     res.status(200).send('Please close this window to return to the conversation thread.');
