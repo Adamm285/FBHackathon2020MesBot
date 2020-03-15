@@ -14,7 +14,7 @@ module.exports = class Directions {
             case payload:
                 if (payload) {
                     let delayed = {
-                        "text": `Great, I`
+                        "text": `Your order number is 12`
                     }
                     setTimeout((data) => {
                         response = 
