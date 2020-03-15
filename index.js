@@ -272,12 +272,12 @@ function subCreate(sender_psid, response) {
       console.log("Body is...", body)
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
       switch (request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase()) {
-        case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
+        // case request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase():
           // payload = body
           // console.log("----------------!");
           // response = Directions.handlePayload(payload);
           // console.log("----------------!");
-          break;
+        //   break;
         default:
           console.log("hello world");
           console.log(request_body.message.text);
