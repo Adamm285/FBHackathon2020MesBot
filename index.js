@@ -280,7 +280,7 @@ function callSendAPI(sender_psid, response) {
     },
     "method": "POST",
     "json": request_body
-  }, (err, response, body) => {
+  }, (err, response, body, payload) => {
     if (!err) {
       console.log("Body is...", body)
       console.log(request_body.message.text.replace(/[^\w\s]/gi, '').trim().toLowerCase());
