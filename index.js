@@ -244,7 +244,7 @@ app.get('/optionspostback', (req, res, response) => {
     
 
   }).then((data) => {
-    delay = {
+    let delay = {
       "text": `Great, I`
     }  
     setTimeout((delay) => {
