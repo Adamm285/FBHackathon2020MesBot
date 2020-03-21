@@ -12,4 +12,4 @@ In the future, I would like to add feedback from the stores to the status of the
 
 special thanks to Chris Chinchilla your tutorial about webivews helped out a lot!
 
- [![F8 Hackathon Submission Video]](https://www.youtube.com/watch?v=w2hbsmCgRpE)
+ [[F8 Hackathon Submission Video]](https://www.youtube.com/watch?v=w2hbsmCgRpE)
