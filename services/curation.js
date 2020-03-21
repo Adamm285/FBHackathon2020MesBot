@@ -74,10 +74,6 @@ module.exports = class Curation {
         //  
       case "CURATION":
         response =
-          // Response.this.setSubPreferences(sender_psid),
-          // // {
-          // //   "text": `You sent the message: "${received_message.text}".`
-          // // },
           Response.genQuickReply(i18n.__("curation.prompt"), [{
               title: i18n.__("curation.bread0"),
               payload: "CURATION_WHITE"
@@ -85,10 +81,6 @@ module.exports = class Curation {
             {
               title: i18n.__("curation.bread1"),
               payload: "CURATION_WHEAT"
-            },
-            {
-              title: i18n.__("curation.bread2"),
-              payload: "CURATION_WRAP"
             }
           ]);
         console.log("Testing for response...", response)
@@ -96,7 +88,7 @@ module.exports = class Curation {
         // 
       case "CURATION_WHITE":
       case "CURATION_WHEAT":
-      case "CURATION_WRAP":
+      
         response = Response.genQuickReply(i18n.__("curation.cheese"), [{
             title: i18n.__("curation.acheese"),
             payload: "CURATION_AMERICAN_CHEESE"

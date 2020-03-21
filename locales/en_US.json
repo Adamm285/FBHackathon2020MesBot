@@ -27,7 +27,7 @@
     "directions": "Directions"
   },
   "curation": {
-    "prompt": "Would you like a Wrap or White or Wheat bread?",
+    "prompt": "Would you like a White or Wheat bread?",
     "cheese": "What kind of cheese would you like?",
     "sauce": "Would you like Mayo or Mustard?",
     "size": "What size would you like?",

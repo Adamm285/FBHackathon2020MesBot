@@ -3,7 +3,7 @@
 // 
 // Imports dependencies and set up http server
 const
-  Directions = require("./services/directions"),
+Directions = require("./services/directions"),
   Response = require("./services/response"),
   express = require('express'),
   request = require('request'),
@@ -293,4 +293,4 @@ function subCreate(sender_psid, response) {
     }
   });
 }
-// 
+//
