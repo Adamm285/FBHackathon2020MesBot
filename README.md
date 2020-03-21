@@ -10,6 +10,6 @@ I am excited to be part of the FB Hackathon F8 2020. I have pushed myself to pro
 
 In the future, I would like to add feedback from the stores to the status of the Sub: 1) order received 2) being made and 3) ready to go. I would also display where in the store to expect the sub to be waiting. More importantly is to increase the items available for purchase, first allowing clients to add soup or a drink. Although the end plan is to be able buy anything in the store directly from messenger with minimal to zero human interaction. 
 
-special thanks to Chris Chinchilla your tutorial about webivews helped out a lot!
+special thanks to Chris Chinchilla your tutorial about webviews helped out a lot!
 
  [[F8 Hackathon Submission Video]](https://www.youtube.com/watch?v=w2hbsmCgRpE)
