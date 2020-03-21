@@ -7,10 +7,7 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Adamm285/FBHackathon2020MesBot.git"
-  },
+  "repository": "git+https://github.com/Adamm285/FBHackathon2020MesBot.git",
   "keywords": [
     "hackathon"
   ],
