@@ -76,10 +76,6 @@ No need to install anything to view the live site [here](https://www.messenger.c
 #### Screen Shots
 
 ![Mr. Jenkins](./public/screenshots/fb1.PNG)
-![Mr. Jenkins](./public/screenshots/fb2.PNG)
-![Mr. Jenkins](./public/screenshots/fb3.PNG)
-![Mr. Jenkins](./public/screenshots/fb4.PNG)
-![Mr. Jenkins](./public/screenshots/fb5.PNG)
 ![Mr. Jenkins](./public/screenshots/fb6.PNG)
 ![Mr. Jenkins](./public/screenshots/fb7.PNG)
 ![Mr. Jenkins](./public/screenshots/fb8.PNG)
@@ -87,7 +83,10 @@ No need to install anything to view the live site [here](https://www.messenger.c
 ![Mr. Jenkins](./public/screenshots/fb10.PNG)
 ![Mr. Jenkins](./public/screenshots/fb11.PNG)
 ![Mr. Jenkins](./public/screenshots/fb12.PNG)
-![Mr. Jenkins](./public/screenshots/fb13.PNG)
+![Mr. Jenkins](./public/screenshots/fb2.PNG)
+![Mr. Jenkins](./public/screenshots/fb3.PNG)
+![Mr. Jenkins](./public/screenshots/fb4.PNG)
+![Mr. Jenkins](./public/screenshots/fb5.PNG)
 
 ## License
 
