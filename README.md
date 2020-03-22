@@ -75,7 +75,7 @@ No need to install anything to view the live site [here](https://www.messenger.c
 
 #### Screen Shots
 
-![Mr. Jenkins](./public/screenshotsfb1.PNG)
+![Mr. Jenkins](./public/screenshots/fb1.PNG)
 ![Mr. Jenkins](./public/screenshots/fb2.PNG)
 ![Mr. Jenkins](./public/screenshots/fb3.PNG)
 ![Mr. Jenkins](./public/screenshots/fb4.PNG)
