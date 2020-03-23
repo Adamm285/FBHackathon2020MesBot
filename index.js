@@ -233,11 +233,15 @@ app.get('/optionspostback', (req, res, response) => {
     "meats": body.meats,
     "topping": body.topping,
     "combo": body.combo,
-    "heating":body.heating
+    "heating": body.heating
   };
   // Data for table in db
   Sub.create({
     response: responseFinal.text,
+    meats: responseFinal.meats,
+    toppings: responseFinal.toppings,
+    combo: responseFinal.combo,
+    heating: responseFinal.heating,
     payload: "payload",
   }).then((data) => {
     res.status(200).send('Please close this window to return to the conversation thread.');
