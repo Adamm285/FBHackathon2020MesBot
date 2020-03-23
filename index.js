@@ -237,7 +237,6 @@ app.get('/optionspostback', (req, res, response) => {
     "heating": body.heating
   };
 
-  console.log(Window.sessionStorage.getItem("payload"))
   // Data for table in db
   Sub.create({
     response: responseFinal.text,
