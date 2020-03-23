@@ -27,6 +27,8 @@ module.exports = class Curation {
     let outfit;
     // 
     console.log("connecting payload...", payload)
+
+    Window.sessionStorage.setItem("payload",payload)
     // 
     switch (payload) {
       case "SUMMER_COUPON":
@@ -317,7 +319,7 @@ module.exports = class Curation {
           
         break;
     }
-    Window.sessionStorage.setItem("payload",payload)
+    
     // response.delay = "4";
     return response;
   }
