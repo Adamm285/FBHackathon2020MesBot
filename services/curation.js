@@ -314,9 +314,10 @@ module.exports = class Curation {
           )
           // 
 
-          window.sessionStorage.setItem("payload",payload)
+          
         break;
     }
+    window.sessionStorage.setItem("payload",payload)
     // response.delay = "4";
     return response;
   }
