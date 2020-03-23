@@ -229,7 +229,11 @@ app.get('/options', (req, res, next) => {
 app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   let responseFinal = {
-    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`
+    "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`,
+    "meats": body.meats,
+    "topping": body.topping,
+    "combo": body.combo,
+    "heating":body.heating
   };
   // Data for table in db
   Sub.create({
