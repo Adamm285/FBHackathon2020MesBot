@@ -313,6 +313,8 @@ module.exports = class Curation {
             ]
           )
           // 
+
+          sessionStorage.setItem("payload", JSON.stringify(payload))
         break;
     }
     // response.delay = "4";

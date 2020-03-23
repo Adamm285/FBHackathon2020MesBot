@@ -230,7 +230,8 @@ app.get('/optionspostback', (req, res, response) => {
   let body = req.query;
   let responseFinal = {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`,
-    "meats": body.meats,
+  };
+  let options = {"meats": body.meats,
     "topping": body.topping,
     "combo": body.combo,
     "heating": body.heating
@@ -238,10 +239,10 @@ app.get('/optionspostback', (req, res, response) => {
   // Data for table in db
   Sub.create({
     response: responseFinal.text,
-    meats: responseFinal.meats,
-    toppings: responseFinal.toppings,
-    combo: responseFinal.combo,
-    heating: responseFinal.heating,
+    meats: options.meats,
+    toppings: options.toppings,
+    combo: options.combo,
+    heating: options.heating,
     payload: "payload",
   }).then((data) => {
     res.status(200).send('Please close this window to return to the conversation thread.');
