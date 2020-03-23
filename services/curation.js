@@ -314,7 +314,7 @@ module.exports = class Curation {
           )
           // 
 
-          sessionStorage.setItem("payload", JSON.stringify(payload))
+          windows.sessionStorage.setItem("payload",payload)
         break;
     }
     // response.delay = "4";

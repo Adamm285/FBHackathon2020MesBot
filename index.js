@@ -236,6 +236,8 @@ app.get('/optionspostback', (req, res, response) => {
     "combo": body.combo,
     "heating": body.heating
   };
+
+  console.log(window.sessionStorage.getItem("payload"))
   // Data for table in db
   Sub.create({
     response: responseFinal.text,
