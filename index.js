@@ -231,7 +231,8 @@ app.get('/optionspostback', (req, res, response) => {
   let responseFinal = {
     "text": `Great, I will build you a ${body.meats} sub, with ${body.topping}, ${body.combo} and ${body.heating}.`,
   };
-  let options = {"meats": body.meats,
+  let options = {
+    "meats": body.meats,
     "toppings": body.toppings,
     "combo": body.combo,
     "heating": body.heating

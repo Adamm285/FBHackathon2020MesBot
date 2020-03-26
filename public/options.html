@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -71,7 +72,7 @@
         <div class="row input-group">
             <div class="col-1"></div>
             <div class="col-7 input-group-prepend">
-                <label class=" input-group-text btn btn-primary" for="meats">Subs Menu</label>
+                <label id="the_react_container" class=" input-group-text btn btn-primary" for="meats">Subs Menu</label>
                 <select name="meats" class="meats" id="meats">
                     <option selected>Choose...</option>
                     <option name="meats" value="chicken tender">Chicken Tender</option>
@@ -101,7 +102,7 @@
             <div class="col-1"></div>
             <div class="col-3">
                 <h3>Toppings</h3>
-                <input type="checkbox" name="topping" value="tomatoes">Tomatos<br>
+                <input type="checkbox" name="topping" value="tomatoes">Tomatoes<br>
                 <input type="checkbox" name="topping" value="lettuce">Lettuce<br>
                 <input type="checkbox" name="topping" value="spinach">Spinach<br>
                 <input type="checkbox" name="topping" value="cucumber">Cucumbers<br>
@@ -132,6 +133,9 @@
         </div>
         </div>
     </form>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="my_component.js"></script>
 </body>
 
 </html>
