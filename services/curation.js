@@ -144,7 +144,7 @@ module.exports = class Curation {
         ]);
         break;
         // 
-      case "CUR   ATION_YELLOW_CHEESE":
+      case "CURATION_YELLOW_CHEESE":
         // Store the user budget preference here
         response = Response.genQuickReply(i18n.__("curation.sauce"), [{
             title: i18n.__("curation.mayo"),
